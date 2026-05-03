@@ -1,0 +1,1279 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BannerHero from "../components/BannerHero.astro";
+import FeatureBlocksSection from "../components/FeatureBlocksSection.astro";
+import ImageCardsOverlay from "../components/ImageCardsOverlay.astro";
+import ImageCarouselSection from "../components/ImageCarouselSection.astro";
+import VideoOverlay from "../components/VideoOverlay.astro";
+import ComparisonBannerSection from "../components/ComparisonBannerSection.astro";
+import BrandCardsSection from "../components/BrandCardsSection.astro";
+import ImageLogoTextBanner from "../components/ImageLogoTextBanner.astro";
+import VideoHero from "../components/VideoHero.astro";
+import ReviewsCarouselSection  from "../components/ReviewsCarouselSection.astro";
+import FormularioLead from "../componentsFormPoliticas/FormularioLead.astro";
+import NewsletterForm from "../componentsFormPoliticas/NewsletterForm.astro";
+
+
+import Formulario from "../components/Formulario.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout>
+  <Header />
+
+  <main class="container">
+
+<VideoHero
+  id="hero-home"
+  class="banner"
+
+  srcDesktop="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+  srcMobile="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+
+  width="1920"
+  height="500"
+
+  autoplay={true}
+  muted={true}
+  loop={true}
+  playsinline={true}
+  controls={false}
+  preload="auto"
+
+  ariaLabel="Video principal de alimentos"
+
+  h1="Tu socio para construir, escalar y posicionar marcas de alimentos en México"
+  h1Class="hero-title"
+
+  linkHtml="Explorar soluciones"
+  linkHref="/soluciones"
+  linkClass="hero-button"
+/>
+
+<BannerHero
+  id="bloque-alimentos"
+  class="imagen-derecha-texto-izquierda"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Alimentos de alta calidad"
+  width="682"
+  height="378"
+  loading="lazy"
+  decoding="async"
+
+  p="
+  Creamos alimentos de <strong>alta calidad</strong> que combinan <strong>las tendencias</strong> del mercado con una verdadera <strong>conciencia nutricional</strong>
+  "
+  pId=""
+  pClass=""
+/>
+
+<FeatureBlocksSection
+  id="servicios-clave"
+  class="feature-blocks-section"
+  items={[
+    {
+      id: "",
+      class: "feature-blocks-section__item",
+
+      h2: `<svg xmlns="http://www.w3.org/2000/svg" width="93" height="75" viewBox="0 0 93 75" fill="none">
+        <path d="M2.745 70.3781L29.38 43.4719L43.7738 57.2531L61.3656 41.875L71.1656 51.43M90 9.0625C90 7.32202 89.3086 5.65282 88.0779 4.42211C86.8472 3.1914 85.178 2.5 83.4375 2.5H9.0625C7.32202 2.5 5.65282 3.1914 4.42211 4.42211C3.1914 5.65282 2.5 7.32202 2.5 9.0625V28.75H90V9.0625Z" stroke="#EF6A02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M90 24.375V65.9375C90 67.678 89.3086 69.3472 88.0779 70.5779C86.8472 71.8086 85.178 72.5 83.4375 72.5H20M35.5575 15.625H74.9325M18.0531 15.625H22.4281M2.5 24.375V44.0625" stroke="#EF6A02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      h2Id: "",
+      h2Class: "feature-blocks-section__title",
+
+      h3: "Inteligencia de mercado",
+      h3Id: "",
+      h3Class: "feature-blocks-section__subtitle",
+    },
+    {
+      id: "",
+      class: "feature-blocks-section__item",
+
+      h2: `<svg xmlns="http://www.w3.org/2000/svg" width="62" height="76" viewBox="0 0 62 76" fill="none">
+        <path d="M6.75056 44.75C4.12436 40.4493 2.73975 35.5056 2.75006 30.4665C2.75006 15.1575 15.2871 2.75 30.7501 2.75C46.2131 2.75 58.7501 15.1575 58.7501 30.4665C58.7604 35.5056 57.3758 40.4493 54.7496 44.75" stroke="#EF6A02" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M41.25 62.25L40.795 64.5145C40.305 66.989 40.0565 68.2245 39.5 69.2045C38.6425 70.7149 37.254 71.8526 35.6045 72.3965C34.537 72.75 33.27 72.75 30.75 72.75C28.23 72.75 26.963 72.75 25.8955 72.4C24.2454 71.8553 22.8569 70.7163 22 69.2045C21.4435 68.2245 21.195 66.989 20.705 64.5145L20.25 62.25M14.5905 55.593C14.2685 54.627 14.1075 54.1405 14.125 53.7485C14.1448 53.3432 14.2816 52.9523 14.5189 52.6231C14.7562 52.2939 15.0837 52.0405 15.462 51.8935C15.826 51.75 16.337 51.75 17.352 51.75H44.148C45.1665 51.75 45.674 51.75 46.038 51.89C46.4168 52.0372 46.7447 52.2911 46.982 52.621C47.2194 52.9509 47.3559 53.3426 47.375 53.7485C47.3925 54.1405 47.2315 54.6235 46.9095 55.593C46.3145 57.3815 46.017 58.2775 45.5585 59.002C44.5995 60.5161 43.0963 61.6047 41.3585 62.0435C40.5255 62.25 39.5875 62.25 37.708 62.25H23.792C21.9125 62.25 20.971 62.25 20.1415 62.04C18.4043 61.6021 16.9012 60.5148 15.9415 59.002C15.483 58.2775 15.1855 57.3815 14.5905 55.593Z" stroke="#EF6A02" stroke-width="5.5"/>
+        <path d="M30.75 51.75V34.25" stroke="#EF6A02" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      h2Id: "",
+      h2Class: "feature-blocks-section__title",
+
+      h3: "Desarrollo de producto",
+      h3Id: "",
+      h3Class: "feature-blocks-section__subtitle",
+    },
+    {
+      id: "",
+      class: "feature-blocks-section__item",
+
+      h2: `<svg xmlns="http://www.w3.org/2000/svg" width="68" height="75" viewBox="0 0 68 75" fill="none">
+        <path d="M34.0032 72.5V37.4964M30.5029 71.5549C31.5671 72.1693 32.7743 72.4928 34.0032 72.4928C35.2321 72.4928 36.4393 72.1693 37.5036 71.5549L62.0061 57.5535C63.0693 56.9396 63.9524 56.057 64.5667 54.9941C65.1811 53.9313 65.5052 52.7255 65.5065 51.4978V23.495C65.5052 22.2673 65.1811 21.0616 64.5667 19.9987C63.9524 18.9358 63.0693 18.0532 62.0061 17.4394L37.5036 3.43792C36.4393 2.82348 35.2321 2.5 34.0032 2.5C32.7743 2.5 31.5671 2.82348 30.5029 3.43792L6.00036 17.4394C4.93717 18.0532 4.05409 18.9358 3.43971 19.9987C2.82533 21.0616 2.50126 22.2673 2.5 23.495V51.4978C2.50126 52.7255 2.82533 53.9313 3.43971 54.9941C4.05409 56.057 4.93717 56.9396 6.00036 57.5535L30.5029 71.5549Z" stroke="#EF6A02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.51526 19.9946L34.0034 37.4964L64.4915 19.9946M18.2518 10.4386L49.755 28.4654" stroke="#EF6A02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      h2Id: "",
+      h2Class: "feature-blocks-section__title",
+
+      h3: "Supply Chain & logística",
+      h3Id: "",
+      h3Class: "feature-blocks-section__subtitle",
+    },
+    {
+      id: "",
+      class: "feature-blocks-section__item",
+
+      h2: `<svg xmlns="http://www.w3.org/2000/svg" width="93" height="76" viewBox="0 0 93 76" fill="none">
+        <path d="M68.375 72.7502C73.2075 72.7502 77.125 68.8327 77.125 64.0002C77.125 59.1678 73.2075 55.2502 68.375 55.2502C63.5425 55.2502 59.625 59.1678 59.625 64.0002C59.625 68.8327 63.5425 72.7502 68.375 72.7502Z" stroke="#EF6A02" stroke-width="5.5"/>
+        <path d="M24.625 72.7502C29.4575 72.7502 33.375 68.8327 33.375 64.0002C33.375 59.1678 29.4575 55.2502 24.625 55.2502C19.7925 55.2502 15.875 59.1678 15.875 64.0002C15.875 68.8327 19.7925 72.7502 24.625 72.7502Z" stroke="#EF6A02" stroke-width="5.5"/>
+        <path d="M15.875 63.8777C11.0756 63.6415 8.0875 62.9284 5.9525 60.7977C3.8175 58.6671 3.10875 55.6746 2.8725 50.8752M33.375 64.0002H59.625M77.125 63.8777C81.9244 63.6415 84.9125 62.9284 87.0475 60.7977C90.25 57.5909 90.25 52.4371 90.25 42.1252V33.3752H69.6875C66.4281 33.3752 64.8006 33.3752 63.4837 32.9465C62.1706 32.5198 60.9771 31.7884 60.0007 30.812C59.0244 29.8357 58.293 28.6422 57.8662 27.329C57.4375 26.0121 57.4375 24.3846 57.4375 21.1252C57.4375 16.2384 57.4375 13.7971 56.7944 11.8196C56.1543 9.84988 55.0572 8.05959 53.5927 6.59508C52.1282 5.13058 50.3379 4.03344 48.3681 3.39337C46.3906 2.75024 43.9494 2.75024 39.0625 2.75024H2.75M2.75 20.2502H29M2.75 33.3752H20.25" stroke="#EF6A02" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57.4375 11.5002H65.4044C71.7744 11.5002 74.955 11.5002 77.545 13.049C80.1394 14.5934 81.6488 17.3977 84.6675 23.0065L90.25 33.3752" stroke="#EF6A02" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      h2Id: "",
+      h2Class: "feature-blocks-section__title",
+
+      h3: "Distribución & retail",
+      h3Id: "",
+      h3Class: "feature-blocks-section__subtitle",
+    },
+  ]}
+/>
+
+<ImageCardsOverlay
+  id="desarrollo-marcas"
+  class="image-cards-overlay"
+
+  backgroundSrcDesktop="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
+  backgroundSrcMobile="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
+  backgroundAlt="Fondo de bosque"
+  backgroundWidth="1920"
+  backgroundHeight="737"
+  backgroundLoading="lazy"
+  backgroundDecoding="async"
+
+  items={[
+    {
+      figureId: "",
+      figureClass: "banner image-cards-overlay__card",
+
+      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
+      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
+      alt: "Desarrollo de marca propia",
+      width: "621",
+      height: "645",
+      loading: "lazy",
+      decoding: "async",
+
+      captionId: "",
+      captionClass: "image-cards-overlay__caption",
+
+      h2: "Desarrollo<br>Marca Propia",
+      h2Id: "",
+      h2Class: "image-cards-overlay__title",
+
+      h3: "",
+      h3Id: "",
+      h3Class: "",
+
+      p: "",
+      pId: "",
+      pClass: "",
+
+      linkHtml: "",
+      linkHref: "",
+      linkId: "",
+      linkClass: "",
+      linkTitle: "",
+      linkAriaLabel: "",
+      linkTarget: "",
+      linkRel: "",
+    },
+    {
+      figureId: "",
+      figureClass: "banner image-cards-overlay__card",
+
+      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
+      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
+      alt: "Representación de marcas comerciales",
+      width: "621",
+      height: "645",
+      loading: "lazy",
+      decoding: "async",
+
+      captionId: "",
+      captionClass: "image-cards-overlay__caption",
+
+      h2: "Representación<br>Marcas Comerciales",
+      h2Id: "",
+      h2Class: "image-cards-overlay__title",
+
+      h3: "",
+      h3Id: "",
+      h3Class: "",
+
+      p: "",
+      pId: "",
+      pClass: "",
+
+      linkHtml: "",
+      linkHref: "",
+      linkId: "",
+      linkClass: "",
+      linkTitle: "",
+      linkAriaLabel: "",
+      linkTarget: "",
+      linkRel: "",
+    },
+  ]}
+/>
+
+<ImageCarouselSection
+  id="nuestros-aliados"
+  class="image-carousel-section"
+
+  h2="Nuestros <strong>Aliados</strong>"
+  h2Id=""
+  h2Class="image-carousel-section__title"
+
+  articleGap="42px"
+  autoplayDelay="3000"
+
+  items={[
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
+      alt: "Aliado comercial 1",
+      title: "Aliado comercial 1",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
+      alt: "Aliado comercial 2",
+      title: "Aliado comercial 2",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
+      alt: "Aliado comercial 3",
+      title: "Aliado comercial 3",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
+      alt: "Aliado comercial 4",
+      title: "Aliado comercial 4",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
+      alt: "Aliado comercial 5",
+      title: "Aliado comercial 5",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
+      alt: "Aliado comercial 6",
+      title: "Aliado comercial 6",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image10_92de451c-21c0-43a2-828d-183eaa72a44e.jpg?v=1732471001",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image10_92de451c-21c0-43a2-828d-183eaa72a44e.jpg?v=1732471001",
+      alt: "Aliado comercial 7",
+      title: "Aliado comercial 7",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image6_64ef89c8-45d9-4ab0-84ea-a80d71529661.jpg?v=1732471028",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image6_64ef89c8-45d9-4ab0-84ea-a80d71529661.jpg?v=1732471028",
+      alt: "Aliado comercial 8",
+      title: "Aliado comercial 8",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image1_c54b6353-ac4f-4508-8bb0-4e17533a84ac.jpg?v=1732471164",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image1_c54b6353-ac4f-4508-8bb0-4e17533a84ac.jpg?v=1732471164",
+      alt: "Aliado comercial 9",
+      title: "Aliado comercial 9",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image4_d9f93edc-fdfc-4f66-889a-d91312011fcf.jpg?v=1732471839",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image4_d9f93edc-fdfc-4f66-889a-d91312011fcf.jpg?v=1732471839",
+      alt: "Aliado comercial 10",
+      title: "Aliado comercial 10",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image12_2e49c9f6-f23b-4978-8d28-5379d7073c3b.jpg?v=1732471863",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image12_2e49c9f6-f23b-4978-8d28-5379d7073c3b.jpg?v=1732471863",
+      alt: "Aliado comercial 11",
+      title: "Aliado comercial 11",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image14_5783c29c-f0b5-4e32-8db8-e5b4d270c000.jpg?v=1732471943",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image14_5783c29c-f0b5-4e32-8db8-e5b4d270c000.jpg?v=1732471943",
+      alt: "Aliado comercial 12",
+      title: "Aliado comercial 12",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image5_dc134266-54cf-4d06-b879-ec8e81fb8301.jpg?v=1732472052",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image5_dc134266-54cf-4d06-b879-ec8e81fb8301.jpg?v=1732472052",
+      alt: "Aliado comercial 13",
+      title: "Aliado comercial 13",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image11_9e4ec458-22c9-402c-b97b-9972bda3b7a2.jpg?v=1732472080",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image11_9e4ec458-22c9-402c-b97b-9972bda3b7a2.jpg?v=1732472080",
+      alt: "Aliado comercial 14",
+      title: "Aliado comercial 14",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image28_2d677334-051e-4821-9228-0bd5de2dafbc.jpg?v=1732472108",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image28_2d677334-051e-4821-9228-0bd5de2dafbc.jpg?v=1732472108",
+      alt: "Aliado comercial 15",
+      title: "Aliado comercial 15",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image8_1f1008c2-4459-4373-9ab1-ff176cd91e7f.jpg?v=1732472675",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image8_1f1008c2-4459-4373-9ab1-ff176cd91e7f.jpg?v=1732472675",
+      alt: "Aliado comercial 16",
+      title: "Aliado comercial 16",
+      width: "100",
+      height: "100",
+      loading: "lazy",
+      decoding: "async",
+    }
+  ]}
+/>
+
+<VideoHero
+  id="video-oportunidades"
+  class="video-derecha-texto-izquierdo"
+
+  srcDesktop="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+  srcMobile="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+  width="888"
+  height="470"
+  autoplay={true}
+  muted={true}
+  loop={true}
+  playsinline={true}
+  controls={false}
+  preload="metadata"
+  ariaLabel="Transformamos oportunidades"
+
+  h2="Transformamos oportunidades <strong>en marcas reales</strong>"
+  h2Id=""
+  h2Class="video-derecha-texto-izquierdo__title"
+
+  p="Acompañamos cada paso del <strong>PROCESO</strong> del desarrollo y producción hasta la distribución y conexión con el consumidor final."
+  pId=""
+  pClass="video-derecha-texto-izquierdo__text"
+/>
+
+<VideoOverlay
+  id="stats-banner"
+  class="banner stats-banner-section"
+
+  srcDesktop="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+  srcMobile="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+
+  width="1920"
+  height="306"
+
+  autoplay={true}
+  muted={true}
+  loop={true}
+  playsinline={true}
+  controls={false}
+  preload="auto"
+
+  figcaptionClass="stats-banner-section__items"
+
+  items={[
+    {
+      h2: "+50",
+      h2Class: "stats-banner-section__number",
+
+      h3: "productos desarrollados",
+      h3Class: "stats-banner-section__label",
+    },
+    {
+      h2: "+1400",
+      h2Class: "stats-banner-section__number",
+
+      h3: "puntos de venta",
+      h3Class: "stats-banner-section__label",
+    },
+    {
+      h2: "+15",
+      h2Class: "stats-banner-section__number",
+
+      h3: "marcas lanzadas",
+      h3Class: "stats-banner-section__label",
+    },
+    {
+      h2: "+20",
+      h2Class: "stats-banner-section__number",
+
+      h3: "retailers",
+      h3Class: "stats-banner-section__label",
+    },
+  ]}
+/>
+
+<ComparisonBannerSection
+  id="comparativa-modelos"
+  class="banner comparison-banner-section"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Comparativa de modelos"
+  width="1920"
+  height="700"
+  loading="lazy"
+  decoding="async"
+
+  h2="El cambio <strong>de paradigma</strong>"
+  h2Class="comparison-banner-section__title"
+
+  articleClass="comparison-banner-section__content"
+
+  items={[
+    {
+      class: "comparison-banner-section__card comparison-banner-section__card--left",
+
+      h3: "DISTRIBUIDOR TRADICIONAL",
+      h3Class: "comparison-banner-section__card-title",
+
+      listAs: "ul",
+      listClass: "comparison-banner-section__list",
+      listStyleType: "none",
+      listItemClass: "comparison-banner-section__item",
+
+      listItems: [
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Enfoque en margen de corto plazo`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Visibilidad limitada para construcción de marca`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Operación transaccional y poco integrada`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Precios fijos y poca flexibilidad`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Datos parciales para toma de decisiones`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_318_412)">
+              <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_318_412">
+                <rect width="16" height="16" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg> Portafolio amplio con baja especialización`,
+        },
+      ],
+    },
+    {
+      class: "comparison-banner-section__card comparison-banner-section__card--right",
+
+      h3: "MODELO FRAM FOODS (PARTNERSHIP)",
+      h3Class: "comparison-banner-section__card-title",
+
+      listAs: "ul",
+      listClass: "comparison-banner-section__list",
+      listStyleType: "none",
+      listItemClass: "comparison-banner-section__item",
+
+      listItems: [
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Enfoque en crecimiento conjunto y sostenible`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Desarrollo de marca y ejecución con objetivos compartidos`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Relación de largo plazo con planeación colaborativa`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Pricing dinámico según mercado y desempeño`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Transparencia de datos para decisiones alineadas`,
+        },
+        {
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+          </svg> Desarrollo de categoría con foco y especialización`,
+        },
+      ],
+    },
+  ]}
+/>
+
+<BannerHero
+  id="nutricion-proposito"
+  class="banner banner-nutricion"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Alimentos de alta calidad"
+  width="1920"
+  height="400"
+  loading="lazy"
+  decoding="async"
+
+  h2="NUTRICIÓN Y PROPÓSITO QUE GENERAN IMPACTO REAL"
+  h2Id=""
+  h2Class=""
+/>
+
+<BrandCardsSection
+  id="ecosistema-nutrimental"
+  class="brand-cards-section"
+
+  h2="Nuestros <strong>Partners</strong>"
+  h2Id=""
+  h2Class="brand-cards-section__title"
+
+  articleId=""
+  articleClass="brand-cards-section__grid"
+
+  items={[
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
+      alt: "Lorem ipsum marca 1",
+      title: "Lorem ipsum marca 1",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
+      alt: "Lorem ipsum marca 2",
+      title: "Lorem ipsum marca 2",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
+      alt: "Lorem ipsum marca 3",
+      title: "Lorem ipsum marca 3",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
+      alt: "Lorem ipsum marca 4",
+      title: "Lorem ipsum marca 4",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
+      alt: "Lorem ipsum marca 5",
+      title: "Lorem ipsum marca 5",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+    {
+      id: "",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
+      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
+      alt: "Lorem ipsum marca 6",
+      title: "Lorem ipsum marca 6",
+      width: "220",
+      height: "120",
+      loading: "lazy",
+      decoding: "async",
+    },
+  ]}
+/>
+
+<section id="banner-marca-natural" class="banner-marca-natural">
+  <ImagenResponsive
+    class="izq"
+    srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+    srcMobile="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+    alt="imagen izquierda"
+    title="imagen izquierda"
+    width="960"
+    height="347"
+    loading="lazy"
+    decoding="async"
+  />
+    <ImagenResponsive
+      srcDesktop="https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770"
+      srcMobile="https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770"
+      alt="imagen principal"
+      title="imagen principal"
+      width="228"
+      height="187"
+      priority="high"
+      decoding="async"
+    />
+  <figure>
+  <ImagenResponsive
+    class="der"
+    srcDesktop="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
+    srcMobile="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
+    alt="imagen derecha"
+    title="imagen derecha"
+    width="960"
+    height="347"
+    loading="lazy"
+    decoding="async"
+  />
+
+    <figcaption>
+      <TextGroupElement
+        p="En Natural Champs, nuestra filosofía se traduce en ofrecer productos con nutrición real, segura y saludable para los miembros de cuatro patas de la familia. Creemos que su bienestar es esencial, porque para nosotros no son mascotas: son familia."
+        pClass="texto"
+      />
+    </figcaption>
+  </figure>
+</section>
+
+<BannerHero
+  id="banner-estandar-alimentos"
+  class="imagen-derecha-texto-izquierda"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Un nuevo estándar en la industria de alimentos"
+  width="796"
+  height="454"
+  loading="lazy"
+  decoding="async"
+
+  h2="Un nuevo estándar en la industria de alimentos"
+  h2Id=""
+  h2Class="imagen-derecha-texto-izquierdo__title"
+
+  linkHtml="Explorar el modelo FramFoods"
+  linkHref="/modelo-fram-foods"
+  linkId=""
+  linkClass="imagen-derecha-texto-izquierdo__button"
+  linkTitle="Explorar el modelo FramFoods"
+  linkAriaLabel="Explorar el modelo FramFoods"
+  linkTarget=""
+  linkRel=""
+/>
+
+<section id="ecosistema-insights" class="ecosistema-insights">
+  <TextGroupElement
+    h2="El equilibrio del Modelo Fram Foods"
+    h2Id=""
+    h2Class="ecosistema-insights__title"
+
+    p="Un Modelo que transforma insights en decisiones, decisiones en ejecución y ejecución en crecimiento real y sostenible"
+    pId=""
+    pClass="ecosistema-insights__text"
+  />
+
+  <BannerHero
+    id="banner-insights"
+    class="banner ecosistema-insights__banner"
+
+    srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+    srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+    alt="INSIGHTS"
+    width="1341"
+    height="456"
+    loading="lazy"
+    decoding="async"
+
+    h2="INSIGHTS"
+    h2Id=""
+    h2Class="ecosistema-insights__banner-title"
+
+    p="Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor."
+    pId=""
+    pClass="ecosistema-insights__banner-text"
+  />
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const banners = [
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
+      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
+      alt: "INSIGHTS",
+      title: "INSIGHTS",
+      text: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor."
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/lakeside-car-full-desktop-screen-hd-ffduevjvagzqhrhy.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/lakeside-car-full-desktop-screen-hd-ffduevjvagzqhrhy.jpg",
+      alt: "DESARROLLO",
+      title: "DESARROLLO",
+      text: "Transformamos insights en productos viables, diferenciados y listos para competir."
+    },
+    {
+      srcDesktop: "https://www.pixelstalk.net/wp-content/uploads/wallpapers/Landscape-Wallpapers-Full-HD.jpg",
+      srcMobile: "https://www.pixelstalk.net/wp-content/uploads/wallpapers/Landscape-Wallpapers-Full-HD.jpg",
+      alt: "PRODUCCIÓN",
+      title: "PRODUCCIÓN",
+      text: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso."
+    },
+    {
+      srcDesktop: "https://wallpaperaccess.com/full/138728.jpg",
+      srcMobile: "https://wallpaperaccess.com/full/138728.jpg",
+      alt: "DISTRIBUCIÓN",
+      title: "DISTRIBUCIÓN",
+      text: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura."
+    },
+    {
+      srcDesktop: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTDaHcXhDzgOWMkolpXKkCu-oRFAznaY4lOQ&s",
+      srcMobile: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTDaHcXhDzgOWMkolpXKkCu-oRFAznaY4lOQ&s",
+      alt: "RETAIL",
+      title: "RETAIL",
+      text: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación."
+    },
+    {
+      srcDesktop: "https://i.imgur.com/idDZITt.jpg",
+      srcMobile: "https://i.imgur.com/idDZITt.jpg",
+      alt: "CONSUMIDOR",
+      title: "CONSUMIDOR",
+      text: "Generamos conexión, adopción y recompra a través de propuestas relevantes."
+    }
+  ];
+
+  const banner = document.getElementById("banner-insights");
+
+  const sourceDesktop = banner.querySelector('source[media="(min-width: 768px)"]');
+  const sourceMobile = banner.querySelector('source[media="(max-width: 767px)"]');
+  const img = banner.querySelector("img");
+  const title = banner.querySelector("h2");
+  const text = banner.querySelector("p");
+
+  let index = 0;
+
+  function updateBanner() {
+    const item = banners[index];
+
+    sourceDesktop.srcset = item.srcDesktop;
+    sourceMobile.srcset = item.srcMobile;
+
+    img.src = item.srcMobile;
+    img.alt = item.alt;
+    img.title = item.alt;
+
+    title.textContent = item.title;
+    text.textContent = item.text;
+
+    index = (index + 1) % banners.length;
+  }
+
+  setInterval(updateBanner, 6000);
+
+});
+</script>
+
+
+
+
+<BannerHero
+  id="banner-trabajemos-juntos"
+  class="banner banner-cta"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Trabajemos juntos"
+  width="1920"
+  height="420"
+  loading="lazy"
+  decoding="async"
+
+  h2="Trabajemos <strong>juntos</strong>"
+  h2Id=""
+  h2Class="banner-cta__title"
+
+  linkHtml="Comenzar un proyecto"
+  linkHref="/contacto"
+  linkId=""
+  linkClass="banner-cta__button"
+  linkTitle="Comenzar un proyecto"
+  linkAriaLabel="Comenzar un proyecto"
+  linkTarget=""
+  linkRel=""
+/>
+
+<ReviewsCarouselSection
+  id="reseñas-clientes"
+  class="carruselReviews"
+
+  h2="Nuestros Clientes, <strong>Nuestros Aliados</strong>"
+  h2Id=""
+  h2Class="carruselReviews__title"
+
+  controlsClass="carruselReviews__controls"
+  prevButtonClass="carruselReviews__arrow carruselReviews__arrow--prev"
+  nextButtonClass="carruselReviews__arrow carruselReviews__arrow--next"
+
+  desktopItems="2"
+  mobileItems="1"
+  breakpoint="767"
+  articleGap="42px"
+  autoplayDelay="0"
+
+  items={[
+    {
+      id: "",
+      class: "carruselReviews__item",
+
+      review: "LLörem ipsum mire kytt i issa. Dipåna cykelbarometer eller plajär. Exogon polyvåde teras inklusive pojul. Pijang ötogon då egost alltså lätthelg. ",
+      reviewId: "",
+      reviewClass: "carruselReviews__review",
+
+      srcDesktop: "https://i.pravatar.cc/200?img=47",
+      srcMobile: "https://i.pravatar.cc/200?img=47",
+      alt: "María López",
+      title: "María López",
+      width: "90",
+      height: "90",
+      loading: "lazy",
+      decoding: "async",
+
+      name: "María López",
+      nameId: "",
+      nameClass: "carruselReviews__name",
+
+      role: "Directora de Marketing, XYZ Corp.",
+      roleId: "",
+      roleClass: "carruselReviews__role",
+
+      figureId: "",
+      figureClass: "carruselReviews__author",
+      captionId: "",
+      captionClass: "carruselReviews__caption",
+    },
+    {
+      id: "",
+      class: "carruselReviews__item",
+
+      review: "Lörem ipsum mire kytt i issa. Dipåna cykelbarometer eller plajär. Exogon polyvåde teras inklusive pojul. Pijang ötogon då egost alltså lätthelg.",
+      reviewId: "",
+      reviewClass: "carruselReviews__review",
+
+      srcDesktop: "https://i.pravatar.cc/200?img=12",
+      srcMobile: "https://i.pravatar.cc/200?img=12",
+      alt: "María López",
+      title: "María López",
+      width: "90",
+      height: "90",
+      loading: "lazy",
+      decoding: "async",
+
+      name: "María López",
+      nameId: "",
+      nameClass: "carruselReviews__name",
+
+      role: "Directora de Marketing, XYZ Corp.",
+      roleId: "",
+      roleClass: "carruselReviews__role",
+
+      figureId: "",
+      figureClass: "carruselReviews__author",
+      captionId: "",
+      captionClass: "carruselReviews__caption",
+    },
+    {
+      id: "",
+      class: "carruselReviews__item",
+
+      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero sed dignissim lacinia nunc.",
+      reviewId: "",
+      reviewClass: "carruselReviews__review",
+
+      srcDesktop: "https://i.pravatar.cc/200?img=33",
+      srcMobile: "https://i.pravatar.cc/200?img=33",
+      alt: "Lorem ipsum persona 3",
+      title: "Lorem ipsum persona 3",
+      width: "90",
+      height: "90",
+      loading: "lazy",
+      decoding: "async",
+
+      name: "Lorem Ipsum",
+      nameId: "",
+      nameClass: "carruselReviews__name",
+
+      role: "Lorem ipsum dolor sit amet",
+      roleId: "",
+      roleClass: "carruselReviews__role",
+
+      figureId: "",
+      figureClass: "carruselReviews__author",
+      captionId: "",
+      captionClass: "carruselReviews__caption",
+    },
+  ]}
+/>
+
+
+<section id="formulario-wrapper" class="formulario-wrapper">
+  <FormularioLead
+    id="formularioHome"
+    class=""
+
+    action="/api/contacto"
+    method="POST"
+    thankYouUrl="/gracias"
+    submitMode="fetch"
+
+    h2="Construyamos el crecimiento de tu marca"
+    h2Class="formulario__title"
+
+    articleClass="preguntas"
+    topGroupClass="grupo-arriba"
+    bottomGroupClass="grupo-abajo"
+    fieldWrapperClass="grupo-input"
+
+    buttonClass="enviar"
+    buttonHtml='Quiero crecer mi marca'
+
+    fieldsTop={[
+      {
+        tag: "input",
+        type: "text",
+        name: "nombre_completo",
+        dataColumn: "Nombre",
+        label: "Nombre*",
+        placeholder: "Nombre",
+        required: true,
+        autocomplete: "name",
+      },
+      {
+        tag: "input",
+        type: "email",
+        name: "email",
+        dataColumn: "Correo electrónico",
+        label: "Correo*",
+        placeholder: "Correo",
+        required: true,
+        autocomplete: "email",
+        inputmode: "email",
+      },
+      {
+        tag: "input",
+        type: "tel",
+        name: "telefono",
+        dataColumn: "Número telefónico",
+        label: "Whatsapp*",
+        placeholder: "Whatsapp",
+        required: true,
+        autocomplete: "tel",
+        inputmode: "tel",
+      },
+      {
+        tag: "select",
+        name: "pais",
+        dataColumn: "País",
+        label: "¿De qué país nos visita?*",
+        required: true,
+        options: [
+          {
+            label: "Lorem Ipsum",
+            value: "",
+            disabled: true,
+            selected: true,
+            hidden: true,
+          },
+          {
+            label: "Lorem Ipsum 1",
+            value: "lorem-1",
+          },
+          {
+            label: "Lorem Ipsum 2",
+            value: "lorem-2",
+          },
+        ],
+      },
+    ]}
+
+    fieldsBottom={[
+      {
+        tag: "textarea",
+        name: "reto_principal",
+        dataColumn: "Principal reto",
+        label: "¿Cuál es tu principal reto hoy?*",
+        placeholder: "¿Cuál es tu principal reto hoy?",
+        required: true,
+        rows: "6",
+      },
+      {
+        tag: "textarea",
+        name: "solucion_buscada",
+        dataColumn: "Solución buscada",
+        label: "¿Qué solución estás buscando?*",
+        placeholder: "¿Qué solución estás buscando?",
+        required: true,
+        rows: "6",
+      },
+      {
+        tag: "textarea",
+        name: "productos",
+        dataColumn: "Tipos de productos",
+        label: "¿Qué tipos de productos manejas?*",
+        placeholder: "¿Qué tipos de productos manejas?",
+        required: true,
+        rows: "6",
+      }
+    ]}
+
+    modalId="modal-terminos"
+    modalClass="modal-terminos"
+    modalContentClass="modal-contenido-terminos"
+    modalCloseClass="cerrar"
+    modalIframeId="iframe-terminos"
+    modalIframeHeight="400"
+  />
+
+  <article class="formulario-wrapper__images">
+    <ImagenResponsive
+      srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+      srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+      alt="Imagenes de formulario"
+      title="Imagenes de formulario"
+      width="700"
+      height="420"
+      loading="lazy"
+      decoding="async"
+    />
+
+    <ImagenResponsive
+      srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+      srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+      alt="Imagenes de formulario"
+      title="Imagenes de formulario"
+      width="700"
+      height="420"
+      loading="lazy"
+      decoding="async"
+    />
+  </article>
+</section>
+
+<section id="franja-comercial" class="franja-comercial">
+  <TextGroupElement
+    p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+    pId=""
+    pClass="franja-comercial__text"
+  />
+</section>
+
+<NewsletterForm
+  id="newsletter-principal"
+  class="newsletter-form banner"
+
+  figureClass="newsletter-form__figure"
+  captionClass="newsletter-form__caption"
+
+  contentId=""
+  contentClass="newsletter-form__content"
+
+  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  alt="Newsletter"
+  title="Newsletter"
+  width="1920"
+  height="250"
+  loading="lazy"
+  decoding="async"
+
+  h2="Suscríbete a nuestro newsletter"
+  h2Id=""
+  h2Class="newsletter-form__title"
+
+  p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+  <br>
+  Forma parte de nuestra comunidad y entérate primero de lo que viene."
+  pId=""
+  pClass="newsletter-form__text"
+
+  action="/api/newsletter"
+  method="POST"
+
+  successParam="newsletter"
+  successValue="ok"
+  successMessage="Gracias por suscribirte al newsletter."
+
+  inputWrapperClass="newsletter-form__field"
+  inputId="newsletter-email"
+  inputClass="newsletter-form__input"
+  inputName="email"
+  inputDataColumn="Correo electrónico"
+  inputPlaceholder="tu correo"
+  inputLabel=""
+  inputRequired={true}
+
+  buttonClass="newsletter-form__button"
+  buttonHtml="Suscribirme al newsletter"
+/>
+
+
+
+
+
+
+
+
+  </main>
+
+  <Footer />
+</BaseLayout>

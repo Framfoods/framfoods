@@ -1,0 +1,81 @@
+---
+// src/snippetsFormPoliticas/PolicyElement.astro
+
+const {
+  id = "",
+  class: clase = "",
+
+  /*
+    headingLevel:
+    - "h1" para página completa:
+      título = h1
+      subtítulos = h2
+
+    - "h2" para modal:
+      título = h2
+      subtítulos = h3
+  */
+  headingLevel = "h1",
+
+  title = "",
+  titleId = "",
+  titleClass = "",
+
+  intro = "",
+  introId = "",
+  introClass = "",
+
+  sectionClass = "",
+  subtitleClass = "",
+  textClass = "",
+
+  sections = [],
+} = Astro.props;
+
+const TitleTag = headingLevel === "h2" ? "h2" : "h1";
+const SubtitleTag = headingLevel === "h2" ? "h3" : "h2";
+---
+
+<section
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+>
+  {title && (
+    <TitleTag
+      {...(titleId ? { id: titleId } : {})}
+      {...(titleClass ? { class: titleClass } : {})}
+      set:html={title}
+    />
+  )}
+
+  {intro && (
+    <p
+      {...(introId ? { id: introId } : {})}
+      {...(introClass ? { class: introClass } : {})}
+      set:html={intro}
+    />
+  )}
+
+  {sections.map((section) => (
+    <article
+      {...(section.id ? { id: section.id } : {})}
+      {...(section.class ? { class: section.class } : sectionClass ? { class: sectionClass } : {})}
+    >
+      {section.title && (
+        <SubtitleTag
+          {...(section.titleId ? { id: section.titleId } : {})}
+          {...(section.titleClass ? { class: section.titleClass } : subtitleClass ? { class: subtitleClass } : {})}
+          set:html={section.title}
+        />
+      )}
+
+      {section.html && (
+        <div
+          {...(section.textId ? { id: section.textId } : {})}
+          {...(section.textClass ? { class: section.textClass } : textClass ? { class: textClass } : {})}
+          set:html={section.html}
+        />
+      )}
+    </article>
+  ))}
+</section>

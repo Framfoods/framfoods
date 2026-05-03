@@ -1,0 +1,58 @@
+---
+import { logoHeader, componentes, navAriaLabel } from "../data/header";
+---
+<header class="site-header">
+  <img
+    src={`${logoHeader.logo}?width=${logoHeader.resolucion}`}
+    alt={logoHeader.alt}
+    width={logoHeader.ancho}
+    height={logoHeader.alto}
+    decoding="async"
+  />
+  <details class="mobile-nav">
+    <summary class="mobile-nav__toggle">
+      <a role="button" class="icon-menu" aria-hidden="true" title={navAriaLabel.abrir}>☰</a>
+      <a role="button" class="icon-close" aria-hidden="true" title={navAriaLabel.cerrar}>✕</a>
+    </summary>
+    <nav class="mobile-nav__menu" aria-label={navAriaLabel.titulo}>
+      <ul>
+        {componentes.map((link) => (
+          !link.primary && (
+            <li>
+              <a
+                href={link.href}
+                class="nav-link"
+              >
+                {link.label}
+              </a>
+            </li>
+          )
+        ))}
+      </ul>
+    </nav>
+  </details>
+
+  <nav class="desktop-nav" aria-label={navAriaLabel.titulo}>
+    <ul>
+      {componentes.map((link) => (
+        !link.primary && (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link"
+            >
+              {link.label}
+            </a>
+          </li>
+        )
+      ))}
+    </ul>
+  </nav>
+  {componentes.map((link) => (
+    link.primary && (
+      <a href={link.href} class={link.primary ? "btn" : "nav-link"}>
+        {link.label}
+      </a>
+    )
+  ))}
+</header>

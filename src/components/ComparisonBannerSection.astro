@@ -1,0 +1,148 @@
+---
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ListElement from "../snippets/ListElement.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  srcDesktop,
+  srcMobile,
+  alt,
+  width,
+  height,
+  priority,
+  loading,
+  decoding,
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  articleId,
+  articleClass,
+
+  items = [],
+} = Astro.props;
+
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+---
+
+<section
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+>
+  <figure>
+    <ImagenResponsive
+      srcDesktop={srcDesktop}
+      srcMobile={srcMobile}
+      alt={alt}
+      width={width}
+      height={height}
+      priority={priority}
+      loading={loading}
+      decoding={decoding}
+    />
+
+    <figcaption>
+      {tieneTexto && (
+        <TextGroupElement
+          h1={h1}
+          h1Id={h1Id}
+          h1Class={h1Class}
+
+          h2={h2}
+          h2Id={h2Id}
+          h2Class={h2Class}
+
+          h3={h3}
+          h3Id={h3Id}
+          h3Class={h3Class}
+
+          p={p}
+          pId={pId}
+          pClass={pClass}
+
+          linkHtml={linkHtml}
+          linkHref={linkHref}
+          linkId={linkId}
+          linkClass={linkClass}
+          linkTitle={linkTitle}
+          linkAriaLabel={linkAriaLabel}
+          linkTarget={linkTarget}
+          linkRel={linkRel}
+        />
+      )}
+
+      <article
+        {...(articleId ? { id: articleId } : {})}
+        {...(articleClass ? { class: articleClass } : {})}
+      >
+        {items.map((item) => (
+          <div
+            {...(item.id ? { id: item.id } : {})}
+            {...(item.class ? { class: item.class } : {})}
+          >
+            <TextGroupElement
+              h1={item.h1}
+              h1Id={item.h1Id}
+              h1Class={item.h1Class}
+
+              h2={item.h2}
+              h2Id={item.h2Id}
+              h2Class={item.h2Class}
+
+              h3={item.h3}
+              h3Id={item.h3Id}
+              h3Class={item.h3Class}
+
+              p={item.p}
+              pId={item.pId}
+              pClass={item.pClass}
+
+              linkHtml={item.linkHtml}
+              linkHref={item.linkHref}
+              linkId={item.linkId}
+              linkClass={item.linkClass}
+              linkTitle={item.linkTitle}
+              linkAriaLabel={item.linkAriaLabel}
+              linkTarget={item.linkTarget}
+              linkRel={item.linkRel}
+            />
+
+            <ListElement
+              as={item.listAs || "ul"}
+              id={item.listId}
+              class={item.listClass}
+              listStyleType={item.listStyleType}
+              itemClass={item.listItemClass}
+              items={item.listItems || []}
+            />
+          </div>
+        ))}
+      </article>
+    </figcaption>
+  </figure>
+</section>

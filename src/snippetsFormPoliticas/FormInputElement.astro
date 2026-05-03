@@ -1,0 +1,80 @@
+---
+// src/snippetsFormPoliticas/FormInputElement.astro
+
+const {
+  wrapperId = "",
+  wrapperClass = "",
+
+  label = "",
+  labelClass = "",
+
+  id = "",
+  class: clase = "",
+
+  type = "text",
+  name = "",
+  value = "",
+  placeholder = "",
+
+  /*
+    dataColumn:
+    Nombre opcional para guardar en Google Sheets / Excel / CRM.
+    Ejemplo:
+    name="email"
+    dataColumn="Correo electrónico"
+  */
+  dataColumn = "",
+
+  required = false,
+  disabled = false,
+  readonly = false,
+
+  autocomplete = "",
+  inputmode = "",
+  pattern = "",
+
+  min = "",
+  max = "",
+  step = "",
+  minlength = "",
+  maxlength = "",
+
+  ariaLabel = "",
+} = Astro.props;
+---
+
+<div
+  {...(wrapperId ? { id: wrapperId } : {})}
+  {...(wrapperClass ? { class: wrapperClass } : {})}
+>
+  {label && (
+    <label
+      {...(id ? { for: id } : {})}
+      {...(labelClass ? { class: labelClass } : {})}
+    >
+      {label}
+    </label>
+  )}
+
+  <input
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+    type={type}
+    name={name}
+    value={value}
+    placeholder={placeholder}
+    {...(dataColumn ? { "data-column": dataColumn } : {})}
+    {...(required ? { required: true } : {})}
+    {...(disabled ? { disabled: true } : {})}
+    {...(readonly ? { readonly: true } : {})}
+    {...(autocomplete ? { autocomplete } : {})}
+    {...(inputmode ? { inputmode } : {})}
+    {...(pattern ? { pattern } : {})}
+    {...(min ? { min } : {})}
+    {...(max ? { max } : {})}
+    {...(step ? { step } : {})}
+    {...(minlength ? { minlength } : {})}
+    {...(maxlength ? { maxlength } : {})}
+    {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+  />
+</div>

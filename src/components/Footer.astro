@@ -1,0 +1,71 @@
+---
+import { logoFooter, menus, navAriaLabel, derechosReservados } from "../data/footer";
+---
+
+<footer class="site-footer">
+  <article class="top-footer">
+    <nav aria-label={navAriaLabel.titulo} class="nav">
+      {menus.map((menu) => (
+        menu.titulo ? (
+          <details class="footer-group" open>
+            <summary class="footer-group__toggle">
+              <h3>{menu.titulo}</h3>
+            </summary>
+
+            <ul>
+              {menu.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target={link.target}
+                    rel={link.rel}
+                    aria-label={link.label}
+                  >
+                    {link.clases && <i class={link.clases}></i>}
+                    {!link.clases && (
+                      typeof link.label === "string"
+                        ? <span set:html={link.label}></span>
+                        : link.label
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ) : (
+          <ul>
+            {menu.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.target}
+                  rel={link.rel}
+                  aria-label={link.label}
+                >
+                  {link.clases && <i class={link.clases}></i>}
+                  {!link.clases && (
+                    typeof link.label === "string"
+                      ? <span set:html={link.label}></span>
+                      : link.label
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      ))}
+    </nav>
+
+    <img
+      src={`${logoFooter.logo}?width=${logoFooter.resolucion}`}
+      alt={logoFooter.alt}
+      width={logoFooter.ancho}
+      height={logoFooter.alto}
+      decoding="async"
+    />
+  </article>
+
+  <small>
+    @{derechosReservados.marca} {derechosReservados.anio} - {derechosReservados.frase}
+  </small>
+</footer>

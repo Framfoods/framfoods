@@ -1,0 +1,152 @@
+---
+// src/snippets/CardElement.astro
+
+import ImagenResponsive from "./ImagenResponsive.astro";
+import TextGroupElement from "./TextGroupElement.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  srcDesktop,
+  srcMobile,
+  alt,
+  title,
+  width,
+  height,
+  priority,
+  loading,
+  decoding,
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  captionId = "",
+  captionClass = "",
+} = Astro.props;
+
+const tieneImagen = srcDesktop || srcMobile;
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+---
+
+{tieneImagen && tieneTexto ? (
+  <figure
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+  >
+    <ImagenResponsive
+      srcDesktop={srcDesktop}
+      srcMobile={srcMobile}
+      alt={alt}
+      title={title}
+      width={width}
+      height={height}
+      priority={priority}
+      loading={loading}
+      decoding={decoding}
+    />
+
+    <figcaption
+      {...(captionId ? { id: captionId } : {})}
+      {...(captionClass ? { class: captionClass } : {})}
+    >
+      <TextGroupElement
+        h1={h1}
+        h1Id={h1Id}
+        h1Class={h1Class}
+
+        h2={h2}
+        h2Id={h2Id}
+        h2Class={h2Class}
+
+        h3={h3}
+        h3Id={h3Id}
+        h3Class={h3Class}
+
+        p={p}
+        pId={pId}
+        pClass={pClass}
+
+        linkHtml={linkHtml}
+        linkHref={linkHref}
+        linkId={linkId}
+        linkClass={linkClass}
+        linkTitle={linkTitle}
+        linkAriaLabel={linkAriaLabel}
+        linkTarget={linkTarget}
+        linkRel={linkRel}
+      />
+    </figcaption>
+  </figure>
+) : tieneImagen ? (
+  <div
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+  >
+    <ImagenResponsive
+      srcDesktop={srcDesktop}
+      srcMobile={srcMobile}
+      alt={alt}
+      title={title}
+      width={width}
+      height={height}
+      priority={priority}
+      loading={loading}
+      decoding={decoding}
+    />
+  </div>
+) : tieneTexto ? (
+  <div
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+  >
+    <TextGroupElement
+      h1={h1}
+      h1Id={h1Id}
+      h1Class={h1Class}
+
+      h2={h2}
+      h2Id={h2Id}
+      h2Class={h2Class}
+
+      h3={h3}
+      h3Id={h3Id}
+      h3Class={h3Class}
+
+      p={p}
+      pId={pId}
+      pClass={pClass}
+
+      linkHtml={linkHtml}
+      linkHref={linkHref}
+      linkId={linkId}
+      linkClass={linkClass}
+      linkTitle={linkTitle}
+      linkAriaLabel={linkAriaLabel}
+      linkTarget={linkTarget}
+      linkRel={linkRel}
+    />
+  </div>
+) : null}

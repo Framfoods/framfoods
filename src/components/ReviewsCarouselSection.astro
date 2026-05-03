@@ -1,0 +1,442 @@
+---
+// src/components/ReviewsCarouselSection.astro
+
+/*
+  DOCUMENTACIÓN RÁPIDA:
+
+  id:
+    Obligatorio si quieres que el script controle este carrusel.
+    Ejemplo: id="reseñas-clientes"
+
+  class:
+    Clase principal del section.
+    Recomendado: class="carruselReviews"
+
+  desktopItems:
+    Cantidad de reseñas visibles en desktop.
+    Ejemplo: desktopItems="2"
+
+  mobileItems:
+    Cantidad de reseñas visibles en mobile.
+    Ejemplo: mobileItems="1"
+
+  breakpoint:
+    Ancho máximo para considerar mobile.
+    Ejemplo: breakpoint="767"
+    Si window.innerWidth <= 767, usa mobileItems.
+    Si window.innerWidth > 767, usa desktopItems.
+
+  articleGap:
+    Espacio entre reseñas.
+    Ejemplo: articleGap="42px"
+
+  autoplayDelay:
+    Tiempo en milisegundos para avanzar solo.
+    Ejemplo: autoplayDelay="3000"
+    Si lo dejas en "0", no hay autoplay.
+
+  LÓGICA:
+    section#id gobierna todo.
+    El script solo busca botones, article y slides dentro de ese section.
+    Así no se mezcla con otros carruseles o botones de la página.
+*/
+
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import CarouselArrowButton from "../snippets/CarouselArrowButton.astro";
+import ReviewCardElement from "../snippets/ReviewCardElement.astro";
+
+const {
+  id = "",
+  class: clase = "carruselReviews",
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  controlsClass = "carruselReviews__controls",
+  prevButtonClass = "carruselReviews__arrow carruselReviews__arrow--prev",
+  nextButtonClass = "carruselReviews__arrow carruselReviews__arrow--next",
+
+  desktopItems = "2",
+  mobileItems = "1",
+  breakpoint = "767",
+  articleGap = "42px",
+  autoplayDelay = "0",
+
+  items = [],
+} = Astro.props;
+
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+const sectionSelector = id ? `#${id}` : "";
+---
+
+<section
+  {...(id ? { id } : {})}
+  class={clase}
+  data-reviews-carousel
+>
+  {tieneTexto && (
+    <TextGroupElement
+      h1={h1}
+      h1Id={h1Id}
+      h1Class={h1Class}
+
+      h2={h2}
+      h2Id={h2Id}
+      h2Class={h2Class}
+
+      h3={h3}
+      h3Id={h3Id}
+      h3Class={h3Class}
+
+      p={p}
+      pId={pId}
+      pClass={pClass}
+
+      linkHtml={linkHtml}
+      linkHref={linkHref}
+      linkId={linkId}
+      linkClass={linkClass}
+      linkTitle={linkTitle}
+      linkAriaLabel={linkAriaLabel}
+      linkTarget={linkTarget}
+      linkRel={linkRel}
+    />
+  )}
+
+  <article data-carousel-track>
+    {items.map((item) => (
+      <ReviewCardElement
+        id={item.id}
+        class={item.class}
+
+        review={item.review}
+        reviewId={item.reviewId}
+        reviewClass={item.reviewClass}
+
+        srcDesktop={item.srcDesktop}
+        srcMobile={item.srcMobile}
+        alt={item.alt}
+        title={item.title}
+        width={item.width}
+        height={item.height}
+        priority={item.priority}
+        loading={item.loading}
+        decoding={item.decoding}
+
+        name={item.name}
+        nameId={item.nameId}
+        nameClass={item.nameClass}
+
+        role={item.role}
+        roleId={item.roleId}
+        roleClass={item.roleClass}
+
+        figureId={item.figureId}
+        figureClass={item.figureClass}
+        captionId={item.captionId}
+        captionClass={item.captionClass}
+      />
+    ))}
+  </article>
+
+  <span class={controlsClass} data-carousel-controls>
+    <CarouselArrowButton
+      direction="prev"
+      class={prevButtonClass}
+      ariaLabel="Ir a la reseña anterior"
+    />
+
+    <CarouselArrowButton
+      direction="next"
+      class={nextButtonClass}
+      ariaLabel="Ir a la siguiente reseña"
+    />
+  </span>
+
+</section>
+
+<script define:vars={{ sectionSelector, articleGap, desktopItems, mobileItems, breakpoint, autoplayDelay }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(sectionSelector);
+
+    if (!carousel || carousel.dataset.initialized === "true") return;
+
+    carousel.dataset.initialized = "true";
+
+    const track = carousel.querySelector("[data-carousel-track]");
+    const controls = carousel.querySelector("[data-carousel-controls]");
+    const prevButton = carousel.querySelector("[data-carousel-prev]");
+    const nextButton = carousel.querySelector("[data-carousel-next]");
+
+    if (!track || !prevButton || !nextButton) return;
+
+    let scrollPositions = [];
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    let refreshTimer = null;
+
+    const delay = Number(autoplayDelay);
+    const mobileBreakpoint = Number(breakpoint);
+
+    const getSlides = () => {
+      return Array.from(track.querySelectorAll("[data-carousel-slide]"));
+    };
+
+    const getPerView = () => {
+      const isMobile = window.innerWidth <= mobileBreakpoint;
+      const value = isMobile ? Number(mobileItems) : Number(desktopItems);
+      return Math.max(1, value || 1);
+    };
+
+    const getMaxScroll = () => {
+      return Math.max(0, track.scrollWidth - track.clientWidth);
+    };
+
+    const getSlidePosition = (slide) => {
+      const trackRect = track.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
+
+      return Math.round(slideRect.left - trackRect.left + track.scrollLeft);
+    };
+
+    const applyLayout = () => {
+      const slides = getSlides();
+      const perView = Math.min(getPerView(), Math.max(1, slides.length));
+
+      track.style.display = "flex";
+      track.style.gap = articleGap;
+      track.style.overflowX = "auto";
+      track.style.scrollBehavior = "smooth";
+      track.style.scrollbarWidth = "none";
+
+      slides.forEach((slide) => {
+        slide.style.boxSizing = "border-box";
+        slide.style.flex = `0 0 calc((100% - (${articleGap} * ${perView - 1})) / ${perView})`;
+      });
+    };
+
+    const buildScrollPositions = () => {
+      const slides = getSlides();
+      const maxScroll = getMaxScroll();
+      const perView = Math.min(getPerView(), Math.max(1, slides.length));
+
+      if (!slides.length || slides.length <= perView || maxScroll <= 1) {
+        scrollPositions = [];
+        return;
+      }
+
+      const positions = [];
+      const lastStartIndex = Math.max(0, slides.length - perView);
+
+      /*
+        Ejemplo con 5 reseñas y desktopItems=2:
+        grupos:
+        0 => reseñas 1 y 2
+        2 => reseñas 3 y 4
+        3 => reseñas 4 y 5, último grupo para llegar completo al final
+      */
+      for (let index = 0; index < slides.length; index += perView) {
+        const safeIndex = Math.min(index, lastStartIndex);
+        const slide = slides[safeIndex];
+
+        if (!slide) continue;
+
+        const position = Math.min(getSlidePosition(slide), maxScroll);
+        const rounded = Math.round(position);
+
+        if (!positions.includes(rounded)) {
+          positions.push(rounded);
+        }
+
+        if (safeIndex === lastStartIndex) break;
+      }
+
+      const lastSlide = slides[lastStartIndex];
+      const lastPosition = Math.round(
+        Math.min(getSlidePosition(lastSlide), maxScroll)
+      );
+
+      if (!positions.includes(lastPosition)) {
+        positions.push(lastPosition);
+      }
+
+      scrollPositions = positions;
+    };
+
+    const getClosestIndex = () => {
+      if (!scrollPositions.length) return 0;
+
+      const currentScroll = track.scrollLeft;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      scrollPositions.forEach((position, index) => {
+        const distance = Math.abs(currentScroll - position);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const updateControls = () => {
+      const shouldShowControls = scrollPositions.length > 1;
+
+      if (controls) {
+        controls.hidden = !shouldShowControls;
+      }
+
+      prevButton.hidden = !shouldShowControls;
+      nextButton.hidden = !shouldShowControls;
+
+      if (!shouldShowControls) return;
+
+      prevButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex === scrollPositions.length - 1;
+    };
+
+    const moveToIndex = (index) => {
+      if (!scrollPositions.length) return;
+
+      const safeIndex = Math.max(0, Math.min(index, scrollPositions.length - 1));
+
+      currentIndex = safeIndex;
+
+      track.scrollTo({
+        left: scrollPositions[safeIndex],
+        behavior: "smooth",
+      });
+
+      updateControls();
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (!delay || delay <= 0 || scrollPositions.length <= 1) return;
+
+      stopAutoplay();
+
+      autoplayTimer = window.setInterval(() => {
+        if (currentIndex >= scrollPositions.length - 1) {
+          moveToIndex(0);
+        } else {
+          moveToIndex(currentIndex + 1);
+        }
+      }, delay);
+    };
+
+    const refreshCarousel = () => {
+      applyLayout();
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          buildScrollPositions();
+
+          const closestIndex = getClosestIndex();
+          currentIndex = closestIndex;
+
+          updateControls();
+
+          stopAutoplay();
+          startAutoplay();
+        });
+      });
+    };
+
+    const scheduleRefresh = () => {
+      window.clearTimeout(refreshTimer);
+
+      refreshTimer = window.setTimeout(() => {
+        refreshCarousel();
+      }, 80);
+    };
+
+    prevButton.addEventListener("click", () => {
+      stopAutoplay();
+      moveToIndex(currentIndex - 1);
+      startAutoplay();
+    });
+
+    nextButton.addEventListener("click", () => {
+      stopAutoplay();
+      moveToIndex(currentIndex + 1);
+      startAutoplay();
+    });
+
+    let scrollTimer;
+
+    track.addEventListener("scroll", () => {
+      window.clearTimeout(scrollTimer);
+
+      scrollTimer = window.setTimeout(() => {
+        currentIndex = getClosestIndex();
+        updateControls();
+      }, 80);
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    window.addEventListener("resize", scheduleRefresh);
+
+    const resizeObserver = new ResizeObserver(() => {
+      scheduleRefresh();
+    });
+
+    resizeObserver.observe(track);
+
+    getSlides().forEach((slide) => {
+      resizeObserver.observe(slide);
+    });
+
+    const images = Array.from(track.querySelectorAll("img"));
+
+    images.forEach((image) => {
+      if (!image.complete) {
+        image.addEventListener("load", scheduleRefresh, { once: true });
+      }
+    });
+
+    requestAnimationFrame(() => {
+      refreshCarousel();
+    });
+
+    window.addEventListener("load", () => {
+      refreshCarousel();
+    });
+  });
+</script>

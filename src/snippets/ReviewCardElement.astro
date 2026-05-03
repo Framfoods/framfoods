@@ -1,0 +1,94 @@
+---
+// src/snippets/ReviewCardElement.astro
+
+import TextGroupElement from "./TextGroupElement.astro";
+import ImagenResponsive from "./ImagenResponsive.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  review,
+  reviewId,
+  reviewClass,
+
+  srcDesktop,
+  srcMobile,
+  alt,
+  title,
+  width,
+  height,
+  priority,
+  loading,
+  decoding,
+
+  name,
+  nameId,
+  nameClass,
+
+  role,
+  roleId,
+  roleClass,
+
+  figureId = "",
+  figureClass = "",
+  captionId = "",
+  captionClass = "",
+} = Astro.props;
+
+const tieneImagen = srcDesktop || srcMobile;
+const tieneReview = review;
+const tieneAutor = name || role;
+---
+
+<div
+  {...(id ? { id } : {})}
+  class={clase}
+  data-carousel-slide
+>
+  {tieneReview && (
+    <TextGroupElement
+      p={review}
+      pId={reviewId}
+      pClass={reviewClass}
+    />
+  )}
+
+  {(tieneImagen || tieneAutor) && (
+    <figure
+      {...(figureId ? { id: figureId } : {})}
+      {...(figureClass ? { class: figureClass } : {})}
+    >
+      {tieneImagen && (
+        <ImagenResponsive
+          srcDesktop={srcDesktop}
+          srcMobile={srcMobile}
+          alt={alt}
+          title={title}
+          width={width}
+          height={height}
+          priority={priority}
+          loading={loading}
+          decoding={decoding}
+        />
+      )}
+
+      {tieneAutor && (
+        <figcaption
+          {...(captionId ? { id: captionId } : {})}
+          {...(captionClass ? { class: captionClass } : {})}
+        >
+          <TextGroupElement
+            h3={name}
+            h3Id={nameId}
+            h3Class={nameClass}
+
+            p={role}
+            pId={roleId}
+            pClass={roleClass}
+          />
+        </figcaption>
+      )}
+    </figure>
+  )}
+</div>

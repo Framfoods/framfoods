@@ -1,0 +1,258 @@
+---
+// src/componentsFormPoliticas/NewsletterForm.astro
+
+/*
+  NEWSLETTER CON IMAGEN
+
+  Estructura:
+  section > figure > ImagenResponsive + figcaption > div(TextGroupElement) + form + mensaje
+
+  action:
+    Endpoint API.
+    Ejemplo: "/api/newsletter"
+
+  method:
+    Normalmente "POST".
+
+  successParam:
+    Query para mostrar mensaje.
+    Ejemplo: ?newsletter=ok
+
+  successValue:
+    Valor esperado del query.
+    Ejemplo: ok
+*/
+
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+
+import FormInputElement from "../snippetsFormPoliticas/FormInputElement.astro";
+import FormButtonElement from "../snippetsFormPoliticas/FormButtonElement.astro";
+
+const {
+  id = "newsletter",
+  class: clase = "newsletter-form",
+
+  figureClass = "newsletter-form__figure",
+  captionClass = "newsletter-form__caption",
+
+  contentId = "",
+  contentClass = "newsletter-form__content",
+
+  srcDesktop = "",
+  srcMobile = "",
+  alt = "Newsletter",
+  title = alt,
+  width = "",
+  height = "",
+  priority = "",
+  loading = "lazy",
+  decoding = "async",
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  action = "/api/newsletter",
+  method = "POST",
+
+  successParam = "newsletter",
+  successValue = "ok",
+  successMessage = "Gracias por suscribirte.",
+
+  inputWrapperClass = "newsletter-form__field",
+  inputId = "newsletter-email",
+  inputClass = "newsletter-form__input",
+  inputName = "email",
+  inputDataColumn = "Correo electrónico",
+  inputPlaceholder = "tu correo",
+  inputLabel = "",
+  inputRequired = true,
+
+  buttonClass = "newsletter-form__button",
+  buttonHtml = "Suscribirme al newsletter",
+} = Astro.props;
+
+const tieneImagen = srcDesktop || srcMobile;
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+---
+
+<section id={id} class={clase}>
+  <figure class={figureClass}>
+    {tieneImagen && (
+      <ImagenResponsive
+        srcDesktop={srcDesktop}
+        srcMobile={srcMobile}
+        alt={alt}
+        title={title}
+        width={width}
+        height={height}
+        priority={priority}
+        loading={loading}
+        decoding={decoding}
+      />
+    )}
+
+    <figcaption class={captionClass}>
+      {tieneTexto && (
+        <div
+          {...(contentId ? { id: contentId } : {})}
+          {...(contentClass ? { class: contentClass } : {})}
+        >
+          <TextGroupElement
+            h1={h1}
+            h1Id={h1Id}
+            h1Class={h1Class}
+
+            h2={h2}
+            h2Id={h2Id}
+            h2Class={h2Class}
+
+            h3={h3}
+            h3Id={h3Id}
+            h3Class={h3Class}
+
+            p={p}
+            pId={pId}
+            pClass={pClass}
+
+            linkHtml={linkHtml}
+            linkHref={linkHref}
+            linkId={linkId}
+            linkClass={linkClass}
+            linkTitle={linkTitle}
+            linkAriaLabel={linkAriaLabel}
+            linkTarget={linkTarget}
+            linkRel={linkRel}
+          />
+        </div>
+      )}
+
+      <form action={action} method={method} data-newsletter-form>
+        <FormInputElement
+          wrapperClass={inputWrapperClass}
+          label={inputLabel}
+          id={inputId}
+          class={inputClass}
+          type="email"
+          name={inputName}
+          dataColumn={inputDataColumn}
+          placeholder={inputPlaceholder}
+          required={inputRequired}
+          autocomplete="email"
+          inputmode="email"
+          ariaLabel={inputPlaceholder}
+        />
+
+        <FormButtonElement
+          type="submit"
+          class={buttonClass}
+          html={buttonHtml}
+          ariaLabel={buttonHtml}
+        />
+      </form>
+
+      <p data-newsletter-message hidden>
+        {successMessage}
+      </p>
+    </figcaption>
+  </figure>
+</section>
+
+<script define:vars={{ id, successParam, successValue }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    const form = section.querySelector("[data-newsletter-form]");
+    const message = section.querySelector("[data-newsletter-message]");
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get(successParam) === successValue && message) {
+      message.hidden = false;
+    }
+
+    if (!form) return;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(form);
+      const fields = {};
+      const columns = {};
+
+      formData.forEach((value, key) => {
+        fields[key] = value;
+      });
+
+      form.querySelectorAll("[name]").forEach((field) => {
+        const name = field.getAttribute("name");
+        const column = field.getAttribute("data-column");
+
+        if (name && column) {
+          columns[name] = column;
+        }
+      });
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields,
+            columns,
+            submittedAt: new Date().toISOString(),
+            page: window.location.href,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("No se pudo enviar el newsletter.");
+        }
+
+        const url = new URL(window.location.href);
+        url.searchParams.set(successParam, successValue);
+        window.history.replaceState({}, "", url);
+
+        form.reset();
+
+        if (message) {
+          message.hidden = false;
+        }
+      } catch (error) {
+        console.error(error);
+        alert("No se pudo enviar el correo. Intenta nuevamente.");
+      }
+    });
+  });
+</script>

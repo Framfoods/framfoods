@@ -1,0 +1,118 @@
+---
+// src/components/VideoHero.astro
+
+import VideoResponsive from "../snippets/VideoResponsive.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  srcDesktop,
+  srcMobile,
+  width,
+  height,
+  autoplay,
+  muted,
+  loop,
+  playsinline,
+  controls,
+  preload,
+  ariaLabel,
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+} = Astro.props;
+
+const tieneContenido = h1 || h2 || h3 || p || linkHtml;
+---
+
+<section
+  id={id}
+  class={clase}
+>
+  {
+    tieneContenido ? (
+      <figure>
+        <VideoResponsive
+          srcDesktop={srcDesktop}
+          srcMobile={srcMobile}
+          width={width}
+          height={height}
+          autoplay={autoplay}
+          muted={muted}
+          loop={loop}
+          playsinline={playsinline}
+          controls={controls}
+          preload={preload}
+          ariaLabel={ariaLabel}
+        />
+
+        <figcaption>
+          <TextGroupElement
+            h1={h1}
+            h1Id={h1Id}
+            h1Class={h1Class}
+
+            h2={h2}
+            h2Id={h2Id}
+            h2Class={h2Class}
+
+            h3={h3}
+            h3Id={h3Id}
+            h3Class={h3Class}
+
+            p={p}
+            pId={pId}
+            pClass={pClass}
+
+            linkHtml={linkHtml}
+            linkHref={linkHref}
+            linkId={linkId}
+            linkClass={linkClass}
+            linkTitle={linkTitle}
+            linkAriaLabel={linkAriaLabel}
+            linkTarget={linkTarget}
+            linkRel={linkRel}
+          />
+        </figcaption>
+      </figure>
+    ) : (
+      <VideoResponsive
+        srcDesktop={srcDesktop}
+        srcMobile={srcMobile}
+        width={width}
+        height={height}
+        autoplay={autoplay}
+        muted={muted}
+        loop={loop}
+        playsinline={playsinline}
+        controls={controls}
+        preload={preload}
+        ariaLabel={ariaLabel}
+      />
+    )
+  }
+</section>

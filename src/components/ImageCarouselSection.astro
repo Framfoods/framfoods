@@ -1,0 +1,360 @@
+---
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  articleGap = "42px",
+
+  // Tiempo en milisegundos.
+  // Ejemplo: autoplayDelay="3000" = cambia cada 3 segundos.
+  // Si lo dejas vacío o en "0", no corre automático.
+  autoplayDelay = "0",
+
+  items = [],
+} = Astro.props;
+
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+const sectionSelector = id ? `#${id}` : "";
+const articleStyle = articleGap ? `gap: ${articleGap};` : "";
+---
+
+<section
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+  data-image-carousel
+>
+  {tieneTexto && (
+    <TextGroupElement
+      h1={h1}
+      h1Id={h1Id}
+      h1Class={h1Class}
+
+      h2={h2}
+      h2Id={h2Id}
+      h2Class={h2Class}
+
+      h3={h3}
+      h3Id={h3Id}
+      h3Class={h3Class}
+
+      p={p}
+      pId={pId}
+      pClass={pClass}
+
+      linkHtml={linkHtml}
+      linkHref={linkHref}
+      linkId={linkId}
+      linkClass={linkClass}
+      linkTitle={linkTitle}
+      linkAriaLabel={linkAriaLabel}
+      linkTarget={linkTarget}
+      linkRel={linkRel}
+    />
+  )}
+
+  <article data-carousel-track style={articleStyle}>
+    {items.map((item) => (
+      <ImagenResponsive
+        srcDesktop={item.srcDesktop}
+        srcMobile={item.srcMobile}
+        alt={item.alt}
+        title={item.title}
+        width={item.width}
+        height={item.height}
+        priority={item.priority}
+        loading={item.loading}
+        decoding={item.decoding}
+      />
+    ))}
+  </article>
+
+  <div data-carousel-dots aria-label="Controles del carrusel"></div>
+</section>
+
+<script define:vars={{ sectionSelector, autoplayDelay }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(sectionSelector);
+
+    if (!carousel || carousel.dataset.initialized === "true") return;
+
+    carousel.dataset.initialized = "true";
+
+    const track = carousel.querySelector("[data-carousel-track]");
+    const dotsWrapper = carousel.querySelector("[data-carousel-dots]");
+
+    if (!track || !dotsWrapper) return;
+
+    let scrollPositions = [];
+    let currentIndex = 0;
+    let autoplayTimer = null;
+
+    const delay = Number(autoplayDelay);
+
+    const getMaxScroll = () => {
+      return Math.max(0, track.scrollWidth - track.clientWidth);
+    };
+
+    const getSlides = () => {
+      return Array.from(track.children);
+    };
+
+    const getVisibleSlidesCount = (slides) => {
+      const trackWidth = track.clientWidth;
+      let usedWidth = 0;
+      let visibleCount = 0;
+
+      slides.forEach((slide) => {
+        const slideWidth = slide.getBoundingClientRect().width;
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || "0");
+
+        const widthWithGap = visibleCount === 0 ? slideWidth : slideWidth + gap;
+
+        if (usedWidth + widthWithGap <= trackWidth + 1) {
+          usedWidth += widthWithGap;
+          visibleCount++;
+        }
+      });
+
+      return Math.max(1, visibleCount);
+    };
+
+    const buildScrollPositions = () => {
+      const maxScroll = getMaxScroll();
+      const slides = getSlides();
+
+      if (maxScroll <= 1 || !slides.length) {
+        scrollPositions = [];
+        dotsWrapper.hidden = true;
+        dotsWrapper.innerHTML = "";
+        return;
+      }
+
+      const visibleSlidesCount = getVisibleSlidesCount(slides);
+
+      /*
+        Avanza por grupos reales de imágenes.
+        Ejemplo:
+        - Si caben 6 logos, avanza 6.
+        - Si el último grupo queda muy pequeño, lo fuerza al maxScroll.
+      */
+      const positions = [];
+
+      for (let i = 0; i < slides.length; i += visibleSlidesCount) {
+        const slide = slides[i];
+        const position = Math.min(slide.offsetLeft, maxScroll);
+
+        if (!positions.includes(Math.round(position))) {
+          positions.push(Math.round(position));
+        }
+      }
+
+      const lastPosition = Math.round(maxScroll);
+
+      if (positions[positions.length - 1] !== lastPosition) {
+        positions.push(lastPosition);
+      }
+
+      /*
+        Limpia posiciones casi pegadas al final.
+        Evita casos como:
+        dot 2 = 99%
+        dot 3 = 100%
+      */
+      const minDistance = track.clientWidth * 0.35;
+
+      scrollPositions = positions.filter((position, index) => {
+        const nextPosition = positions[index + 1];
+
+        if (nextPosition === undefined) return true;
+
+        const isAlmostLast = nextPosition === lastPosition;
+        const distance = nextPosition - position;
+
+        if (isAlmostLast && distance < minDistance) {
+          return false;
+        }
+
+        return true;
+      });
+
+      if (scrollPositions[scrollPositions.length - 1] !== lastPosition) {
+        scrollPositions.push(lastPosition);
+      }
+    };
+
+    const setActiveDot = (activeIndex) => {
+      currentIndex = activeIndex;
+
+      const dots = Array.from(dotsWrapper.querySelectorAll("[data-carousel-dot]"));
+
+      dots.forEach((dot, index) => {
+        dot.setAttribute(
+          "aria-current",
+          index === activeIndex ? "true" : "false"
+        );
+      });
+    };
+
+    const getClosestIndex = () => {
+      if (!scrollPositions.length) return 0;
+
+      const currentScroll = track.scrollLeft;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      scrollPositions.forEach((position, index) => {
+        const distance = Math.abs(currentScroll - position);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const moveToGroup = (index) => {
+      if (!scrollPositions.length) return;
+
+      const nextIndex = index >= scrollPositions.length ? 0 : index;
+      const position = scrollPositions[nextIndex];
+
+      track.scrollTo({
+        left: position,
+        behavior: "smooth",
+      });
+
+      setActiveDot(nextIndex);
+    };
+
+    const renderDots = () => {
+      dotsWrapper.innerHTML = "";
+
+      if (!scrollPositions.length || scrollPositions.length <= 1) {
+        dotsWrapper.hidden = true;
+        return;
+      }
+
+      dotsWrapper.hidden = false;
+
+      scrollPositions.forEach((_, index) => {
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.setAttribute("data-carousel-dot", String(index));
+        dot.setAttribute("aria-label", `Ir al grupo ${index + 1}`);
+        dot.setAttribute("aria-current", index === 0 ? "true" : "false");
+
+        dot.addEventListener("click", () => {
+          stopAutoplay();
+          moveToGroup(index);
+          startAutoplay();
+        });
+
+        dotsWrapper.appendChild(dot);
+      });
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (!delay || delay <= 0 || scrollPositions.length <= 1) return;
+
+      stopAutoplay();
+
+      autoplayTimer = window.setInterval(() => {
+        moveToGroup(currentIndex + 1);
+      }, delay);
+    };
+
+    const refreshCarousel = () => {
+      buildScrollPositions();
+      renderDots();
+
+      const closestIndex = getClosestIndex();
+      setActiveDot(closestIndex);
+
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    let scrollTimer;
+
+    track.addEventListener("scroll", () => {
+      window.clearTimeout(scrollTimer);
+
+      scrollTimer = window.setTimeout(() => {
+        const activeIndex = getClosestIndex();
+        setActiveDot(activeIndex);
+      }, 80);
+    });
+
+    carousel.addEventListener("mouseenter", () => {
+      stopAutoplay();
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      startAutoplay();
+    });
+
+    carousel.addEventListener("focusin", () => {
+      stopAutoplay();
+    });
+
+    carousel.addEventListener("focusout", () => {
+      startAutoplay();
+    });
+
+    window.addEventListener("resize", () => {
+      refreshCarousel();
+    });
+
+    const images = Array.from(track.querySelectorAll("img"));
+
+    images.forEach((image) => {
+      if (!image.complete) {
+        image.addEventListener("load", refreshCarousel, { once: true });
+      }
+    });
+
+    requestAnimationFrame(() => {
+      refreshCarousel();
+    });
+  });
+</script>

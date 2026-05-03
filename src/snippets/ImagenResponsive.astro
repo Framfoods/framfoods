@@ -1,0 +1,43 @@
+---
+// src/snippets/ImagenResponsive.astro
+import { site } from "../data/site";
+
+const {
+  srcDesktop,
+  srcMobile,
+  alt = site.brandName,
+  title = alt,
+  width,
+  height,
+  priority,
+  loading,
+  decoding,
+} = Astro.props;
+---
+
+<picture>
+  {srcDesktop && (
+    <source
+      media="(min-width: 768px)"
+      srcset={srcDesktop}
+    />
+  )}
+
+  {srcMobile && (
+    <source
+      media="(max-width: 767px)"
+      srcset={srcMobile}
+    />
+  )}
+
+  <img
+    src={srcMobile || srcDesktop}
+    alt={alt}
+    title={title}
+    {...(width ? { width } : {})}
+    {...(height ? { height } : {})}
+    {...(priority ? { fetchpriority: priority } : {})}
+    {...(loading ? { loading } : {})}
+    {...(decoding ? { decoding } : {})}
+  />
+</picture>

@@ -1,0 +1,354 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import ListElement from "../snippets/ListElement.astro";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BannerHero from "../components/BannerHero.astro";
+import FeatureBlocksSection from "../components/FeatureBlocksSection.astro";
+import ImageCardsOverlay from "../components/ImageCardsOverlay.astro";
+import ImageCarouselSection from "../components/ImageCarouselSection.astro";
+import VideoOverlay from "../components/VideoOverlay.astro";
+import ComparisonBannerSection from "../components/ComparisonBannerSection.astro";
+import BrandCardsSection from "../components/BrandCardsSection.astro";
+import ImageLogoTextBanner from "../components/ImageLogoTextBanner.astro";
+import VideoHero from "../components/VideoHero.astro";
+import ReviewsCarouselSection  from "../components/ReviewsCarouselSection.astro";
+import FormularioLead from "../componentsFormPoliticas/FormularioLead.astro";
+import NewsletterForm from "../componentsFormPoliticas/NewsletterForm.astro";
+
+
+import Formulario from "../components/Formulario.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout>
+    <Header />
+
+    <main class="container">
+    <BannerHero
+        id="conoces-potencial"
+        class="imagen-derecha-texto-izquierda imagen-txt-izq-der"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Conoces el potencial"
+        width="566"
+        height="371"
+        loading="lazy"
+        decoding="async"
+
+        h2=`¿Conoces el potencial de tu producto, qué lo hace distinto y cómo vas a empezar a venderlo?`
+        h2Class="h1"
+
+        p="En Fram Foods desarrollamos productos alimenticios alineados al consumidor, al canal y a las oportunidades reales del mercado."
+    />
+
+    <section id="mensaje-mini-banner" class="mini-txt-h2 un-desarrollo">
+        <TextGroupElement
+            h2="Un Desarrollo de producto planeado estratégicamente asegura su viabilidad, diferenciación y escalabilidad."
+        />
+    </section>
+
+    <section id="como-te-ayudamos-4" class="banner texto-lista como-te-ayudamos-der">
+            <ImagenResponsive
+                srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+                srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+                alt="FramFoods"
+                title="FramFoods"
+                width="1920"
+                height="489"
+                loading="lazy"
+                decoding="async"
+            />
+            <figure>
+                <div class="izq">
+                    <TextGroupElement
+                        h2="¿Cómo te ayudamos?"
+                    />
+                </div>
+                <div class="der">
+                    <ListElement
+                    as="ul"
+                    class="mi-lista"
+                    itemClass="mi-item"
+                    items={[
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Identificación de oportunidades de mercado</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Definición de concepto de producto</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Desarrollo de formulación</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Selección de ingredientes y proveedores</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Diseño de portafolio</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Validación de producto</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Estrategia de pricing</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>Preparación para retail</span>
+                        `
+                        },
+                    ]}
+                    />
+                </div>
+
+            </figure>
+    </section>
+
+    <section id="ecosistema" class="ecosistema">
+        <TextGroupElement
+            h2=`Creación de proceso <span>ecosistema</span>`
+            h2Class="h1"
+        />
+    </section>
+
+    <BannerHero
+        id="insights-oportunidad"
+        class="imagen-derecha-texto-izquierda imagen-txt-izq-der desarrollo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Insights & oportunidad"
+        width="846"
+        height="444"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>01</span> <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53" fill="none">
+        <path d="M1.25 1.25V42.1591C1.25 44.5701 2.20779 46.8825 3.91267 48.5873C5.61754 50.2922 7.92985 51.25 10.3409 51.25H51.25" stroke="#EF6A02" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.3408 34.5833L23.9772 20.947L34.5832 31.553L51.2499 14.8864" stroke="#EF6A02" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+
+        h3=`Insights & oportunidad`
+
+        p="Identificamos espacios reales en el mercado"
+    />
+
+    <BannerHero
+        id="conceptualizacion"
+        class="imagen-izquierda-texto-derecha imagen-txt-izq-der desarrollo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Conceptualización"
+        width="846"
+        height="444"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>02</span> <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+        <path d="M33.7232 31.1982C35.018 29.3908 35.7143 27.2233 35.7143 25C35.7143 22.7767 35.018 20.6092 33.7232 18.8018L37.5 15.025L39.8089 17.3339C40.1438 17.6687 40.5979 17.8568 41.0714 17.8568C41.5449 17.8568 41.9991 17.6687 42.3339 17.3339L49.4768 10.1911C49.8116 9.8562 49.9996 9.40208 49.9996 8.92857C49.9996 8.45506 49.8116 8.00094 49.4768 7.66607L42.3339 0.523214C41.9991 0.188444 41.5449 0.00038147 41.0714 0.00038147C40.5979 0.00038147 40.1438 0.188444 39.8089 0.523214L32.6661 7.66607C32.3313 8.00094 32.1432 8.45506 32.1432 8.92857C32.1432 9.40208 32.3313 9.8562 32.6661 10.1911L34.975 12.5L31.1982 16.2768C29.3908 14.982 27.2233 14.2857 25 14.2857C22.7767 14.2857 20.6092 14.982 18.8018 16.2768L14.2857 11.7589V0H0V14.2857H11.7607L16.2768 18.8018C14.982 20.6092 14.2857 22.7767 14.2857 25C14.2857 27.2233 14.982 29.3908 16.2768 31.1982L12.5 34.975L10.1911 32.6661C9.8562 32.3313 9.40208 32.1432 8.92857 32.1432C8.45506 32.1432 8.00094 32.3313 7.66607 32.6661L0.523214 39.8089C0.188444 40.1438 0.00038147 40.5979 0.00038147 41.0714C0.00038147 41.5449 0.188444 41.9991 0.523214 42.3339L7.66607 49.4768C8.00094 49.8116 8.45506 49.9996 8.92857 49.9996C9.40208 49.9996 9.8562 49.8116 10.1911 49.4768L17.3339 42.3339C17.6687 41.9991 17.8568 41.5449 17.8568 41.0714C17.8568 40.5979 17.6687 40.1438 17.3339 39.8089L15.025 37.5L18.8018 33.7232C20.6092 35.018 22.7767 35.7143 25 35.7143C27.2233 35.7143 29.3908 35.018 31.1982 33.7232L35.7143 38.2411V50H50V35.7143H38.2393L33.7232 31.1982ZM41.0714 4.31071L45.6893 8.92857L41.0714 13.5464L36.4536 8.92857L41.0714 4.31071ZM8.92857 45.6893L4.31071 41.0714L8.92857 36.4536L13.5464 41.0714L8.92857 45.6893ZM10.7143 10.7143H3.57143V3.57143H10.7143V10.7143ZM17.8571 25C17.8571 23.5873 18.2761 22.2063 19.0609 21.0316C19.8458 19.857 20.9614 18.9415 22.2665 18.4009C23.5717 17.8602 25.0079 17.7188 26.3935 17.9944C27.7791 18.27 29.0518 18.9503 30.0508 19.9492C31.0497 20.9482 31.73 22.2209 32.0056 23.6065C32.2812 24.9921 32.1398 26.4283 31.5991 27.7335C31.0585 29.0386 30.143 30.1542 28.9684 30.9391C27.7937 31.7239 26.4127 32.1429 25 32.1429C23.1063 32.1405 21.2909 31.3872 19.9518 30.0482C18.6128 28.7091 17.8595 26.8937 17.8571 25ZM39.2857 39.2857H46.4286V46.4286H39.2857V39.2857Z" fill="#EF6A02"/>
+        </svg>`
+
+        h3=`Conceptualización`
+
+        p="Definimos propuesta de valor y posicionamiento"
+    />
+
+    <BannerHero
+        id="desarrollo"
+        class="imagen-derecha-texto-izquierda imagen-txt-izq-der desarrollo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Desarrollo"
+        width="846"
+        height="444"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>03</span> <svg xmlns="http://www.w3.org/2000/svg" width="53" height="61" viewBox="0 0 53 61" fill="none">
+        <path d="M1.25 16.0722H16.6346M1.25 47.0056H16.6346M28.1731 12.85H37.1474M28.1731 24.45H37.1474M28.1731 36.05H37.1474M28.1731 47.65H37.1474M8.94231 59.25C6.90218 59.25 4.94561 58.4352 3.50303 56.985C2.06044 55.5347 1.25 53.5677 1.25 51.5167V16.1496C1.25326 14.9497 1.53418 13.7672 2.07051 12.6953L7.19872 2.38422C7.35886 2.06419 7.60429 1.79519 7.90764 1.60722C8.21099 1.41925 8.56033 1.31972 8.91667 1.31972C9.27301 1.31972 9.62234 1.41925 9.92569 1.60722C10.229 1.79519 10.4745 2.06419 10.6346 2.38422L15.7628 12.6953C16.2992 13.7672 16.5801 14.9497 16.5833 16.1496V51.5167C16.5834 53.5588 15.78 55.518 14.3485 56.9668C12.917 58.4156 10.9735 59.2364 8.94231 59.25ZM32.0192 1.25H47.4038C47.4038 1.25 51.25 1.25 51.25 5.11667V55.3833C51.25 55.3833 51.25 59.25 47.4038 59.25H32.0192C32.0192 59.25 28.1731 59.25 28.1731 55.3833V5.11667C28.1731 5.11667 28.1731 1.25 32.0192 1.25Z" stroke="#EF6A02" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+
+        h3=`Desarrollo`
+
+        p="Creamos el producto (formulación, pruebas, ajustes)"
+    />
+
+    <BannerHero
+        id="validacion"
+        class="imagen-izquierda-texto-derecha imagen-txt-izq-der desarrollo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Validación"
+        width="846"
+        height="444"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>04</span> <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53" fill="none">
+        <path d="M26.3192 13.05C25.7474 13.0423 25.1667 13.0385 24.5769 13.0385C15.7692 13.0385 11.8038 13.7769 8.25 14.4385C7.7218 14.5385 7.19615 14.6346 6.67308 14.7269C3.78846 15.2346 1.5 17.7192 1.5 20.7423V43.7577C1.5 46.8038 3.87692 49.3115 6.87308 49.8462L8.25 50.1C11.8038 50.7615 15.7731 51.5 24.5769 51.5C33.3808 51.5 37.35 50.7615 40.9038 50.1L42.2808 49.8462C45.2808 49.3115 47.6538 46.8077 47.6538 43.7577V22.1154M47.6538 26.6846H1.5M32.4808 40.0192H40.3M34.7692 11.9577L40.8538 18.2308C43.7154 10.0077 46.1 6.4 51.5 1.5" stroke="#EF6A02" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+
+        h3=`Validación`
+
+        p="Evaluamos viabilidad comercial y operativa"
+    />
+
+    <BannerHero
+        id="preparacion-para-mercado"
+        class="imagen-derecha-texto-izquierda imagen-txt-izq-der desarrollo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Preparación para mercado"
+        width="846"
+        height="444"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>05</span> <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+        <path d="M1.5 1.5H5.66667L6.5 5.66667M9.83333 22.3333H30.6667L39 5.66667H6.5M9.83333 22.3333L6.5 5.66667M9.83333 22.3333L5.05647 27.1102C3.74405 28.4226 4.67356 30.6667 6.52961 30.6667H30.6667M30.6667 30.6667C28.3655 30.6667 26.5 32.5321 26.5 34.8333C26.5 37.1345 28.3655 39 30.6667 39C32.9679 39 34.8333 37.1345 34.8333 34.8333C34.8333 32.5321 32.9679 30.6667 30.6667 30.6667ZM14 34.8333C14 37.1345 12.1345 39 9.83333 39C7.53215 39 5.66667 37.1345 5.66667 34.8333C5.66667 32.5321 7.53215 30.6667 9.83333 30.6667C12.1345 30.6667 14 32.5321 14 34.8333Z" stroke="#EF6A02" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+
+        h3=`Preparación para mercado`
+
+        p="Listo para producción, distribución y retail"
+    />
+
+    <section id="mensaje-mini-banner-dos" class="mini-txt-h2 un-desarrollo">
+        <TextGroupElement
+            h2="Cada producto nace con un objetivo claro: posicionarse, vender y escalar.
+            Integramos insights, desarrollo y estrategia comercial desde el inicio para asegurar resultados reales."
+        />
+    </section>
+
+    <VideoHero
+        id="desarrollamos-productos-mercado"
+        class="banner banner-desarrollamos"
+
+        srcDesktop="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+        srcMobile="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+
+        width="1920"
+        height="452"
+
+        autoplay={true}
+        muted={true}
+        loop={true}
+        playsinline={true}
+        controls={false}
+        preload="auto"
+
+        ariaLabel="Desarrollar mi producto"
+
+        h2="Desarrollamos productos que nacen para posicionarse, rotar y escalar en el mercado."
+
+        linkHtml="Desarrollar mi producto"
+        linkHref="/contacto"
+        linkClass="hero-button"
+    />
+
+    <section id="franja-comercial" class="franja-comercial">
+        <TextGroupElement
+            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+            pId=""
+            pClass="franja-comercial__text"
+        />
+    </section>
+
+    <NewsletterForm
+        id="newsletter-principal"
+        class="newsletter-form banner"
+
+        figureClass="newsletter-form__figure"
+        captionClass="newsletter-form__caption"
+
+        contentId=""
+        contentClass="newsletter-form__content"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Newsletter"
+        title="Newsletter"
+        width="1920"
+        height="250"
+        loading="lazy"
+        decoding="async"
+
+        h2="Suscríbete a nuestro newsletter"
+        h2Id=""
+        h2Class="newsletter-form__title"
+
+        p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+        <br>
+        Forma parte de nuestra comunidad y entérate primero de lo que viene."
+        pId=""
+        pClass="newsletter-form__text"
+
+        action="/api/newsletter"
+        method="POST"
+
+        successParam="newsletter"
+        successValue="ok"
+        successMessage="Gracias por suscribirte al newsletter."
+
+        inputWrapperClass="newsletter-form__field"
+        inputId="newsletter-email"
+        inputClass="newsletter-form__input"
+        inputName="email"
+        inputDataColumn="Correo electrónico"
+        inputPlaceholder="tu correo"
+        inputLabel=""
+        inputRequired={true}
+
+        buttonClass="newsletter-form__button"
+        buttonHtml="Suscribirme al newsletter"
+    />
+    </main>
+
+    <Footer />
+</BaseLayout>

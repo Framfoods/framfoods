@@ -1,0 +1,108 @@
+---
+import { site } from "../data/site";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  srcDesktop,
+  srcMobile,
+  alt = site.brandName,
+  width,
+  height,
+  priority,
+  loading,
+  decoding,
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+} = Astro.props;
+
+const tieneContenido = h1 || h2 || h3 || p || linkHtml;
+---
+
+<section
+  id={id}
+  class={clase}
+>
+  {
+    tieneContenido ? (
+      <figure>
+        <ImagenResponsive
+          srcDesktop={srcDesktop}
+          srcMobile={srcMobile}
+          alt={alt}
+          width={width}
+          height={height}
+          priority={priority}
+          loading={loading}
+          decoding={decoding}
+        />
+
+        <figcaption>
+          <TextGroupElement
+            h1={h1}
+            h1Id={h1Id}
+            h1Class={h1Class}
+
+            h2={h2}
+            h2Id={h2Id}
+            h2Class={h2Class}
+
+            h3={h3}
+            h3Id={h3Id}
+            h3Class={h3Class}
+
+            p={p}
+            pId={pId}
+            pClass={pClass}
+
+            linkHtml={linkHtml}
+            linkHref={linkHref}
+            linkId={linkId}
+            linkClass={linkClass}
+            linkTitle={linkTitle}
+            linkAriaLabel={linkAriaLabel}
+            linkTarget={linkTarget}
+            linkRel={linkRel}
+          />
+        </figcaption>
+      </figure>
+    ) : (
+      <ImagenResponsive
+        srcDesktop={srcDesktop}
+        srcMobile={srcMobile}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={priority}
+        loading={loading}
+        decoding={decoding}
+      />
+    )
+  }
+</section>

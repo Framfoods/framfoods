@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import ListElement from "../snippets/ListElement.astro";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BannerHero from "../components/BannerHero.astro";
+import FeatureBlocksSection from "../components/FeatureBlocksSection.astro";
+import ImageCardsOverlay from "../components/ImageCardsOverlay.astro";
+
+import ImageCarouselSection from "../components/ImageCarouselSection.astro";
+import VideoOverlay from "../components/VideoOverlay.astro";
+import ComparisonBannerSection from "../components/ComparisonBannerSection.astro";
+import BrandCardsSection from "../components/BrandCardsSection.astro";
+import ImageLogoTextBanner from "../components/ImageLogoTextBanner.astro";
+import VideoHero from "../components/VideoHero.astro";
+import ReviewsCarouselSection  from "../components/ReviewsCarouselSection.astro";
+import FormularioLead from "../componentsFormPoliticas/FormularioLead.astro";
+import NewsletterForm from "../componentsFormPoliticas/NewsletterForm.astro";
+
+
+import Formulario from "../components/Formulario.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout>
+    <Header />
+
+    <main class="container">
+
+    <iframe id="mapa-contacto" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d11852.061258020869!2d-99.17739873477392!3d19.358229502631236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCAMPUS%20CORPORATIVO%20COYOAC%C3%81N%20Av.%20Coyoac%C3%A1n%201622%2C%20Torre%204%20Ofna.%20101%20%2C%C2%A0%20Col.%20Del%20Valle%2C%20C.P.%2003100%2C%20CDMX%2C%20M%C3%A9xico!5e1!3m2!1ses!2smx!4v1777791293542!5m2!1ses!2smx" 
+    
+        width="1920" height="515" style="border:0;" allowfullscreen="" loading="eager" fetchpriority="high" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <BannerHero
+        id="contactanos"
+        class="imagen-izquierda-texto-derecha imagen-txt-izq-der"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Contacto"
+        width="566"
+        height="371"
+        loading="lazy"
+        decoding="async"
+
+        h1=`<span>¡Ponte en contacto con nosotros! </span>`
+
+        h2=`CAMPUS CORPORATIVO COYOACÁN<br>Av. Coyoacán 1622, Torre 4 Ofna. 101,<br>Col. Del Valle, C.P. 03100, CDMX, México`
+
+        h3=`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" fill="none">
+            <path d="M1 4.0229L8.8906 9.32346C9.5624 9.77474 10.4376 9.77474 11.1094 9.32346L19 4.0229M3 15.1069H17C18.1046 15.1069 19 14.2046 19 13.0916V3.01527C19 1.90227 18.1046 1 17 1H3C1.89543 1 1 1.90227 1 3.01527V13.0916C1 14.2046 1.89543 15.1069 3 15.1069Z" stroke="#EF6A02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> <span>karla.cayetano@framfoods.com.mx<br>mariana.garcia@framfoods.com.mx</span>`
+
+        p=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9.75 19C9.75 18.8674 9.80268 18.7402 9.89645 18.6464C9.99021 18.5527 10.1174 18.5 10.25 18.5H13.75C13.8826 18.5 14.0098 18.5527 14.1036 18.6464C14.1973 18.7402 14.25 18.8674 14.25 19C14.25 19.1326 14.1973 19.2598 14.1036 19.3536C14.0098 19.4473 13.8826 19.5 13.75 19.5H10.25C10.1174 19.5 9.99021 19.4473 9.89645 19.3536C9.80268 19.2598 9.75 19.1326 9.75 19Z" fill="#EF6A02"/>
+            <path d="M10.17 2.25H13.83C14.365 2.25 14.81 2.25 15.175 2.28C15.555 2.31 15.911 2.378 16.248 2.55C16.7656 2.81367 17.1863 3.23445 17.45 3.752C17.622 4.089 17.69 4.445 17.72 4.825C17.75 5.19 17.75 5.635 17.75 6.17V17.83C17.75 18.365 17.75 18.81 17.72 19.175C17.69 19.555 17.622 19.911 17.45 20.248C17.1866 20.7654 16.7662 21.1862 16.249 21.45C15.911 21.622 15.555 21.69 15.175 21.72C14.81 21.75 14.365 21.75 13.831 21.75H10.17C9.635 21.75 9.19 21.75 8.825 21.72C8.445 21.69 8.089 21.622 7.752 21.45C7.23475 21.1869 6.81401 20.7668 6.55 20.25C6.378 19.912 6.31 19.556 6.28 19.176C6.25 18.811 6.25 18.366 6.25 17.831V6.17C6.25 5.635 6.25 5.19 6.28 4.825C6.31 4.445 6.378 4.089 6.55 3.752C6.81367 3.23445 7.23445 2.81367 7.752 2.55C8.089 2.378 8.445 2.31 8.825 2.28C9.19 2.25 9.635 2.25 10.17 2.25ZM8.947 3.775C8.66 3.798 8.523 3.84 8.433 3.886C8.19741 4.00591 8.00591 4.19741 7.886 4.433C7.84 4.523 7.798 4.66 7.775 4.947C7.751 5.243 7.75 5.627 7.75 6.2V17.8C7.75 18.372 7.75 18.757 7.775 19.052C7.798 19.34 7.84 19.477 7.886 19.567C8.006 19.803 8.197 19.994 8.433 20.114C8.523 20.16 8.66 20.202 8.947 20.225C9.243 20.249 9.627 20.25 10.2 20.25H13.8C14.372 20.25 14.757 20.25 15.052 20.225C15.34 20.202 15.477 20.16 15.568 20.114C15.8032 19.9939 15.9944 19.8024 16.114 19.567C16.16 19.477 16.202 19.34 16.225 19.052C16.249 18.757 16.25 18.372 16.25 17.8V6.2C16.25 5.628 16.25 5.243 16.225 4.947C16.202 4.66 16.16 4.523 16.114 4.433C15.9944 4.19757 15.8032 4.00608 15.568 3.886C15.477 3.84 15.34 3.798 15.053 3.775C14.841 3.75981 14.6285 3.75214 14.416 3.752L14.292 4.125C14.187 4.439 14.134 4.597 14.037 4.713C13.9513 4.81552 13.8413 4.89493 13.717 4.944C13.575 5 13.409 5 13.077 5H10.923C10.591 5 10.425 5 10.283 4.944C10.1588 4.89522 10.0488 4.81615 9.963 4.714C9.866 4.597 9.813 4.439 9.708 4.124L9.584 3.752C9.37146 3.75214 9.15899 3.75981 8.947 3.775Z" fill="#EF6A02"/>
+            </svg><span>+52 33 9689 2203</span>`
+
+    />
+
+
+    <section id="formulario-contacto" class="formulario-wrapper">
+        <FormularioLead
+            id="formularioHome"
+            class=""
+
+            action="/api/contacto"
+            method="POST"
+            thankYouUrl="/gracias"
+            submitMode="fetch"
+
+            h2="Construyamos el crecimiento de tu marca"
+            h2Class="formulario__title"
+
+            articleClass="preguntas"
+            topGroupClass="grupo-arriba"
+            bottomGroupClass="grupo-abajo"
+            fieldWrapperClass="grupo-input"
+
+            buttonClass="enviar"
+            buttonHtml='Quiero crecer mi marca'
+
+            fieldsTop={[
+            {
+                tag: "input",
+                type: "text",
+                name: "nombre_completo",
+                dataColumn: "Nombre",
+                label: "Nombre*",
+                placeholder: "Nombre",
+                required: true,
+                autocomplete: "name",
+            },
+            {
+                tag: "input",
+                type: "email",
+                name: "email",
+                dataColumn: "Correo electrónico",
+                label: "Correo*",
+                placeholder: "Correo",
+                required: true,
+                autocomplete: "email",
+                inputmode: "email",
+            },
+            {
+                tag: "input",
+                type: "tel",
+                name: "telefono",
+                dataColumn: "Número telefónico",
+                label: "Whatsapp*",
+                placeholder: "Whatsapp",
+                required: true,
+                autocomplete: "tel",
+                inputmode: "tel",
+            },
+            {
+                tag: "select",
+                name: "pais",
+                dataColumn: "País",
+                label: "¿De qué país nos visita?*",
+                required: true,
+                options: [
+                {
+                    label: "Lorem Ipsum",
+                    value: "",
+                    disabled: true,
+                    selected: true,
+                    hidden: true,
+                },
+                {
+                    label: "Lorem Ipsum 1",
+                    value: "lorem-1",
+                },
+                {
+                    label: "Lorem Ipsum 2",
+                    value: "lorem-2",
+                },
+                ],
+            },
+            ]}
+
+            fieldsBottom={[
+            {
+                tag: "textarea",
+                name: "reto_principal",
+                dataColumn: "Principal reto",
+                label: "¿Cuál es tu principal reto hoy?*",
+                placeholder: "¿Cuál es tu principal reto hoy?",
+                required: true,
+                rows: "6",
+            },
+            {
+                tag: "textarea",
+                name: "solucion_buscada",
+                dataColumn: "Solución buscada",
+                label: "¿Qué solución estás buscando?*",
+                placeholder: "¿Qué solución estás buscando?",
+                required: true,
+                rows: "6",
+            },
+            {
+                tag: "textarea",
+                name: "productos",
+                dataColumn: "Tipos de productos",
+                label: "¿Qué tipos de productos manejas?*",
+                placeholder: "¿Qué tipos de productos manejas?",
+                required: true,
+                rows: "6",
+            }
+            ]}
+
+            modalId="modal-terminos"
+            modalClass="modal-terminos"
+            modalContentClass="modal-contenido-terminos"
+            modalCloseClass="cerrar"
+            modalIframeId="iframe-terminos"
+            modalIframeHeight="400"
+        />
+    </section>
+
+    <section id="franja-comercial" class="franja-comercial">
+        <TextGroupElement
+            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+            pId=""
+            pClass="franja-comercial__text"
+        />
+    </section>
+
+    <NewsletterForm
+        id="newsletter-principal"
+        class="newsletter-form banner"
+
+        figureClass="newsletter-form__figure"
+        captionClass="newsletter-form__caption"
+
+        contentId=""
+        contentClass="newsletter-form__content"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Newsletter"
+        title="Newsletter"
+        width="1920"
+        height="250"
+        loading="lazy"
+        decoding="async"
+
+        h2="Suscríbete a nuestro newsletter"
+        h2Id=""
+        h2Class="newsletter-form__title"
+
+        p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+        <br>
+        Forma parte de nuestra comunidad y entérate primero de lo que viene."
+        pId=""
+        pClass="newsletter-form__text"
+
+        action="/api/newsletter"
+        method="POST"
+
+        successParam="newsletter"
+        successValue="ok"
+        successMessage="Gracias por suscribirte al newsletter."
+
+        inputWrapperClass="newsletter-form__field"
+        inputId="newsletter-email"
+        inputClass="newsletter-form__input"
+        inputName="email"
+        inputDataColumn="Correo electrónico"
+        inputPlaceholder="tu correo"
+        inputLabel=""
+        inputRequired={true}
+
+        buttonClass="newsletter-form__button"
+        buttonHtml="Suscribirme al newsletter"
+    />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

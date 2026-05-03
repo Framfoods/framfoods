@@ -1,0 +1,392 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import ListElement from "../snippets/ListElement.astro";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BannerHero from "../components/BannerHero.astro";
+import FeatureBlocksSection from "../components/FeatureBlocksSection.astro";
+import ImageCardsOverlay from "../components/ImageCardsOverlay.astro";
+
+import ImageCarouselSection from "../components/ImageCarouselSection.astro";
+import VideoOverlay from "../components/VideoOverlay.astro";
+import ComparisonBannerSection from "../components/ComparisonBannerSection.astro";
+import BrandCardsSection from "../components/BrandCardsSection.astro";
+import ImageLogoTextBanner from "../components/ImageLogoTextBanner.astro";
+import VideoHero from "../components/VideoHero.astro";
+import ReviewsCarouselSection  from "../components/ReviewsCarouselSection.astro";
+import FormularioLead from "../componentsFormPoliticas/FormularioLead.astro";
+import NewsletterForm from "../componentsFormPoliticas/NewsletterForm.astro";
+
+
+import Formulario from "../components/Formulario.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout>
+    <Header />
+
+    <main class="container">
+    <VideoHero
+    id="hero-home"
+    class="banner"
+
+    srcDesktop="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+    srcMobile="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+
+    width="1920"
+    height="489"
+
+    autoplay={true}
+    muted={true}
+    loop={true}
+    playsinline={true}
+    controls={false}
+    preload="auto"
+
+    ariaLabel="Modelo FramFoods"
+    />
+
+    <section id="titulos-modeloff" class="titulos-modelos-ff">
+        <TextGroupElement
+            h1="Un nuevo estándar en la industria de alimentos."
+            p="No somos un portafolio de marcas,  somos un equipo especializado  que combina nutrición, desarrollo, distribución y ejecución de forma estratégica y sostenible para llevar tus productos al mercado y hacerlos crecer."
+        />
+    </section>
+
+    <ComparisonBannerSection
+        id="solucion-integral"
+        class="banner comparison-banner-section modelo"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Solución integral"
+        width="1920"
+        height="810"
+        loading="lazy"
+        decoding="async"
+
+        h2=`<span>Nuestro</span> modelo <span>una solución integral que conecta todo</span>`
+        h2Class="comparison-banner-section__title"
+
+        articleClass="comparison-banner-section__content"
+
+        items={[
+            {
+            class: "comparison-banner-section__card comparison-banner-section__card--left",
+
+            h3: "DISTRIBUIDOR TRADICIONAL",
+            h3Class: "comparison-banner-section__card-title",
+
+            listAs: "ul",
+            listClass: "comparison-banner-section__list",
+            listStyleType: "none",
+            listItemClass: "comparison-banner-section__item",
+
+            listItems: [
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Enfoque en margen de corto plazo`,
+                },
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Visibilidad limitada para construcción de marca`,
+                },
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Operación transaccional y poco integrada`,
+                },
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Precios fijos y poca flexibilidad`,
+                },
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Datos parciales para toma de decisiones`,
+                },
+                {
+                html: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <g clip-path="url(#clip0_318_412)">
+                    <path d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM2 8C2 4.68437 4.6875 2 8 2C9.31563 2 10.5312 2.42812 11.5188 3.14687L3.14687 11.5188C2.42812 10.5312 2 9.31563 2 8ZM8 14C6.68437 14 5.46875 13.5719 4.48125 12.8531L12.8531 4.48125C13.5719 5.47187 14 6.68437 14 8C14 11.3156 11.3125 14 8 14Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_318_412">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg> Portafolio amplio con baja especialización`,
+                },
+            ],
+            },
+            {
+            class: "comparison-banner-section__card comparison-banner-section__card--right",
+
+                h3: "MODELO FRAM FOODS (PARTNERSHIP)",
+                h3Class: "comparison-banner-section__card-title",
+
+                listAs: "ul",
+                listClass: "comparison-banner-section__list",
+                listStyleType: "none",
+                listItemClass: "comparison-banner-section__item",
+
+                listItems: [
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Enfoque en crecimiento conjunto y sostenible`,
+                    },
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Desarrollo de marca y ejecución con objetivos compartidos`,
+                    },
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Relación de largo plazo con planeación colaborativa`,
+                    },
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Pricing dinámico según mercado y desempeño`,
+                    },
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Transparencia de datos para decisiones alineadas`,
+                    },
+                    {
+                    html: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C10.1819 18 11.3522 17.7672 12.4442 17.3149C13.5361 16.8626 14.5282 16.1997 15.364 15.364C16.1997 14.5282 16.8626 13.5361 17.3149 12.4442C17.7672 11.3522 18 10.1819 18 9C18 7.8181 17.7672 6.64778 17.3149 5.55585C16.8626 4.46392 16.1997 3.47177 15.364 2.63604C14.5282 1.80031 13.5361 1.13738 12.4442 0.685084C11.3522 0.232792 10.1819 -1.76116e-08 9 0C6.61305 3.55683e-08 4.32387 0.948211 2.63604 2.63604C0.948212 4.32387 0 6.61305 0 9C0 11.3869 0.948212 13.6761 2.63604 15.364C4.32387 17.0518 6.61305 18 9 18ZM8.768 12.64L13.768 6.64L12.232 5.36L7.932 10.519L5.707 8.293L4.293 9.707L7.293 12.707L8.067 13.481L8.768 12.64Z" fill="#70AD47"/>
+                    </svg> Desarrollo de categoría con foco y especialización`,
+                    },
+                ],
+                },
+        ]}
+    />
+
+    <section id="mensaje-mini-banner" class="mini-txt-h2 modelo-insights">
+        <TextGroupElement
+            h2="Un Modelo que transforma insights en decisiones, decisiones en ejecución y ejecución en crecimiento real y sostenible."
+        />
+    </section>
+
+<ImageCardsOverlay
+  id="cards-modelo"
+  class="cards-modelo"
+  items={[
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Insights",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "INSIGHTS",
+      h2Class: "image-card__title",
+
+      p: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor.",
+      pClass: "image-card__text",
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Desarrollo",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "DESARROLLO",
+      h2Class: "image-card__title",
+
+      p: "Transformamos insights en productos viables, diferenciados y listos para competir.",
+      pClass: "image-card__text",
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Producción",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "PRODUCCIÓN",
+      h2Class: "image-card__title",
+
+      p: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso.",
+      pClass: "image-card__text",
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Distribución",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "DISTRIBUCIÓN",
+      h2Class: "image-card__title",
+
+      p: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura.",
+      pClass: "image-card__text",
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Retail",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "RETAIL",
+      h2Class: "image-card__title",
+
+      p: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación.",
+      pClass: "image-card__text",
+    },
+    {
+      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
+      alt: "Consumidor",
+      width: 432,
+      height: 444,
+      loading: "lazy",
+      decoding: "async",
+
+      figureClass: "image-card",
+      captionClass: "image-card__caption",
+
+      h2: "CONSUMIDOR",
+      h2Class: "image-card__title",
+
+      p: "Generamos conexión, adopción y recompra a través de propuestas relevantes.",
+      pClass: "image-card__text",
+    },
+  ]}
+/>
+
+
+    <section id="franja-comercial" class="franja-comercial">
+        <TextGroupElement
+            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+            pId=""
+            pClass="franja-comercial__text"
+        />
+    </section>
+
+    <NewsletterForm
+        id="newsletter-principal"
+        class="newsletter-form banner"
+
+        figureClass="newsletter-form__figure"
+        captionClass="newsletter-form__caption"
+
+        contentId=""
+        contentClass="newsletter-form__content"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Newsletter"
+        title="Newsletter"
+        width="1920"
+        height="250"
+        loading="lazy"
+        decoding="async"
+
+        h2="Suscríbete a nuestro newsletter"
+        h2Id=""
+        h2Class="newsletter-form__title"
+
+        p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+        <br>
+        Forma parte de nuestra comunidad y entérate primero de lo que viene."
+        pId=""
+        pClass="newsletter-form__text"
+
+        action="/api/newsletter"
+        method="POST"
+
+        successParam="newsletter"
+        successValue="ok"
+        successMessage="Gracias por suscribirte al newsletter."
+
+        inputWrapperClass="newsletter-form__field"
+        inputId="newsletter-email"
+        inputClass="newsletter-form__input"
+        inputName="email"
+        inputDataColumn="Correo electrónico"
+        inputPlaceholder="tu correo"
+        inputLabel=""
+        inputRequired={true}
+
+        buttonClass="newsletter-form__button"
+        buttonHtml="Suscribirme al newsletter"
+    />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

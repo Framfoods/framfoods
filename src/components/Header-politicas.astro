@@ -1,0 +1,18 @@
+---
+import { logoHeader } from "../data/header";
+import { site } from "../data/site";
+---
+
+<header class="site-header">
+  <img
+    src={`${logoHeader.logo}?width=${logoHeader.resolucion}`}
+    alt={logoHeader.alt}
+    width={logoHeader.ancho}
+    height={logoHeader.alto}
+    decoding="async"
+  />
+
+  <a href="/" class="btn">
+    {site.regresarInicio}
+  </a>
+</header>

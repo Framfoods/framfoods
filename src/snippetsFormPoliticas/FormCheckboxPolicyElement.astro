@@ -1,0 +1,54 @@
+---
+// src/snippetsFormPoliticas/FormCheckboxPolicyElement.astro
+
+const {
+  wrapperId = "",
+  wrapperClass = "",
+
+  id = "",
+  class: clase = "",
+
+  name = "politicas",
+  dataColumn = "Políticas aceptadas",
+
+  required = true,
+  checked = false,
+
+  label = "Acepto las políticas de privacidad",
+  labelClass = "checkbox",
+
+  policyText = "Ver políticas",
+  policyUrl = "",
+  policyButtonClass = "aceptar-terminos",
+} = Astro.props;
+---
+
+<div
+  {...(wrapperId ? { id: wrapperId } : {})}
+  {...(wrapperClass ? { class: wrapperClass } : {})}
+>
+  <label class={labelClass}>
+    <input
+      {...(id ? { id } : {})}
+      {...(clase ? { class: clase } : {})}
+      type="checkbox"
+      name={name}
+      value="aceptado"
+      {...(dataColumn ? { "data-column": dataColumn } : {})}
+      {...(required ? { required: true } : {})}
+      {...(checked ? { checked: true } : {})}
+    />
+
+    <small>{label}{" "}</small>
+
+    {policyUrl && (
+      <button
+        type="button"
+        class={policyButtonClass}
+        data-url={policyUrl}
+      >
+        <small>{policyText}</small>
+      </button>
+    )}
+  </label>
+</div>

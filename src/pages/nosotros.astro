@@ -1,0 +1,295 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import ImagenResponsive from "../snippets/ImagenResponsive.astro";
+import ListElement from "../snippets/ListElement.astro";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BannerHero from "../components/BannerHero.astro";
+import FeatureBlocksSection from "../components/FeatureBlocksSection.astro";
+import ImageCardsOverlay from "../components/ImageCardsOverlay.astro";
+import ImageCarouselSection from "../components/ImageCarouselSection.astro";
+import VideoOverlay from "../components/VideoOverlay.astro";
+import ComparisonBannerSection from "../components/ComparisonBannerSection.astro";
+import BrandCardsSection from "../components/BrandCardsSection.astro";
+import ImageLogoTextBanner from "../components/ImageLogoTextBanner.astro";
+import VideoHero from "../components/VideoHero.astro";
+import ReviewsCarouselSection  from "../components/ReviewsCarouselSection.astro";
+import FormularioLead from "../componentsFormPoliticas/FormularioLead.astro";
+import NewsletterForm from "../componentsFormPoliticas/NewsletterForm.astro";
+
+
+import Formulario from "../components/Formulario.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout>
+    <Header />
+
+    <main class="container">
+        <BannerHero
+
+            id="banner-impulsamos"
+            class="banner banner-cta"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="Impulsamos marcas dentro del mercado mexicano, somos FramFoods"
+            width="1920"
+            height="489"
+            loading="lazy"
+            decoding="async"
+
+            h2="Impulsamos y ejecutamos marcas para crecer en el mercado mexicano."
+        />
+
+        <section id="mensaje-mini-banner" class="mini-txt-h2">
+            <TextGroupElement
+                h2="En Fram Foods integramos estrategia, desarrollo, logística y ejecución en retail para construir soluciones que generan crecimiento real."
+            />
+        </section>
+
+        <section>
+            <img
+                alt="Logo de la marca"
+                width="243"
+                height="50"
+                loading="lazy"
+                src="https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770"
+            >
+        </section>
+
+        <BannerHero
+            id="mas-que-un-proveedor"
+            class="imagen-derecha-texto-izquierda imagen-txt-izq-der"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="Alimentos de alta calidad"
+            width="566"
+            height="371"
+            loading="lazy"
+            decoding="async"
+
+            h2=`Más que un proveedor, somos un socio estratégico`
+            h2Class="h3"
+
+            p="En Fram Foods conectamos cada etapa del proceso —desde la identificación de oportunidades hasta la llegada al consumidor final— para construir, lanzar y escalar productos en el mercado mexicano.
+                <br><br>
+            Trabajamos de forma integrada para transformar ideas en soluciones comerciales sólidas, alineadas al mercado, al canal y al consumidor."
+        />
+
+        <BannerHero
+            id="propuesta-de-valor"
+            class="imagen-izquierda-texto-derecha imagen-txt-izq-der"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="Propuesta de valor"
+            width="566"
+            height="371"
+            loading="lazy"
+            decoding="async"
+
+            h2=`Propuesta <span>de valor</span>`
+
+            h3=`Un modelo diseñado para generar resultados.`
+
+            p="Nuestro enfoque integra inteligencia de mercado, desarrollo de producto, supply chain y ejecución en retail en un solo ecosistema, permitiendo a nuestros clientes crecer de forma rentable, sostenible y escalable."
+        />
+
+        <section class="banner texto-lista">
+            <ImagenResponsive
+                srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+                srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+                alt="Nuestro modelo"
+                title="Nuestro modelo"
+                width="1920"
+                height="397"
+                loading="lazy"
+                decoding="async"
+            />
+            <figure>
+                <div class="izq">
+                    <TextGroupElement
+                        h2="Nuestro modelo"
+                        
+                        h3="Un ecosistema que conecta todo."
+                        
+                        linkHtml="Explorar modelo Fram Foods"
+                        linkHref="/modelo-fram-foods"
+                        linkClass="hero-button"
+                    />
+                </div>
+                <div class="der">
+                    <TextGroupElement
+                        p=`No operamos en áreas aisladas.<br>Cada decisión está conectada para asegurar:`
+                    />
+                    <ListElement
+                    as="ul"
+                    class="mi-lista"
+                    itemClass="mi-item"
+                    items={[
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>coherencia</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>eficiencia</span>
+                        `
+                        },
+                        {
+                        html: `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53403 2.90991C9.82016 2.80728 11.0411 2.30153 12.0232 1.46467C14.3148 -0.488224 17.6852 -0.488224 19.9768 1.46467C20.9589 2.30153 22.1798 2.80728 23.466 2.90991C26.4673 3.14942 28.8506 5.53271 29.0901 8.53403C29.1927 9.82016 29.6985 11.0411 30.5353 12.0232C32.4882 14.3148 32.4882 17.6852 30.5353 19.9768C29.6985 20.9589 29.1927 22.1798 29.0901 23.466C28.8506 26.4673 26.4673 28.8506 23.466 29.0901C22.1798 29.1927 20.9589 29.6985 19.9768 30.5353C17.6852 32.4882 14.3148 32.4882 12.0232 30.5353C11.0411 29.6985 9.82016 29.1927 8.53403 29.0901C5.53271 28.8506 3.14942 26.4673 2.90991 23.466C2.80728 22.1798 2.30153 20.9589 1.46467 19.9768C-0.488224 17.6852 -0.488224 14.3148 1.46467 12.0232C2.30153 11.0411 2.80728 9.82016 2.90991 8.53403C3.14942 5.53271 5.53271 3.14942 8.53403 2.90991ZM23.4142 13.4142C24.1953 12.6332 24.1953 11.3668 23.4142 10.5858C22.6332 9.80474 21.3668 9.80474 20.5858 10.5858L14 17.1716L11.4142 14.5858C10.6332 13.8047 9.36683 13.8047 8.58579 14.5858C7.80474 15.3668 7.80474 16.6332 8.58579 17.4142L12.5858 21.4142C13.3668 22.1953 14.6332 22.1953 15.4142 21.4142L23.4142 13.4142Z" fill="#25D366"/>
+                            </svg>
+                            <span>resultados en cada etapa del proceso.</span>
+                        `
+                        }
+                    ]}
+                    />
+                </div>
+
+            </figure>
+        </section>
+
+        <BannerHero
+            id="proposito"
+            class="imagen-derecha-texto-izquierda imagen-txt-izq-der"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="proposito"
+            width="566"
+            height="371"
+            loading="lazy"
+            decoding="async"
+
+            h2=`<span>Propósito</span>`
+
+            h3=`Construir valor más allá del producto.`
+
+            p="Buscamos transformar la forma en que se desarrollan, posicionan y consumen productos en el mercado, creando soluciones que aporten valor real tanto a las marcas como al consumidor final."
+        />
+
+        <BannerHero
+            id="vision"
+            class="imagen-izquierda-texto-derecha imagen-txt-izq-der"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="Visión"
+            width="566"
+            height="371"
+            loading="lazy"
+            decoding="async"
+
+            h2=`<span>Visión</span>`
+
+            h3=`Ser un referente en soluciones integradas para la industria de alimentos.`
+
+            p="Aspiramos a liderar el desarrollo y escalamiento de productos en México, conectando innovación, ejecución y conocimiento del mercado."
+        />
+
+        <section id="mensaje-mini-banner-dos" class="mini-txt-h2">
+            <TextGroupElement
+                h2="Cada proyecto es una oportunidad para crear valor, generar impacto y posicionar marcas con éxito en el mercado."
+            />
+        </section>
+
+        <BannerHero
+            id="banner-construimos"
+            class="banner banner-cta"
+
+            srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+            srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+            alt="Hablemos de tu proyecto"
+            width="1920"
+            height="508"
+            loading="lazy"
+            decoding="async"
+
+            h2="Construimos más que productos.<br>Construimos crecimiento"
+            h2Id=""
+            h2Class="banner-cta__title"
+
+            linkHtml="Hablemos de tu proyecto"
+            linkHref="/contacto"
+            linkId=""
+            linkClass="banner-cta__button"
+            linkTitle="Hablemos de tu proyecto"
+            linkAriaLabel="Hablemos de tu proyecto"
+            linkTarget=""
+            linkRel=""
+        />
+
+        <section id="franja-comercial" class="franja-comercial">
+        <TextGroupElement
+            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+            pId=""
+            pClass="franja-comercial__text"
+        />
+        </section>
+
+        <NewsletterForm
+        id="newsletter-principal"
+        class="newsletter-form banner"
+
+        figureClass="newsletter-form__figure"
+        captionClass="newsletter-form__caption"
+
+        contentId=""
+        contentClass="newsletter-form__content"
+
+        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
+        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        alt="Newsletter"
+        title="Newsletter"
+        width="1920"
+        height="250"
+        loading="lazy"
+        decoding="async"
+
+        h2="Suscríbete a nuestro newsletter"
+        h2Id=""
+        h2Class="newsletter-form__title"
+
+        p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+        <br>
+        Forma parte de nuestra comunidad y entérate primero de lo que viene."
+        pId=""
+        pClass="newsletter-form__text"
+
+        action="/api/newsletter"
+        method="POST"
+
+        successParam="newsletter"
+        successValue="ok"
+        successMessage="Gracias por suscribirte al newsletter."
+
+        inputWrapperClass="newsletter-form__field"
+        inputId="newsletter-email"
+        inputClass="newsletter-form__input"
+        inputName="email"
+        inputDataColumn="Correo electrónico"
+        inputPlaceholder="tu correo"
+        inputLabel=""
+        inputRequired={true}
+
+        buttonClass="newsletter-form__button"
+        buttonHtml="Suscribirme al newsletter"
+        />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

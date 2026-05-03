@@ -1,0 +1,180 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header-politicas.astro";
+import Footer from "../../components/Footer.astro";
+import PolicyElement from "../../snippetsFormPoliticas/PolicyElement.astro";
+import { site } from "../../data/site";
+
+const policySections = [
+  {
+    title: "Responsable del tratamiento de datos",
+    html: `
+      <p>
+        Para una compañía innovadora y de carácter nacional como <strong>Fram Foods, S.A. de C.V.</strong>,
+        con domicilio en Pablo Casals 150 Interior 2, Col. Bosques de San Isidro, Zapopan, Jalisco, México, C.P. 45133,
+        el tratamiento legítimo, controlado e informado de sus datos personales es de vital importancia.
+        <br /><br />
+        El presente Aviso de Privacidad tiene como objeto informarle sobre el tratamiento que se le dará
+        a sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+      </p>
+    `,
+  },
+  {
+    title: "Datos personales que se recaban",
+    html: `
+      <p>
+        Los datos personales que podemos recabar incluyen:
+        <br /><br />
+        <strong>Identificación:</strong> nombre, domicilio, teléfono, correo electrónico, CURP, fecha de nacimiento, nacionalidad, imagen, entre otros.
+        <br />
+        <strong>Laborales:</strong> puesto, empresa, correo y teléfono laboral.
+        <br />
+        <strong>Educación:</strong> trayectoria académica, títulos, cédula profesional.
+        <br />
+        <strong>Salud:</strong> estado de salud, historial clínico, tratamientos.
+        <br />
+        <strong>Financieros:</strong> cuenta bancaria, CLABE, RFC y datos de facturación.
+      </p>
+    `,
+  },
+  {
+    title: "Datos de menores de edad",
+    html: `
+      <p>
+        FramFoods no recaba información de menores sin el consentimiento previo de padres o tutores.
+        <br /><br />
+        Si algún menor proporcionó datos sin autorización, puede solicitar su eliminación contactándonos.
+      </p>
+    `,
+  },
+  {
+    title: "Finalidades del tratamiento",
+    html: `
+      <p>
+        Sus datos serán utilizados para:
+        <br /><br />
+        Control de acceso a instalaciones, cumplimiento de contratos, obligaciones legales y sanitarias,
+        estudios estadísticos, atención médica, auditorías, facturación y relación con proveedores.
+        <br /><br />
+        También, con consentimiento, para fines promocionales, estudios de mercado,
+        programas de lealtad, atención al cliente y desarrollo de productos.
+      </p>
+    `,
+  },
+  {
+    title: "Información no personal",
+    html: `
+      <p>
+        Podemos recopilar información técnica como IP, navegador, sistema operativo y comportamiento de navegación.
+        <br /><br />
+        Utilizamos cookies para mejorar la experiencia del usuario. Puede deshabilitarlas desde su navegador.
+      </p>
+    `,
+  },
+  {
+    title: "Enlaces a terceros",
+    html: `
+      <p>
+        Nuestro sitio puede contener enlaces a páginas externas. FramFoods no se hace responsable
+        por sus políticas de privacidad ni por el tratamiento de datos en dichos sitios.
+      </p>
+    `,
+  },
+  {
+    title: "Medidas de seguridad",
+    html: `
+      <p>
+        Implementamos medidas técnicas, administrativas y físicas para proteger sus datos contra
+        daño, pérdida, alteración o acceso no autorizado.
+      </p>
+    `,
+  },
+  {
+    title: "Transferencia de datos",
+    html: `
+      <p>
+        Sus datos podrán transferirse a terceros relacionados con FramFoods, nacionales o extranjeros,
+        para cumplir con las finalidades descritas.
+        <br /><br />
+        También podrán transferirse en casos previstos por la ley o en procesos de venta de unidades de negocio.
+      </p>
+    `,
+  },
+  {
+    title: "Derechos ARCO",
+    html: `
+      <p>
+        Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación y Oposición (ARCO),
+        así como limitar el uso o revocar el consentimiento de sus datos.
+        <br /><br />
+        Para ello, puede enviar una solicitud al correo:
+        <strong>informacion@framfoods.com.mx</strong>
+      </p>
+    `,
+  },
+  {
+    title: "Modificaciones al aviso",
+    html: `
+      <p>
+        FramFoods se reserva el derecho de modificar este aviso en cualquier momento.
+        <br /><br />
+        Las actualizaciones serán publicadas en:
+        <strong>www.framfoods.mx</strong>
+      </p>
+    `,
+  },
+  {
+    title: "Contacto",
+    html: `
+      <p>
+        Puede comunicarse con el Comité de Protección de Datos en:
+        <br /><br />
+        Pablo Casals 150 Interior 2, Col. Bosques de San Isidro,
+        Zapopan, Jalisco, México, C.P. 45133
+        <br />
+        Correo: <strong>informacion@framfoods.com.mx</strong>
+      </p>
+    `,
+  },
+  {
+    title: "Última actualización",
+    html: `
+      <p>
+        Diciembre 2023
+      </p>
+    `,
+  },
+];
+---
+
+<BaseLayout>
+  <Header />
+
+  <main class="container politicas">
+    <PolicyElement
+      id="aviso-privacidad"
+      class="politicas__content"
+
+      headingLevel="h1"
+
+      title={`Aviso de privacidad de ${site.brandName}`}
+      titleClass="politicas__title"
+
+      sectionClass="section"
+      subtitleClass="politicas__subtitle"
+      textClass="politicas__text"
+
+      sections={policySections}
+    />
+
+    <br />
+
+    <a href="/" class="btn">
+      {site.regresarInicio}
+    </a>
+
+    <br />
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,142 @@
+---
+import PolicyElement from "../../snippetsFormPoliticas/PolicyElement.astro";
+import { site } from "../../data/site";
+
+const termsSections = [
+  {
+    title: "Objeto",
+    html: `
+      <p>
+        Los presentes Términos y Condiciones regulan el acceso, navegación y uso del sitio web
+        <strong>${site.siteUrl}</strong>, propiedad de <strong>${site.brandName}</strong>, con presencia en
+        <strong>${site.city}, ${site.countryName}</strong>.
+        <br />
+        <br />
+        Al ingresar y utilizar este sitio, el usuario acepta quedar sujeto a las disposiciones aquí
+        establecidas, así como a la legislación aplicable. Si no estás de acuerdo con estos términos,
+        deberás abstenerte de utilizar este sitio web.
+      </p>
+    `,
+  },
+  {
+    title: "Uso del sitio web",
+    html: `
+      <p>
+        El usuario se compromete a utilizar <strong>${site.siteUrl}</strong> de manera responsable,
+        lícita y respetuosa, evitando cualquier acción que pueda dañar, inutilizar, sobrecargar
+        o afectar el funcionamiento del sitio o los derechos de terceros.
+        <br />
+        <br />
+        Queda prohibido el uso del sitio para actividades ilícitas, fraudulentas, engañosas o que
+        vulneren derechos de propiedad intelectual, privacidad, seguridad o cualquier disposición legal aplicable.
+      </p>
+    `,
+  },
+  {
+    title: "Propiedad intelectual",
+    html: `
+      <p>
+        Todos los contenidos disponibles en este sitio, incluyendo textos, diseños, logotipos,
+        imágenes, gráficos, estructura, código y demás elementos relacionados con <strong>${site.brandName}</strong>,
+        están protegidos por las leyes aplicables en materia de propiedad intelectual e industrial.
+        <br />
+        <br />
+        Queda prohibida su reproducción, distribución, modificación, publicación o explotación total
+        o parcial sin autorización previa y por escrito del titular correspondiente.
+      </p>
+    `,
+  },
+  {
+    title: "Información y disponibilidad",
+    html: `
+      <p>
+        <strong>${site.brandName}</strong> procura que la información publicada en <strong>${site.siteUrl}</strong>
+        sea clara, actualizada y correcta. Sin embargo, no garantiza que todo el contenido esté libre
+        de errores, interrupciones o desactualizaciones en todo momento.
+        <br />
+        <br />
+        Nos reservamos el derecho de modificar, actualizar, suspender o eliminar contenidos, servicios,
+        secciones o funcionalidades del sitio sin previo aviso, cuando así se considere necesario.
+      </p>
+    `,
+  },
+  {
+    title: "Limitación de responsabilidad",
+    html: `
+      <p>
+        El uso de este sitio web se realiza bajo la responsabilidad del usuario. <strong>${site.brandName}</strong>
+        no será responsable por daños o perjuicios directos o indirectos derivados del uso o imposibilidad
+        de uso de <strong>${site.siteUrl}</strong>, incluyendo fallas técnicas, interrupciones del servicio
+        o errores en el contenido.
+        <br />
+        <br />
+        Tampoco se garantiza que el sitio esté libre de virus, componentes dañinos o elementos que puedan
+        afectar los dispositivos del usuario, por lo que se recomienda navegar con las medidas de seguridad adecuadas.
+      </p>
+    `,
+  },
+  {
+    title: "Enlaces y terceros",
+    html: `
+      <p>
+        Este sitio podría contener enlaces a sitios externos o plataformas de terceros. En esos casos,
+        <strong>${site.brandName}</strong> no se responsabiliza por el contenido, políticas, disponibilidad
+        o prácticas de dichos sitios, ya que su operación depende exclusivamente de terceros.
+        <br />
+        <br />
+        El acceso a enlaces externos será decisión y responsabilidad del usuario.
+      </p>
+    `,
+  },
+  {
+    title: "Contacto",
+    html: `
+      <p>
+        Para cualquier duda, comentario o aclaración relacionada con estos Términos y Condiciones,
+        puedes comunicarte con <strong>${site.brandName}</strong> a través del correo electrónico
+        <strong>${site.correoElectronico}</strong> o al número telefónico
+        <strong>${site.numeroTelefonico}</strong>.
+      </p>
+    `,
+  },
+  {
+    title: "Modificaciones",
+    html: `
+      <p>
+        <strong>${site.brandName}</strong> se reserva el derecho de actualizar o modificar en cualquier
+        momento los presentes Términos y Condiciones. Cualquier cambio será publicado en este mismo sitio,
+        por lo que se recomienda revisar periódicamente esta sección.
+      </p>
+    `,
+  },
+];
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Términos y Condiciones de {site.brandName}</title>
+  </head>
+
+  <body>
+    <main class="politicas-modal">
+      <PolicyElement
+        id="terminos-condiciones-modal"
+        class="politicas-modal__content"
+
+        headingLevel="h2"
+
+        title={`Términos y Condiciones de ${site.brandName}`}
+        titleClass="politicas-modal__title"
+
+        sectionClass="section"
+        subtitleClass="politicas-modal__subtitle"
+        textClass="politicas-modal__text"
+
+        sections={termsSections}
+      />
+    </main>
+  </body>
+</html>

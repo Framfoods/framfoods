@@ -1,0 +1,62 @@
+---
+import { site, buildTitle, mediaUrl } from "../data/site";
+import "../styles/global.css";
+
+const title = buildTitle();
+const ogImage = mediaUrl("og-image.jpg");
+const logo = mediaUrl("logo-112x112.png");
+---
+<!DOCTYPE html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={site.metaDescription} />
+    <link rel="canonical" href={site.siteUrl} />
+
+    <link rel="icon" href="/media/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/media/favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon-180x180.png" />
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:locale" content={site.ogLocale} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={site.ogDescription} />
+    <meta property="og:url" content={site.siteUrl} />
+    <meta property="og:site_name" content={site.brandName} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={site.brandName} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={site.ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: site.brandName,
+      url: site.siteUrl,
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.brandName,
+      url: site.siteUrl,
+      logo,
+      sameAs: [site.socialFacebook, site.socialInstagram, site.socialLinkedIn],
+    })} />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

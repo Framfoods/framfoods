@@ -1,0 +1,63 @@
+---
+// src/snippetsFormPoliticas/PolicyModalElement.astro
+
+const {
+  id = "modal-terminos",
+  class: clase = "modal-terminos",
+
+  contentClass = "modal-contenido-terminos",
+  closeClass = "cerrar",
+
+  iframeId = "iframe-terminos",
+  iframeTitle = "Contenido de políticas",
+  iframeHeight = "400",
+} = Astro.props;
+---
+
+<div id={id} class={clase} hidden>
+  <div class={contentClass}>
+    <button type="button" class={closeClass} aria-label="Cerrar">
+      ✕
+    </button>
+
+    <iframe
+      id={iframeId}
+      title={iframeTitle}
+      src=""
+      width="100%"
+      height={iframeHeight}
+      style="border:none;"
+    ></iframe>
+  </div>
+</div>
+
+<script define:vars={{ id, iframeId, closeClass }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById(id);
+    const iframe = document.getElementById(iframeId);
+
+    if (!modal || !iframe) return;
+
+    document.addEventListener("click", (event) => {
+      const btn = event.target.closest(".aceptar-terminos");
+      const closeButton = event.target.closest(`.${closeClass}`);
+
+      if (btn) {
+        iframe.src = btn.dataset.url || btn.dataset.policyUrl || "";
+        modal.hidden = false;
+      }
+
+      if (closeButton || event.target === modal) {
+        modal.hidden = true;
+        iframe.src = "";
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.hidden) {
+        modal.hidden = true;
+        iframe.src = "";
+      }
+    });
+  });
+</script>

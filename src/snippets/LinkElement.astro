@@ -1,0 +1,26 @@
+---
+// src/snippets/LinkElement.astro
+
+const {
+  href = "#",
+  id,
+  class: clase,
+  target,
+  title,
+  "aria-label": ariaLabel,
+  rel,
+  html,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+  {...(target ? { target } : {})}
+  {...(title ? { title } : {})}
+  {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+  {...(rel ? { rel } : {})}
+>
+  <Fragment set:html={html} />
+</a>

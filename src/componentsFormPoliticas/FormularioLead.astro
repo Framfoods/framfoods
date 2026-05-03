@@ -1,0 +1,453 @@
+---
+// src/componentsFormPoliticas/FormularioLead.astro
+
+/*
+  FORMULARIO MODULAR
+
+  id:
+    Ahora el id se aplica directamente al <form>.
+    Ejemplo:
+    <form id="formulario">
+
+  class:
+    Ahora la clase se aplica directamente al <form>.
+    Ejemplo:
+    <form class="section">
+
+  action:
+    Endpoint API.
+    Ejemplo: "/api/contacto"
+
+  method:
+    Normalmente "POST".
+
+  thankYouUrl:
+    Página de gracias.
+    Ejemplo: "/gracias"
+
+  submitMode:
+    "fetch" = el script lee todos los campos por name y manda JSON a la API.
+    "native" = el navegador envía el form normal.
+
+  name:
+    Nombre real del campo para FormData.
+    Ejemplo: name="email"
+
+  dataColumn:
+    Nombre opcional para guardar en Google Sheets, Excel o CRM.
+    Ejemplo: dataColumn="Correo electrónico"
+*/
+
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+
+import FormInputElement from "../snippetsFormPoliticas/FormInputElement.astro";
+import FormTextareaElement from "../snippetsFormPoliticas/FormTextareaElement.astro";
+import FormSelectElement from "../snippetsFormPoliticas/FormSelectElement.astro";
+import FormCheckboxPolicyElement from "../snippetsFormPoliticas/FormCheckboxPolicyElement.astro";
+import FormButtonElement from "../snippetsFormPoliticas/FormButtonElement.astro";
+import PolicyModalElement from "../snippetsFormPoliticas/PolicyModalElement.astro";
+
+const {
+  id = "formulario",
+  class: clase = "section",
+
+  action = "/api/contacto",
+  method = "POST",
+  thankYouUrl = "/gracias",
+  submitMode = "fetch",
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2 = "Formulario",
+  h2Id = "",
+  h2Class = "",
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  articleClass = "preguntas",
+  topGroupClass = "grupo-arriba",
+  bottomGroupClass = "grupo-abajo",
+  fieldWrapperClass = "grupo-input",
+
+  buttonClass = "enviar",
+  buttonHtml = 'Quiero crecer mi marca <i class="fa-solid fa-paper-plane"></i>',
+
+  modalId = "modal-terminos",
+  modalClass = "modal-terminos",
+  modalContentClass = "modal-contenido-terminos",
+  modalCloseClass = "cerrar",
+  modalIframeId = "iframe-terminos",
+  modalIframeHeight = "400",
+
+  fieldsTop = [
+    {
+      tag: "input",
+      type: "text",
+      name: "nombre_completo",
+      dataColumn: "Nombre completo",
+      label: "Nombre*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      autocomplete: "name",
+    },
+    {
+      tag: "input",
+      type: "email",
+      name: "email",
+      dataColumn: "Correo electrónico",
+      label: "Correo*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      autocomplete: "email",
+      inputmode: "email",
+    },
+    {
+      tag: "input",
+      type: "tel",
+      name: "telefono",
+      dataColumn: "Número telefónico",
+      label: "Whatsapp*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      autocomplete: "tel",
+      inputmode: "tel",
+    },
+    {
+      tag: "select",
+      name: "pais",
+      dataColumn: "País",
+      label: "¿De qué país nos visita?*",
+      required: true,
+      options: [
+        {
+          label: "Lorem Ipsum",
+          value: "",
+          disabled: true,
+          selected: true,
+          hidden: true,
+        },
+        {
+          label: "Lorem Ipsum 1",
+          value: "lorem-1",
+        },
+        {
+          label: "Lorem Ipsum 2",
+          value: "lorem-2",
+        },
+      ],
+    },
+    {
+      tag: "select",
+      name: "tipo_proyecto",
+      dataColumn: "Tipo de proyecto",
+      label: "¿Qué tipo de proyecto tiene?*",
+      required: true,
+      options: [
+        {
+          label: "Lorem Ipsum",
+          value: "",
+          disabled: true,
+          selected: true,
+          hidden: true,
+        },
+        {
+          label: "Lorem Ipsum 1",
+          value: "lorem-1",
+        },
+        {
+          label: "Lorem Ipsum 2",
+          value: "lorem-2",
+        },
+      ],
+    },
+  ],
+
+  fieldsBottom = [
+    {
+      tag: "textarea",
+      name: "reto_principal",
+      dataColumn: "Principal reto",
+      label: "¿Cuál es tu principal reto hoy?*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      rows: "6",
+    },
+    {
+      tag: "textarea",
+      name: "solucion_buscada",
+      dataColumn: "Solución buscada",
+      label: "¿Qué solución estás buscando?*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      rows: "6",
+    },
+    {
+      tag: "textarea",
+      name: "productos",
+      dataColumn: "Tipos de productos",
+      label: "¿Qué tipos de productos manejas?*",
+      placeholder: "Lorem Ipsum",
+      required: true,
+      rows: "6",
+    },
+    {
+      tag: "checkbox-policy",
+      name: "politicas",
+      dataColumn: "Políticas aceptadas",
+      label: "Acepto las políticas de privacidad",
+      policyText: "Ver políticas",
+      policyUrl: "/politicas/privacidad-modal",
+      required: true,
+    },
+  ],
+} = Astro.props;
+
+const formSelector = id ? `#${id}` : "";
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+---
+
+<form
+  id={id}
+  class={clase}
+  action={action}
+  method={method}
+  data-submit-mode={submitMode}
+  data-thank-you-url={thankYouUrl}
+>
+  {tieneTexto && (
+    <TextGroupElement
+      h1={h1}
+      h1Id={h1Id}
+      h1Class={h1Class}
+
+      h2={h2}
+      h2Id={h2Id}
+      h2Class={h2Class}
+
+      h3={h3}
+      h3Id={h3Id}
+      h3Class={h3Class}
+
+      p={p}
+      pId={pId}
+      pClass={pClass}
+
+      linkHtml={linkHtml}
+      linkHref={linkHref}
+      linkId={linkId}
+      linkClass={linkClass}
+      linkTitle={linkTitle}
+      linkAriaLabel={linkAriaLabel}
+      linkTarget={linkTarget}
+      linkRel={linkRel}
+    />
+  )}
+
+  <input type="hidden" name="thankYouUrl" value={thankYouUrl} />
+
+  <article class={articleClass}>
+    <div class={topGroupClass}>
+      {fieldsTop.map((field, index) => (
+        <>
+          {field.tag === "input" && (
+            <FormInputElement
+              wrapperClass={field.wrapperClass || fieldWrapperClass}
+              label={field.label}
+              labelClass={field.labelClass}
+              id={field.id || `campo-top-${index}`}
+              class={field.class}
+              type={field.type}
+              name={field.name}
+              dataColumn={field.dataColumn}
+              value={field.value}
+              placeholder={field.placeholder}
+              required={field.required}
+              disabled={field.disabled}
+              readonly={field.readonly}
+              autocomplete={field.autocomplete}
+              inputmode={field.inputmode}
+              pattern={field.pattern}
+              min={field.min}
+              max={field.max}
+              step={field.step}
+              minlength={field.minlength}
+              maxlength={field.maxlength}
+              ariaLabel={field.ariaLabel}
+            />
+          )}
+
+          {field.tag === "select" && (
+            <FormSelectElement
+              wrapperClass={field.wrapperClass || fieldWrapperClass}
+              label={field.label}
+              labelClass={field.labelClass}
+              id={field.id || `campo-top-${index}`}
+              class={field.class}
+              name={field.name}
+              dataColumn={field.dataColumn}
+              required={field.required}
+              disabled={field.disabled}
+              ariaLabel={field.ariaLabel}
+              options={field.options || []}
+            />
+          )}
+        </>
+      ))}
+    </div>
+
+    <div class={bottomGroupClass}>
+      {fieldsBottom.map((field, index) => (
+        <>
+          {field.tag === "textarea" && (
+            <FormTextareaElement
+              wrapperClass={field.wrapperClass || fieldWrapperClass}
+              label={field.label}
+              labelClass={field.labelClass}
+              id={field.id || `campo-bottom-${index}`}
+              class={field.class}
+              name={field.name}
+              dataColumn={field.dataColumn}
+              value={field.value}
+              placeholder={field.placeholder}
+              rows={field.rows}
+              required={field.required}
+              disabled={field.disabled}
+              readonly={field.readonly}
+              minlength={field.minlength}
+              maxlength={field.maxlength}
+              ariaLabel={field.ariaLabel}
+            />
+          )}
+
+          {field.tag === "checkbox-policy" && (
+            <FormCheckboxPolicyElement
+              wrapperClass={field.wrapperClass || fieldWrapperClass}
+              id={field.id || `campo-bottom-${index}`}
+              class={field.class}
+              name={field.name}
+              dataColumn={field.dataColumn}
+              required={field.required}
+              checked={field.checked}
+              label={field.label}
+              labelClass={field.labelClass || "checkbox"}
+              policyText={field.policyText}
+              policyUrl={field.policyUrl}
+              policyButtonClass={field.policyButtonClass || "aceptar-terminos"}
+            />
+          )}
+        </>
+      ))}
+    </div>
+
+    <PolicyModalElement
+      id={modalId}
+      class={modalClass}
+      contentClass={modalContentClass}
+      closeClass={modalCloseClass}
+      iframeId={modalIframeId}
+      iframeHeight={modalIframeHeight}
+    />
+  </article>
+
+  <FormButtonElement
+    type="submit"
+    class={buttonClass}
+    html={buttonHtml}
+    ariaLabel="Enviar formulario"
+  />
+</form>
+
+<script define:vars={{ formSelector }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(formSelector);
+
+    if (!form) return;
+
+    form.addEventListener("submit", async (event) => {
+      const submitMode = form.dataset.submitMode || "native";
+
+      if (submitMode !== "fetch") return;
+
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(form);
+      const fields = {};
+      const columns = {};
+
+      formData.forEach((value, key) => {
+        if (fields[key]) {
+          if (Array.isArray(fields[key])) {
+            fields[key].push(value);
+          } else {
+            fields[key] = [fields[key], value];
+          }
+        } else {
+          fields[key] = value;
+        }
+      });
+
+      form.querySelectorAll("[name]").forEach((field) => {
+        const name = field.getAttribute("name");
+        const column = field.getAttribute("data-column");
+
+        if (name && column) {
+          columns[name] = column;
+        }
+      });
+
+      const payload = {
+        fields,
+        columns,
+        submittedAt: new Date().toISOString(),
+        page: window.location.href,
+      };
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          throw new Error("No se pudo enviar el formulario.");
+        }
+
+        const thankYouUrl = form.dataset.thankYouUrl;
+
+        if (thankYouUrl) {
+          window.location.href = thankYouUrl;
+        } else {
+          form.reset();
+        }
+      } catch (error) {
+        console.error(error);
+        alert("No se pudo enviar el formulario. Intenta nuevamente.");
+      }
+    });
+  });
+</script>

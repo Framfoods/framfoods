@@ -1,0 +1,59 @@
+---
+// src/snippetsFormPoliticas/FormTextareaElement.astro
+
+const {
+  wrapperId = "",
+  wrapperClass = "",
+
+  label = "",
+  labelClass = "",
+
+  id = "",
+  class: clase = "",
+
+  name = "",
+  value = "",
+  placeholder = "",
+  rows = "5",
+
+  dataColumn = "",
+
+  required = false,
+  disabled = false,
+  readonly = false,
+
+  minlength = "",
+  maxlength = "",
+
+  ariaLabel = "",
+} = Astro.props;
+---
+
+<div
+  {...(wrapperId ? { id: wrapperId } : {})}
+  {...(wrapperClass ? { class: wrapperClass } : {})}
+>
+  {label && (
+    <label
+      {...(id ? { for: id } : {})}
+      {...(labelClass ? { class: labelClass } : {})}
+    >
+      {label}
+    </label>
+  )}
+
+  <textarea
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+    name={name}
+    placeholder={placeholder}
+    rows={rows}
+    {...(dataColumn ? { "data-column": dataColumn } : {})}
+    {...(required ? { required: true } : {})}
+    {...(disabled ? { disabled: true } : {})}
+    {...(readonly ? { readonly: true } : {})}
+    {...(minlength ? { minlength } : {})}
+    {...(maxlength ? { maxlength } : {})}
+    {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+  >{value}</textarea>
+</div>

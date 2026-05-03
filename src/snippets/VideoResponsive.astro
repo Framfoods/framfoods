@@ -1,0 +1,47 @@
+---
+// src/snippets/VideoResponsive.astro
+
+const {
+  srcDesktop,
+  srcMobile,
+  width,
+  height,
+  autoplay,
+  muted,
+  loop,
+  playsinline,
+  controls,
+  preload,
+  ariaLabel,
+} = Astro.props;
+---
+
+<video
+  {...(width ? { width } : {})}
+  {...(height ? { height } : {})}
+  {...(autoplay ? { autoplay: true } : {})}
+  {...(muted ? { muted: true } : {})}
+  {...(loop ? { loop: true } : {})}
+  {...(playsinline ? { playsinline: true } : {})}
+  {...(controls ? { controls: true } : {})}
+  {...(preload ? { preload } : {})}
+  {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+>
+  {srcDesktop && (
+    <source
+      src={srcDesktop}
+      media="(min-width: 768px)"
+      type="video/mp4"
+    />
+  )}
+
+  {srcMobile && (
+    <source
+      src={srcMobile}
+      media="(max-width: 767px)"
+      type="video/mp4"
+    />
+  )}
+
+  Tu navegador no soporta video HTML5.
+</video>

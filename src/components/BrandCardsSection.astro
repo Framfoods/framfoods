@@ -1,0 +1,127 @@
+---
+// src/components/BrandCardsSection.astro
+
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+import CardElement from "../snippets/CardElement.astro";
+
+const {
+  id = "",
+  class: clase = "",
+
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTitle,
+  linkAriaLabel,
+  linkTarget,
+  linkRel,
+
+  articleId = "",
+  articleClass = "",
+
+  items = [],
+} = Astro.props;
+
+const tieneTexto = h1 || h2 || h3 || p || linkHtml;
+---
+
+<section
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+>
+  {tieneTexto && (
+    <TextGroupElement
+      h1={h1}
+      h1Id={h1Id}
+      h1Class={h1Class}
+
+      h2={h2}
+      h2Id={h2Id}
+      h2Class={h2Class}
+
+      h3={h3}
+      h3Id={h3Id}
+      h3Class={h3Class}
+
+      p={p}
+      pId={pId}
+      pClass={pClass}
+
+      linkHtml={linkHtml}
+      linkHref={linkHref}
+      linkId={linkId}
+      linkClass={linkClass}
+      linkTitle={linkTitle}
+      linkAriaLabel={linkAriaLabel}
+      linkTarget={linkTarget}
+      linkRel={linkRel}
+    />
+  )}
+
+  <article
+    {...(articleId ? { id: articleId } : {})}
+    {...(articleClass ? { class: articleClass } : {})}
+  >
+    {items.map((item) => (
+      <CardElement
+        id={item.id}
+        class={item.class}
+
+        srcDesktop={item.srcDesktop}
+        srcMobile={item.srcMobile}
+        alt={item.alt}
+        title={item.title}
+        width={item.width}
+        height={item.height}
+        priority={item.priority}
+        loading={item.loading}
+        decoding={item.decoding}
+
+        h1={item.h1}
+        h1Id={item.h1Id}
+        h1Class={item.h1Class}
+
+        h2={item.h2}
+        h2Id={item.h2Id}
+        h2Class={item.h2Class}
+
+        h3={item.h3}
+        h3Id={item.h3Id}
+        h3Class={item.h3Class}
+
+        p={item.p}
+        pId={item.pId}
+        pClass={item.pClass}
+
+        linkHtml={item.linkHtml}
+        linkHref={item.linkHref}
+        linkId={item.linkId}
+        linkClass={item.linkClass}
+        linkTitle={item.linkTitle}
+        linkAriaLabel={item.linkAriaLabel}
+        linkTarget={item.linkTarget}
+        linkRel={item.linkRel}
+
+        captionId={item.captionId}
+        captionClass={item.captionClass}
+      />
+    ))}
+  </article>
+</section>

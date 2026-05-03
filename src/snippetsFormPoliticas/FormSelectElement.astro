@@ -1,0 +1,60 @@
+---
+// src/snippetsFormPoliticas/FormSelectElement.astro
+
+const {
+  wrapperId = "",
+  wrapperClass = "",
+
+  label = "",
+  labelClass = "",
+
+  id = "",
+  class: clase = "",
+
+  name = "",
+
+  dataColumn = "",
+
+  required = false,
+  disabled = false,
+
+  ariaLabel = "",
+
+  options = [],
+} = Astro.props;
+---
+
+<div
+  {...(wrapperId ? { id: wrapperId } : {})}
+  {...(wrapperClass ? { class: wrapperClass } : {})}
+>
+  {label && (
+    <label
+      {...(id ? { for: id } : {})}
+      {...(labelClass ? { class: labelClass } : {})}
+    >
+      {label}
+    </label>
+  )}
+
+  <select
+    {...(id ? { id } : {})}
+    {...(clase ? { class: clase } : {})}
+    name={name}
+    {...(dataColumn ? { "data-column": dataColumn } : {})}
+    {...(required ? { required: true } : {})}
+    {...(disabled ? { disabled: true } : {})}
+    {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+  >
+    {options.map((option, index) => (
+      <option
+        value={option.value}
+        {...(option.disabled ? { disabled: true } : {})}
+        {...(option.selected || index === 0 ? { selected: true } : {})}
+        {...(option.hidden ? { hidden: true } : {})}
+      >
+        {option.label}
+      </option>
+    ))}
+  </select>
+</div>

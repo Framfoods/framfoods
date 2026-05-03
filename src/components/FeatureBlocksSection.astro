@@ -1,0 +1,51 @@
+---
+// src/components/FeatureBlocksSection.astro
+import TextGroupElement from "../snippets/TextGroupElement.astro";
+
+const {
+  id,
+  class: clase,
+  items = [],
+} = Astro.props;
+---
+
+<section
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+>
+  <article>
+    {items.map((item) => (
+      <div
+        {...(item.id ? { id: item.id } : {})}
+        {...(item.class ? { class: item.class } : {})}
+      >
+        <TextGroupElement
+          h1={item.h1}
+          h1Id={item.h1Id}
+          h1Class={item.h1Class}
+
+          h2={item.h2}
+          h2Id={item.h2Id}
+          h2Class={item.h2Class}
+
+          h3={item.h3}
+          h3Id={item.h3Id}
+          h3Class={item.h3Class}
+
+          p={item.p}
+          pId={item.pId}
+          pClass={item.pClass}
+
+          linkHtml={item.linkHtml}
+          linkHref={item.linkHref}
+          linkId={item.linkId}
+          linkClass={item.linkClass}
+          linkTitle={item.linkTitle}
+          linkAriaLabel={item.linkAriaLabel}
+          linkTarget={item.linkTarget}
+          linkRel={item.linkRel}
+        />
+      </div>
+    ))}
+  </article>
+</section>

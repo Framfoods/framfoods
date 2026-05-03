@@ -1,0 +1,24 @@
+---
+// src/snippetsFormPoliticas/FormButtonElement.astro
+
+const {
+  id = "",
+  class: clase = "",
+
+  type = "submit",
+  disabled = false,
+
+  html = "",
+  ariaLabel = "",
+} = Astro.props;
+---
+
+<button
+  type={type}
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+  {...(disabled ? { disabled: true } : {})}
+  {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+>
+  <Fragment set:html={html} />
+</button>

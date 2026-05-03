@@ -1,0 +1,76 @@
+---
+// src/snippets/TextGroupElement.astro
+import LinkElement from "./LinkElement.astro";
+
+const {
+  h1,
+  h1Id,
+  h1Class,
+
+  h2,
+  h2Id,
+  h2Class,
+
+  h3,
+  h3Id,
+  h3Class,
+
+  p,
+  pId,
+  pClass,
+
+  linkHtml,
+  linkHref,
+  linkId,
+  linkClass,
+  linkTarget,
+  linkTitle,
+  linkAriaLabel,
+  linkRel,
+} = Astro.props;
+---
+
+{h1 && (
+  <h1
+    {...(h1Id ? { id: h1Id } : {})}
+    {...(h1Class ? { class: h1Class } : {})}
+    set:html={h1}
+  />
+)}
+
+{h2 && (
+  <h2
+    {...(h2Id ? { id: h2Id } : {})}
+    {...(h2Class ? { class: h2Class } : {})}
+    set:html={h2}
+  />
+)}
+
+{h3 && (
+  <h3
+    {...(h3Id ? { id: h3Id } : {})}
+    {...(h3Class ? { class: h3Class } : {})}
+    set:html={h3}
+  />
+)}
+
+{p && (
+  <p
+    {...(pId ? { id: pId } : {})}
+    {...(pClass ? { class: pClass } : {})}
+    set:html={p}
+  />
+)}
+
+{linkHtml && linkHref && (
+  <LinkElement
+    href={linkHref}
+    id={linkId}
+    class={linkClass}
+    target={linkTarget}
+    title={linkTitle}
+    aria-label={linkAriaLabel}
+    rel={linkRel}
+    html={linkHtml}
+  />
+)}

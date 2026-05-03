@@ -1,0 +1,38 @@
+---
+// src/snippets/ListElement.astro
+
+const {
+  id,
+  class: clase,
+
+  // Tipo de lista: "ul" o "ol"
+  as = "ul",
+
+  // Estilo nativo CSS: disc, circle, square, decimal, none, etc.
+  listStyleType,
+
+  // Clase general para cada <li>
+  itemClass,
+
+  // Lista de elementos
+  items = [],
+} = Astro.props;
+
+const ListTag = as;
+---
+
+<ListTag
+  {...(id ? { id } : {})}
+  {...(clase ? { class: clase } : {})}
+  {...(listStyleType ? { style: `list-style-type: ${listStyleType};` } : {})}
+>
+  {items.map((item) => (
+    <li
+      {...(item.id ? { id: item.id } : {})}
+      {...(item.class ? { class: item.class } : itemClass ? { class: itemClass } : {})}
+      {...(item.listStyleType ? { style: `list-style-type: ${item.listStyleType};` } : {})}
+    >
+      <Fragment set:html={item.html || ""} />
+    </li>
+  ))}
+</ListTag>
