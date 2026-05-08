@@ -31,8 +31,8 @@ import { site } from "../data/site";
   id="hero-home"
   class="banner"
 
-  srcDesktop="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
-  srcMobile="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+  srcDesktop="../public/media/hero-desktop.mp4?width=2500"
+  srcMobile="../public/media/hero-mobile.mp4?width=1500"
 
   width="1920"
   height="500"
@@ -58,8 +58,8 @@ import { site } from "../data/site";
   id="bloque-alimentos"
   class="imagen-derecha-texto-izquierda"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/banner1_desktop.webp?width=2500"
+  srcMobile="../public/media/banner1_desktop.webp?width=1500"
   alt="Alimentos de alta calidad"
   width="682"
   height="378"
@@ -143,13 +143,61 @@ import { site } from "../data/site";
   ]}
 />
 
+<div class="feature-blocks-section__nav">
+    <button class="feature-blocks-section__btn prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="11" viewBox="0 0 6 11" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.70711 0.29513C6.09763 0.688636 6.09763 1.32664 5.70711 1.72014L2.41421 5.03818L5.70711 8.35621C6.09763 8.74972 6.09763 9.38772 5.70711 9.78123C5.31658 10.1747 4.68342 10.1747 4.29289 9.78123L0.292893 5.75068C-0.0976311 5.35718 -0.0976311 4.71918 0.292893 4.32567L4.29289 0.29513C4.68342 -0.0983765 5.31658 -0.0983766 5.70711 0.29513Z" fill="#EF6A02"/>
+        </svg>
+    </button>
+
+    <button class="feature-blocks-section__btn next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="11" viewBox="0 0 6 11" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292894 9.78123C-0.0976307 9.38772 -0.0976307 8.74972 0.292894 8.35621L3.58579 5.03818L0.292893 1.72014C-0.0976311 1.32664 -0.0976311 0.688636 0.292893 0.29513C0.683417 -0.0983767 1.31658 -0.0983767 1.70711 0.29513L5.70711 4.32567C6.09763 4.71918 6.09763 5.35718 5.70711 5.75068L1.70711 9.78123C1.31658 10.1747 0.683418 10.1747 0.292894 9.78123Z" fill="#EF6A02"/>
+        </svg>
+    </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const slider = document.querySelector('.feature-blocks-section article');
+
+    if (!slider) return;
+
+    const nextBtn = document.querySelector('.feature-blocks-section__btn.next');
+    const prevBtn = document.querySelector('.feature-blocks-section__btn.prev');
+
+    const getCardWidth = () => {
+        return (
+            slider.querySelector('.feature-blocks-section__item').offsetWidth + 24
+        );
+    };
+
+    nextBtn?.addEventListener('click', () => {
+        slider.scrollBy({
+            left: getCardWidth(),
+            behavior: 'smooth',
+        });
+    });
+
+    prevBtn?.addEventListener('click', () => {
+        slider.scrollBy({
+            left: -getCardWidth(),
+            behavior: 'smooth',
+        });
+    });
+
+});
+</script>
+
+
 <ImageCardsOverlay
   id="desarrollo-marcas"
   class="image-cards-overlay"
 
-  backgroundSrcDesktop="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
-  backgroundSrcMobile="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
-  backgroundAlt="Fondo de bosque"
+  backgroundSrcDesktop="../public/media/banner40-desktop.webp?width=2500"
+  backgroundSrcMobile="../public/media/banner40-desktop.webp?width=1500"
+  backgroundAlt="Desarrollo de marca"
   backgroundWidth="1920"
   backgroundHeight="737"
   backgroundLoading="lazy"
@@ -160,8 +208,8 @@ import { site } from "../data/site";
       figureId: "",
       figureClass: "banner image-cards-overlay__card",
 
-      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
-      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
+      srcDesktop: "../public/media/banner3-normal_desktop.webp?width=2500",
+      srcMobile: "../public/media/banner3-normal_desktop.webp?width=2500",
       alt: "Desarrollo de marca propia",
       width: "621",
       height: "645",
@@ -179,9 +227,9 @@ import { site } from "../data/site";
       h3Id: "",
       h3Class: "",
 
-      p: "",
+      p: `En <strong>Fram Foods</strong> somos especialistas en el <strong>Desarrollo de Marcas Propias</strong>, trabajando de manera estratégica con nuestros socios para convertir ideas en productos exitosos y competitivos dentro del mercado mexicano.`,
       pId: "",
-      pClass: "",
+      pClass: "hoverText",
 
       linkHtml: "",
       linkHref: "",
@@ -196,8 +244,8 @@ import { site } from "../data/site";
       figureId: "",
       figureClass: "banner image-cards-overlay__card",
 
-      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
-      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
+      srcDesktop: "../public/media/banner2-normal_desktop.webp?width=2500",
+      srcMobile: "../public/media/banner2-normal_desktop.webp?width=2500",
       alt: "Representación de marcas comerciales",
       width: "621",
       height: "645",
@@ -215,9 +263,11 @@ import { site } from "../data/site";
       h3Id: "",
       h3Class: "",
 
-      p: "",
+      p: `En <strong>Fram Foods</strong> conectamos a productores globales con el mercado mexicano, nuestra labor consiste en identificar las tendencias internacionales y seleccionar cuidadosamente las marcas líderes. Garantizando su calidad y frescura, gracias a nuestra sólida red logística y de distribución,
+      <br><br>
+      La riqueza gastronómica de diversas regiones llega a las mesas y negocios de México con total confianza, eficiencia y excelente calidad.`,
       pId: "",
-      pClass: "",
+      pClass: "hoverText",
 
       linkHtml: "",
       linkHref: "",
@@ -244,161 +294,141 @@ import { site } from "../data/site";
 
   items={[
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
-      alt: "Aliado comercial 1",
-      title: "Aliado comercial 1",
-      width: "100",
+      srcDesktop: "../public/media/aliados/3blogo.webp?width=600",
+      srcMobile: "../public/media/aliados/3blogo.webp?width=600",
+      alt: "Aliado FramFoods | 3B",
+      title: "Aliado FramFoods | 3B",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
-      alt: "Aliado comercial 2",
-      title: "Aliado comercial 2",
-      width: "100",
+      srcDesktop: "../public/media/aliados/alsuper.webp?width=600",
+      srcMobile: "../public/media/aliados/alsuper.webp?width=600",
+      alt: "Aliado FramFoods | Al Super",
+      title: "Aliado FramFoods | Al Super",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
-      alt: "Aliado comercial 3",
-      title: "Aliado comercial 3",
-      width: "100",
+      srcDesktop: "../public/media/aliados/bara.webp?width=600",
+      srcMobile: "../public/media/aliados/bara.webp?width=600",
+      alt: "Aliado FramFoods | Bara",
+      title: "Aliado FramFoods | Bara",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
-      alt: "Aliado comercial 4",
-      title: "Aliado comercial 4",
-      width: "100",
+      srcDesktop: "../public/media/aliados/calimax.webp?width=600",
+      srcMobile: "../public/media/aliados/calimax.webp?width=600",
+      alt: "Aliado FramFoods | Calimax",
+      title: "Aliado FramFoods | Calimax",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
-      alt: "Aliado comercial 5",
-      title: "Aliado comercial 5",
-      width: "100",
+      srcDesktop: "../public/media/aliados/chedraui.webp?width=600",
+      srcMobile: "../public/media/aliados/chedraui.webp?width=600",
+      alt: "Aliado FramFoods | Chedraui",
+      title: "Aliado FramFoods | Chedraui",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
-      alt: "Aliado comercial 6",
-      title: "Aliado comercial 6",
-      width: "100",
+      srcDesktop: "../public/media/aliados/cityclub.webp?width=600",
+      srcMobile: "../public/media/aliados/cityclub.webp?width=600",
+      alt: "Aliado FramFoods | City Club",
+      title: "Aliado FramFoods | City Club",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image10_92de451c-21c0-43a2-828d-183eaa72a44e.jpg?v=1732471001",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image10_92de451c-21c0-43a2-828d-183eaa72a44e.jpg?v=1732471001",
-      alt: "Aliado comercial 7",
-      title: "Aliado comercial 7",
-      width: "100",
+      srcDesktop: "../public/media/aliados/heb.webp?width=600",
+      srcMobile: "../public/media/aliados/heb.webp?width=600",
+      alt: "Aliado FramFoods | HEB",
+      title: "Aliado FramFoods | HEB",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image6_64ef89c8-45d9-4ab0-84ea-a80d71529661.jpg?v=1732471028",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image6_64ef89c8-45d9-4ab0-84ea-a80d71529661.jpg?v=1732471028",
-      alt: "Aliado comercial 8",
-      title: "Aliado comercial 8",
-      width: "100",
+      srcDesktop: "../public/media/aliados/lacomer.webp?width=600",
+      srcMobile: "../public/media/aliados/lacomer.webp?width=600",
+      alt: "Aliado FramFoods | LA COMER",
+      title: "Aliado FramFoods | LA COMER",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image1_c54b6353-ac4f-4508-8bb0-4e17533a84ac.jpg?v=1732471164",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image1_c54b6353-ac4f-4508-8bb0-4e17533a84ac.jpg?v=1732471164",
-      alt: "Aliado comercial 9",
-      title: "Aliado comercial 9",
-      width: "100",
+      srcDesktop: "../public/media/aliados/ley.webp?width=600",
+      srcMobile: "../public/media/aliados/ley.webp?width=600",
+      alt: "Aliado FramFoods | Ley",
+      title: "Aliado FramFoods | Ley",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image4_d9f93edc-fdfc-4f66-889a-d91312011fcf.jpg?v=1732471839",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image4_d9f93edc-fdfc-4f66-889a-d91312011fcf.jpg?v=1732471839",
-      alt: "Aliado comercial 10",
-      title: "Aliado comercial 10",
-      width: "100",
+      srcDesktop: "../public/media/aliados/neto.webp?width=600",
+      srcMobile: "../public/media/aliados/neto.webp?width=600",
+      alt: "Aliado FramFoods | neto",
+      title: "Aliado FramFoods | neto",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image12_2e49c9f6-f23b-4978-8d28-5379d7073c3b.jpg?v=1732471863",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image12_2e49c9f6-f23b-4978-8d28-5379d7073c3b.jpg?v=1732471863",
-      alt: "Aliado comercial 11",
-      title: "Aliado comercial 11",
-      width: "100",
+      srcDesktop: "../public/media/aliados/petco.webp?width=600",
+      srcMobile: "../public/media/aliados/petco.webp?width=600",
+      alt: "Aliado FramFoods | petco",
+      title: "Aliado FramFoods | petco",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image14_5783c29c-f0b5-4e32-8db8-e5b4d270c000.jpg?v=1732471943",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image14_5783c29c-f0b5-4e32-8db8-e5b4d270c000.jpg?v=1732471943",
-      alt: "Aliado comercial 12",
-      title: "Aliado comercial 12",
-      width: "100",
+      srcDesktop: "../public/media/aliados/sams.webp?width=600",
+      srcMobile: "../public/media/aliados/sams.webp?width=600",
+      alt: "Aliado FramFoods | sams",
+      title: "Aliado FramFoods | sams",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image5_dc134266-54cf-4d06-b879-ec8e81fb8301.jpg?v=1732472052",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image5_dc134266-54cf-4d06-b879-ec8e81fb8301.jpg?v=1732472052",
-      alt: "Aliado comercial 13",
-      title: "Aliado comercial 13",
-      width: "100",
+      srcDesktop: "../public/media/aliados/soriana.webp?width=600",
+      srcMobile: "../public/media/aliados/soriana.webp?width=600",
+      alt: "Aliado FramFoods | Soriana",
+      title: "Aliado FramFoods | Soriana",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
     },
     {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image11_9e4ec458-22c9-402c-b97b-9972bda3b7a2.jpg?v=1732472080",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image11_9e4ec458-22c9-402c-b97b-9972bda3b7a2.jpg?v=1732472080",
-      alt: "Aliado comercial 14",
-      title: "Aliado comercial 14",
-      width: "100",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image28_2d677334-051e-4821-9228-0bd5de2dafbc.jpg?v=1732472108",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image28_2d677334-051e-4821-9228-0bd5de2dafbc.jpg?v=1732472108",
-      alt: "Aliado comercial 15",
-      title: "Aliado comercial 15",
-      width: "100",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image8_1f1008c2-4459-4373-9ab1-ff176cd91e7f.jpg?v=1732472675",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image8_1f1008c2-4459-4373-9ab1-ff176cd91e7f.jpg?v=1732472675",
-      alt: "Aliado comercial 16",
-      title: "Aliado comercial 16",
-      width: "100",
+      srcDesktop: "../public/media/aliados/walmart.webp?width=600",
+      srcMobile: "../public/media/aliados/walmart.webp?width=600",
+      alt: "Aliado FramFoods | Walmart",
+      title: "Aliado FramFoods | Walmart",
+      width: "257",
       height: "100",
       loading: "lazy",
       decoding: "async",
@@ -410,8 +440,8 @@ import { site } from "../data/site";
   id="video-oportunidades"
   class="video-derecha-texto-izquierdo"
 
-  srcDesktop="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
-  srcMobile="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+  srcDesktop="../public/media/vid2-desktop.mp4?width=2500"
+  srcMobile="../public/media/vid2-desktop.mp4?width=1500"
   width="888"
   height="470"
   autoplay={true}
@@ -435,8 +465,8 @@ import { site } from "../data/site";
   id="stats-banner"
   class="banner stats-banner-section"
 
-  srcDesktop="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
-  srcMobile="https://videos.pexels.com/video-files/15708458/15708458-uhd_2560_1440_24fps.mp4"
+  srcDesktop="../public/media/vid3-desktop.mp4?width=2500"
+  srcMobile="../public/media/vid3-desktop.mp4?width=1500"
 
   width="1920"
   height="306"
@@ -486,8 +516,8 @@ import { site } from "../data/site";
   id="comparativa-modelos"
   class="banner comparison-banner-section"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/banner5-desktop.webp?width=2500"
+  srcMobile="../public/media/banner5-desktop.webp?width=1500"
   alt="Comparativa de modelos"
   width="1920"
   height="700"
@@ -637,8 +667,8 @@ import { site } from "../data/site";
   id="nutricion-proposito"
   class="banner banner-nutricion"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/banner4-desktop.webp?width=2500"
+  srcMobile="../public/media/banner4-desktop.webp?width=1500"
   alt="Alimentos de alta calidad"
   width="1920"
   height="400"
@@ -663,103 +693,253 @@ import { site } from "../data/site";
 
   items={[
     {
-      id: "",
+      id: "PORTO57",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image23_69c7d535-9b3b-409e-86c8-33a10044d4a8.jpg?v=1732469766",
-      alt: "Lorem ipsum marca 1",
-      title: "Lorem ipsum marca 1",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/porto57.webp?width=700",
+      srcMobile: "../public/media/partners/porto57.webp?width=500",
+      alt: "Partner FramFoods | PORTO57",
+      title: "Partner FramFoods | PORTO57",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+
+      p:"Porto 57 es una marca de excelencia dedicada a la selección y comercialización de productos del mar de la más alta calidad, destacando por su enfoque en la frescura y el origen responsable. Su catálogo se distingue por ofrecer soluciones gourmet que combinan la tradición pesquera con estándares modernos de procesamiento, asegurando texturas y sabores excepcionales en cada pieza."
     },
     {
-      id: "",
+      id: "LATITUDE45",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image27_600x600_cd92909a-fd3f-471b-86d1-0c3ad4fcc069.jpg?v=1732470738",
-      alt: "Lorem ipsum marca 2",
-      title: "Lorem ipsum marca 2",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/latitude45.webp?width=700",
+      srcMobile: "../public/media/partners/latitude45.webp?width=500",
+      alt: "Partner FramFoods | LATITUDE 45",
+      title: "Partner FramFoods | LATITUDE 45",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+
+      p:"Latitude 45 es una marca especializada en salmón ahumado premium, con más de 30 años de experiencia. Originaria de las aguas cristalinas de la Patagonia Chilena. Su propuesta se basa en un proceso artesanal de ahumado con maderas locales y prácticas de acuicultura sostenible que cuentan con las certificaciones internacionales más exigentes."
     },
     {
-      id: "",
+      id: "Camanchaca",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770",
-      alt: "Lorem ipsum marca 3",
-      title: "Lorem ipsum marca 3",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/camanchaca.webp?width=700",
+      srcMobile: "../public/media/partners/camanchaca.webp?width=500",
+      alt: "Partner FramFoods | Camanchaca",
+      title: "Partner FramFoods | Camanchaca",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+
+      p:"Camanchaca es una compañía chilena con más de 50 años de experiencia y líder global en la producción de productos del mar, destacando por su excelencia en la crianza y procesamiento de salmón, mejillones y otros recursos marinos. Su operación se rige por un firme compromiso con la sostenibilidad, la trazabilidad total y el respeto por los ecosistemas oceánicos, lo que garantiza alimentos nutritivos y de la más alta pureza. A través de Fram Foods, Camanchaca brinda al mercado mexicano opciones marinas de estándar mundial, llevando la frescura de las aguas del Pacífico Sur directamente a los consumidores y profesionales de la gastronomía que buscan calidad premium y responsabilidad ambiental."
     },
     {
-      id: "",
+      id: "SIWIN",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image19_d97223d5-b60f-4b45-adad-d4d64e518d22.jpg?v=1732470799",
-      alt: "Lorem ipsum marca 4",
-      title: "Lorem ipsum marca 4",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/siwin.webp?width=700",
+      srcMobile: "../public/media/partners/siwin.webp?width=500",
+      alt: "Partner FramFoods | SIWIN",
+      title: "Partner FramFoods | SIWIN",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+
+      p:"Siwin es una marca de origen canadiense que ha revolucionado el mercado de las proteínas con su enfoque en la calidad premium y el sabor artesanal. Especialista en la elaboración de comida con inspiración asiática, salchichas y productos cárnicos de alta gama, se distingue por utilizar ingredientes naturales, cortes de carne selectos y recetas internacionales que ofrecen una experiencia gourmet única. Siwin trae a México una propuesta innovadora y práctica para los consumidores que buscan alimentos nutritivos, deliciosos y con los más altos estándares de seguridad alimentaria, ideales para elevar cualquier comida diaria con un toque de excelencia global."
     },
     {
-      id: "",
+      id: "OsoleMio",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image22_600x600_52337344-6121-4468-aa60-5b4271753cd1.jpg?v=1732470893",
-      alt: "Lorem ipsum marca 5",
-      title: "Lorem ipsum marca 5",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/osolemio.webp?width=700",
+      srcMobile: "../public/media/partners/osolemio.webp?width=500",
+      alt: "Partner FramFoods | O sole Mio",
+      title: "Partner FramFoods | O sole Mio",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+      
+      p:"O Sole Mio es una marca canadiense, que se especializa en la elaboración de pastas frescas y salsas artesanales que capturan la esencia y el sabor tradicional de la cocina italiana. Con un enfoque en la calidad de los ingredientes y recetas auténticas, la marca se distingue por ofrecer soluciones gastronómicas prácticas que no sacrifican la frescura ni el toque casero. O Sole Mio permite que tanto el sector profesional como el consumidor final disfruten de una experiencia culinaria mediterránea de alto nivel, llevando a la mesa platos llenos de historia, textura y sabor inigualable."
     },
     {
-      id: "",
+      id: "NaturalOne",
       class: "brand-cards-section__card",
 
-      srcDesktop: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
-      srcMobile: "https://cdn.shopify.com/s/files/1/0229/0839/files/image3_c007c309-9559-43dd-9c32-f85f0aac7ae6.jpg?v=1732470929",
-      alt: "Lorem ipsum marca 6",
-      title: "Lorem ipsum marca 6",
-      width: "220",
-      height: "120",
+      srcDesktop: "../public/media/partners/naturalone.webp?width=700",
+      srcMobile: "../public/media/partners/naturalone.webp?width=500",
+      alt: "Partner FramFoods | Natural One",
+      title: "Partner FramFoods | Natural One",
+      width: "660",
+      height: "347",
       loading: "lazy",
       decoding: "async",
+      
+      p:"Natural One, es una marca fundada en Brasil y cuenta con más de 15 años de innovación, lidera la categoría de jugos 100% naturales ofreciendo productos sin azúcares añadidos ni conservadores. Brindando una opción saludable, honesta y de alta calidad para disfrutar lo natural, elige Natural One."
     },
+    {
+      id: "MARINA",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "../public/media/partners/marina.webp?width=700",
+      srcMobile: "../public/media/partners/marina.webp?width=500",
+      alt: "Partner FramFoods | MARINA",
+      title: "Partner FramFoods | MARINA",
+      width: "660",
+      height: "347",
+      loading: "lazy",
+      decoding: "async",
+      
+      p:"Tisanas Marina es una marca dedicada a brindar una experiencia sensorial única, ofreciendo tisanas elaboradas con ingredientes naturales de la más alta calidad. Su propuesta se basa en el equilibrio perfecto entre sabor, aroma y bienestar, utilizando mezclas de frutas, flores y hierbas que conservan todas sus propiedades y frescura. Fram Foods presenta Tisanas Marina al mercado mexicano para brindar una opción sofisticada y saludable, ideal para quienes buscan disfrutar de una bebida reconfortante, pura y llena de matices naturales en cualquier momento del día."
+    },
+    {
+      id: "FORNODEMINAS",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "../public/media/partners/fornodeminas.webp?width=700",
+      srcMobile: "../public/media/partners/fornodeminas.webp?width=500",
+      alt: "Partner FramFoods | FORNO DE MINAS",
+      title: "Partner FramFoods | FORNO DE MINAS",
+      width: "660",
+      height: "347",
+      loading: "lazy",
+      decoding: "async",
+      
+      p:"Forno de Minas es la marca líder y pionera en la elaboración del auténtico pan de queso brasileño. Con más de 30 años de historia, Forno de Minas se distingue por preservar recetas tradicionales y utilizar ingredientes seleccionados, ofreciendo una experiencia gastronómica única que combina practicidad con un estándar premium."
+    },
+    {
+      id: "LaMenorquina",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "../public/media/partners/lamenorquina.webp?width=700",
+      srcMobile: "../public/media/partners/lamenorquina.webp?width=500",
+      alt: "Partner FramFoods | La Menorquina",
+      title: "Partner FramFoods | La Menorquina",
+      width: "660",
+      height: "347",
+      loading: "lazy",
+      decoding: "async",
+      
+      p:"La Menorquina es una marca reconocida mundialmente por ser especialista en la creación de helados y postres de alta calidad. Con más de 80 años de tradición fue fundada en Menorca, España, su esencia se basa en el uso de ingredientes seleccionados y recetas que combinan la maestría clásica para elaborar helados de la mano de innovación constante."
+    },
+    {
+      id: "alo",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "../public/media/partners/alo.webp?width=700",
+      srcMobile: "../public/media/partners/alo.webp?width=500",
+      alt: "Partner FramFoods | alo",
+      title: "Partner FramFoods | alo",
+      width: "660",
+      height: "347",
+      loading: "lazy",
+      decoding: "async",
+      
+      p:"Directo desde los campos más fértiles de Vietnam, Alo llega a México para transformar la hidratación funcional. Alo utiliza pulpa y trozos reales de frutas exóticas para crear una experiencia refrescante y llena de beneficios. Es la opción ideal para quienes buscan una alternativa saludable, libre de polvos artificiales y cargada de nutrientes esenciales que promueven un estilo de vida equilibrado y lleno de vitalidad."
+    },
+    {
+      id: "RUSSETHOUSE",
+      class: "brand-cards-section__card",
+
+      srcDesktop: "../public/media/partners/russethouse.webp?width=700",
+      srcMobile: "../public/media/partners/russethouse.webp?width=500",
+      alt: "Partner FramFoods | RUSSET HOUSE",
+      title: "Partner FramFoods | RUSSET HOUSE",
+      width: "660",
+      height: "347",
+      loading: "lazy",
+      decoding: "async",
+      
+      p:"Russet House es una marca líder e innovadora en la categoría de especialidades congeladas, reconocida mundialmente por su maestría en la elaboración de productos a base de camote y papas premium. Su enfoque se distingue por utilizar ingredientes naturales y procesos de vanguardia que preservan la textura perfecta y el sabor auténtico del campo, ofreciendo opciones que son tanto deliciosas como nutritivas. A través de Fram Foods, Russet House trae a las mesas mexicanas y al sector gastronómico una propuesta versátil, saludable y de alta calidad, ideal para quienes buscan elevar sus platillos con guarniciones excepcionales que cumplen con los más altos estándares internacionales de seguridad alimentaria."
+    },
+
   ]}
 />
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const PORTO57 = document.querySelector("#PORTO57 img");
+  const LATITUDE45 = document.querySelector("#LATITUDE45 img");
+  const Camanchaca = document.querySelector("#Camanchaca img");
+  const SIWIN = document.querySelector("#SIWIN img");
+  const OsoleMio = document.querySelector("#OsoleMio img");
+  const NaturalOne = document.querySelector("#NaturalOne img");
+  const MARINA = document.querySelector("#MARINA img");
+  const FORNODEMINAS = document.querySelector("#FORNODEMINAS img");
+  const LaMenorquina = document.querySelector("#LaMenorquina img");
+  const alo = document.querySelector("#alo img");
+  const RUSSETHOUSE = document.querySelector("#RUSSETHOUSE img");
+
+  const changeImage = (img, newSrc) => {
+    if (!img) return;
+
+    const picture = img.closest("picture");
+    const sources = picture ? picture.querySelectorAll("source") : [];
+
+    const original = img.currentSrc || img.src;
+
+    img.parentElement.parentElement.addEventListener("mouseenter", () => {
+      img.src = newSrc;
+      sources.forEach(s => s.srcset = newSrc);
+    });
+
+    img.parentElement.parentElement.addEventListener("mouseleave", () => {
+      img.src = original;
+      sources.forEach((s, i) => s.srcset = original);
+    });
+  };
+
+  changeImage(PORTO57, "../public/media/partners-hover/hover-porto57.webp?width=1500");
+  changeImage(LATITUDE45, "../public/media/partners-hover/hover-latitude45.webp?width=1500");
+  changeImage(Camanchaca, "../public/media/partners-hover/hover-camanchaca.webp?width=1500");
+  changeImage(SIWIN, "../public/media/partners-hover/hover-siwin.webp?width=1500");
+  changeImage(OsoleMio, "../public/media/partners-hover/hover-osolemio.webp?width=1500");
+  changeImage(NaturalOne, "../public/media/partners-hover/hover-naturalone.webp?width=1500");
+  changeImage(MARINA, "../public/media/partners-hover/hover-marina.webp?width=1500");
+  changeImage(FORNODEMINAS, "../public/media/partners-hover/hover-fornodeminas.webp?width=1500");
+  changeImage(LaMenorquina, "../public/media/partners-hover/hover-lamenorquina.webp?width=1500");
+  changeImage(alo, "../public/media/partners-hover/hover-alo.webp?width=1500");
+  changeImage(RUSSETHOUSE, "../public/media/partners-hover/hover-russethouse.webp?width=1500");
+
+  const cards = document.querySelectorAll(".brand-cards-section__card");
+
+  cards.forEach((card) => {
+    const image = card.querySelector("img");
+
+    if (!image) return;
+
+    image.addEventListener("click", () => {
+      card.classList.toggle("is-active");
+    });
+  });
+
+});
+
+</script>
 
 <section id="banner-marca-natural" class="banner-marca-natural">
   <ImagenResponsive
     class="izq"
-    srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-    srcMobile="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-    alt="imagen izquierda"
-    title="imagen izquierda"
+    srcDesktop="../public/media/banner7-desktop.webp?width=1500"
+    srcMobile="../public/media/banner7-desktop.webp?width=1000"
+    alt="FramFoods contigo"
+    title="FramFoods contigo"
     width="960"
     height="347"
     loading="lazy"
     decoding="async"
   />
     <ImagenResponsive
-      srcDesktop="https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770"
-      srcMobile="https://cdn.shopify.com/s/files/1/0229/0839/files/image2_600x600_ffc920d6-37f2-41a8-95df-78b4c7ad2a1d.jpg?v=1732470770"
-      alt="imagen principal"
-      title="imagen principal"
+      srcDesktop="../public/media/naturalchamps.webp?width=500"
+      srcMobile="../public/media/naturalchamps.webp?width=500"
+      alt="NATURAL CHAMPS"
+      title="NATURAL CHAMPS"
       width="228"
       height="187"
       priority="high"
@@ -768,10 +948,10 @@ import { site } from "../data/site";
   <figure>
   <ImagenResponsive
     class="der"
-    srcDesktop="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
-    srcMobile="https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg"
-    alt="imagen derecha"
-    title="imagen derecha"
+    srcDesktop="../public/media/banner6-desktop.webp?width=1500"
+    srcMobile="../public/media/banner6-desktop.webp?width=1000"
+    alt="FRAMFOODS"
+    title="FRAMFOODS"
     width="960"
     height="347"
     loading="lazy"
@@ -791,8 +971,8 @@ import { site } from "../data/site";
   id="banner-estandar-alimentos"
   class="imagen-derecha-texto-izquierda"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/banner8-desktop.webp?width=1500"
+  srcMobile="../public/media/banner8-desktop.webp?width=1000"
   alt="Un nuevo estándar en la industria de alimentos"
   width="796"
   height="454"
@@ -828,8 +1008,8 @@ import { site } from "../data/site";
     id="banner-insights"
     class="banner ecosistema-insights__banner"
 
-    srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-    srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+    srcDesktop="../public/media/equilibrio/INSIGHTS.webp?width=2000"
+    srcMobile="../public/media/equilibrio/INSIGHTS.webp?width=1200"
     alt="INSIGHTS"
     width="1341"
     height="456"
@@ -846,93 +1026,89 @@ import { site } from "../data/site";
   />
 </section>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
-  const banners = [
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500",
-      srcMobile: "https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000",
-      alt: "INSIGHTS",
-      title: "INSIGHTS",
-      text: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor."
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/lakeside-car-full-desktop-screen-hd-ffduevjvagzqhrhy.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/lakeside-car-full-desktop-screen-hd-ffduevjvagzqhrhy.jpg",
-      alt: "DESARROLLO",
-      title: "DESARROLLO",
-      text: "Transformamos insights en productos viables, diferenciados y listos para competir."
-    },
-    {
-      srcDesktop: "https://www.pixelstalk.net/wp-content/uploads/wallpapers/Landscape-Wallpapers-Full-HD.jpg",
-      srcMobile: "https://www.pixelstalk.net/wp-content/uploads/wallpapers/Landscape-Wallpapers-Full-HD.jpg",
-      alt: "PRODUCCIÓN",
-      title: "PRODUCCIÓN",
-      text: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso."
-    },
-    {
-      srcDesktop: "https://wallpaperaccess.com/full/138728.jpg",
-      srcMobile: "https://wallpaperaccess.com/full/138728.jpg",
-      alt: "DISTRIBUCIÓN",
-      title: "DISTRIBUCIÓN",
-      text: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura."
-    },
-    {
-      srcDesktop: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTDaHcXhDzgOWMkolpXKkCu-oRFAznaY4lOQ&s",
-      srcMobile: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTDaHcXhDzgOWMkolpXKkCu-oRFAznaY4lOQ&s",
-      alt: "RETAIL",
-      title: "RETAIL",
-      text: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación."
-    },
-    {
-      srcDesktop: "https://i.imgur.com/idDZITt.jpg",
-      srcMobile: "https://i.imgur.com/idDZITt.jpg",
-      alt: "CONSUMIDOR",
-      title: "CONSUMIDOR",
-      text: "Generamos conexión, adopción y recompra a través de propuestas relevantes."
+    const banners = [
+      {
+        srcDesktop: "../public/media/equilibrio/INSIGHTS.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/INSIGHTS.webp?width=1200",
+        alt: "INSIGHTS",
+        title: "INSIGHTS",
+        text: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor."
+      },
+      {
+        srcDesktop: "../public/media/equilibrio/DESARROLLO.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/DESARROLLO.webp?width=1200",
+        alt: "DESARROLLO",
+        title: "DESARROLLO",
+        text: "Transformamos insights en productos viables, diferenciados y listos para competir."
+      },
+      {
+        srcDesktop: "../public/media/equilibrio/PRODUCCION.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/PRODUCCION.webp?width=1200",
+        alt: "PRODUCCIÓN",
+        title: "PRODUCCIÓN",
+        text: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso."
+      },
+      {
+        srcDesktop: "../public/media/equilibrio/DISTRIBUCION.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/DISTRIBUCION.webp?width=1200",
+        alt: "DISTRIBUCIÓN",
+        title: "DISTRIBUCIÓN",
+        text: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura."
+      },
+      {
+        srcDesktop: "../public/media/equilibrio/RETAIL.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/RETAIL.webp?width=1200",
+        alt: "RETAIL",
+        title: "RETAIL",
+        text: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación."
+      },
+      {
+        srcDesktop: "../public/media/equilibrio/CONSUMIDOR.webp?width=2000",
+        srcMobile: "../public/media/equilibrio/CONSUMIDOR.webp?width=1200",
+        alt: "CONSUMIDOR",
+        title: "CONSUMIDOR",
+        text: "Generamos conexión, adopción y recompra a través de propuestas relevantes."
+      }
+    ];
+
+    const banner = document.getElementById("banner-insights");
+
+    const sourceDesktop = banner.querySelector('source[media="(min-width: 768px)"]');
+    const sourceMobile = banner.querySelector('source[media="(max-width: 767px)"]');
+    const img = banner.querySelector("img");
+    const title = banner.querySelector("h2");
+    const text = banner.querySelector("p");
+
+    let index = 0;
+
+    function updateBanner() {
+      const item = banners[index];
+
+      sourceDesktop.srcset = item.srcDesktop;
+      sourceMobile.srcset = item.srcMobile;
+
+      img.src = item.srcMobile;
+      img.alt = item.alt;
+      img.title = item.alt;
+
+      title.textContent = item.title;
+      text.textContent = item.text;
+
+      index = (index + 1) % banners.length;
     }
-  ];
 
-  const banner = document.getElementById("banner-insights");
-
-  const sourceDesktop = banner.querySelector('source[media="(min-width: 768px)"]');
-  const sourceMobile = banner.querySelector('source[media="(max-width: 767px)"]');
-  const img = banner.querySelector("img");
-  const title = banner.querySelector("h2");
-  const text = banner.querySelector("p");
-
-  let index = 0;
-
-  function updateBanner() {
-    const item = banners[index];
-
-    sourceDesktop.srcset = item.srcDesktop;
-    sourceMobile.srcset = item.srcMobile;
-
-    img.src = item.srcMobile;
-    img.alt = item.alt;
-    img.title = item.alt;
-
-    title.textContent = item.title;
-    text.textContent = item.text;
-
-    index = (index + 1) % banners.length;
-  }
-
-  setInterval(updateBanner, 6000);
-
-});
+    setInterval(updateBanner, 6000);
+  });
 </script>
-
-
-
 
 <BannerHero
   id="banner-trabajemos-juntos"
   class="banner banner-cta"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/banner9-desktop.webp?width=2500"
+  srcMobile="../public/media/banner9-desktop.webp?width=1500"
   alt="Trabajemos juntos"
   width="1920"
   height="420"
@@ -984,8 +1160,8 @@ document.addEventListener("DOMContentLoaded", () => {
       srcMobile: "https://i.pravatar.cc/200?img=47",
       alt: "María López",
       title: "María López",
-      width: "90",
-      height: "90",
+      width: "106",
+      height: "106",
       loading: "lazy",
       decoding: "async",
 
@@ -1014,8 +1190,8 @@ document.addEventListener("DOMContentLoaded", () => {
       srcMobile: "https://i.pravatar.cc/200?img=12",
       alt: "María López",
       title: "María López",
-      width: "90",
-      height: "90",
+      width: "106",
+      height: "106",
       loading: "lazy",
       decoding: "async",
 
@@ -1042,10 +1218,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       srcDesktop: "https://i.pravatar.cc/200?img=33",
       srcMobile: "https://i.pravatar.cc/200?img=33",
-      alt: "Lorem ipsum persona 3",
-      title: "Lorem ipsum persona 3",
-      width: "90",
-      height: "90",
+      alt: "Ejemplo",
+      title: "Ejemplo",
+      width: "106",
+      height: "106",
       loading: "lazy",
       decoding: "async",
 
@@ -1128,22 +1304,227 @@ document.addEventListener("DOMContentLoaded", () => {
         required: true,
         options: [
           {
-            label: "Lorem Ipsum",
+            label: "Seleccione un país",
             value: "",
             disabled: true,
             selected: true,
             hidden: true,
           },
-          {
-            label: "Lorem Ipsum 1",
-            value: "lorem-1",
-          },
-          {
-            label: "Lorem Ipsum 2",
-            value: "lorem-2",
-          },
+
+          { label: "Afganistán", value: "afganistan" },
+          { label: "Albania", value: "albania" },
+          { label: "Alemania", value: "alemania" },
+          { label: "Andorra", value: "andorra" },
+          { label: "Angola", value: "angola" },
+          { label: "Antigua y Barbuda", value: "antigua-y-barbuda" },
+          { label: "Arabia Saudita", value: "arabia-saudita" },
+          { label: "Argelia", value: "argelia" },
+          { label: "Argentina", value: "argentina" },
+          { label: "Armenia", value: "armenia" },
+          { label: "Australia", value: "australia" },
+          { label: "Austria", value: "austria" },
+          { label: "Azerbaiyán", value: "azerbaiyan" },
+
+          { label: "Bahamas", value: "bahamas" },
+          { label: "Bangladés", value: "bangladesh" },
+          { label: "Barbados", value: "barbados" },
+          { label: "Baréin", value: "barein" },
+          { label: "Bélgica", value: "belgica" },
+          { label: "Belice", value: "belice" },
+          { label: "Benín", value: "benin" },
+          { label: "Bielorrusia", value: "bielorrusia" },
+          { label: "Birmania", value: "birmania" },
+          { label: "Bolivia", value: "bolivia" },
+          { label: "Bosnia y Herzegovina", value: "bosnia-y-herzegovina" },
+          { label: "Botsuana", value: "botsuana" },
+          { label: "Brasil", value: "brasil" },
+          { label: "Brunéi", value: "brunei" },
+          { label: "Bulgaria", value: "bulgaria" },
+          { label: "Burkina Faso", value: "burkina-faso" },
+          { label: "Burundi", value: "burundi" },
+
+          { label: "Bután", value: "butan" },
+          { label: "Cabo Verde", value: "cabo-verde" },
+          { label: "Camboya", value: "camboya" },
+          { label: "Camerún", value: "camerun" },
+          { label: "Canadá", value: "canada" },
+          { label: "Catar", value: "catar" },
+          { label: "Chad", value: "chad" },
+          { label: "Chile", value: "chile" },
+          { label: "China", value: "china" },
+          { label: "Chipre", value: "chipre" },
+          { label: "Colombia", value: "colombia" },
+          { label: "Comoras", value: "comoras" },
+          { label: "Corea del Norte", value: "corea-del-norte" },
+          { label: "Corea del Sur", value: "corea-del-sur" },
+          { label: "Costa de Marfil", value: "costa-de-marfil" },
+          { label: "Costa Rica", value: "costa-rica" },
+          { label: "Croacia", value: "croacia" },
+          { label: "Cuba", value: "cuba" },
+
+          { label: "Dinamarca", value: "dinamarca" },
+          { label: "Dominica", value: "dominica" },
+          { label: "Ecuador", value: "ecuador" },
+          { label: "Egipto", value: "egipto" },
+          { label: "El Salvador", value: "el-salvador" },
+          { label: "Emiratos Árabes Unidos", value: "emiratos-arabes-unidos" },
+          { label: "Eritrea", value: "eritrea" },
+          { label: "Eslovaquia", value: "eslovaquia" },
+          { label: "Eslovenia", value: "eslovenia" },
+          { label: "España", value: "espana" },
+          { label: "Estados Unidos", value: "estados-unidos" },
+          { label: "Estonia", value: "estonia" },
+          { label: "Esuatini", value: "esuatini" },
+          { label: "Etiopía", value: "etiopia" },
+
+          { label: "Filipinas", value: "filipinas" },
+          { label: "Finlandia", value: "finlandia" },
+          { label: "Fiyi", value: "fiyi" },
+          { label: "Francia", value: "francia" },
+
+          { label: "Gabón", value: "gabon" },
+          { label: "Gambia", value: "gambia" },
+          { label: "Georgia", value: "georgia" },
+          { label: "Ghana", value: "ghana" },
+          { label: "Granada", value: "granada" },
+          { label: "Grecia", value: "grecia" },
+          { label: "Guatemala", value: "guatemala" },
+          { label: "Guyana", value: "guyana" },
+          { label: "Guinea", value: "guinea" },
+          { label: "Guinea-Bisáu", value: "guinea-bisau" },
+          { label: "Guinea Ecuatorial", value: "guinea-ecuatorial" },
+
+          { label: "Haití", value: "haiti" },
+          { label: "Honduras", value: "honduras" },
+          { label: "Hungría", value: "hungria" },
+
+          { label: "India", value: "india" },
+          { label: "Indonesia", value: "indonesia" },
+          { label: "Irak", value: "irak" },
+          { label: "Irán", value: "iran" },
+          { label: "Irlanda", value: "irlanda" },
+          { label: "Islandia", value: "islandia" },
+          { label: "Israel", value: "israel" },
+          { label: "Italia", value: "italia" },
+
+          { label: "Jamaica", value: "jamaica" },
+          { label: "Japón", value: "japon" },
+          { label: "Jordania", value: "jordania" },
+
+          { label: "Kazajistán", value: "kazajistan" },
+          { label: "Kenia", value: "kenia" },
+          { label: "Kirguistán", value: "kirguistan" },
+          { label: "Kiribati", value: "kiribati" },
+          { label: "Kuwait", value: "kuwait" },
+
+          { label: "Laos", value: "laos" },
+          { label: "Lesoto", value: "lesoto" },
+          { label: "Letonia", value: "letonia" },
+          { label: "Líbano", value: "libano" },
+          { label: "Liberia", value: "liberia" },
+          { label: "Libia", value: "libia" },
+          { label: "Liechtenstein", value: "liechtenstein" },
+          { label: "Lituania", value: "lituania" },
+          { label: "Luxemburgo", value: "luxemburgo" },
+
+          { label: "Madagascar", value: "madagascar" },
+          { label: "Malasia", value: "malasia" },
+          { label: "Malaui", value: "malaui" },
+          { label: "Maldivas", value: "maldivas" },
+          { label: "Malí", value: "mali" },
+          { label: "Malta", value: "malta" },
+          { label: "Marruecos", value: "marruecos" },
+          { label: "Mauricio", value: "mauricio" },
+          { label: "Mauritania", value: "mauritania" },
+          { label: "México", value: "mexico" },
+          { label: "Micronesia", value: "micronesia" },
+          { label: "Moldavia", value: "moldavia" },
+          { label: "Mónaco", value: "monaco" },
+          { label: "Mongolia", value: "mongolia" },
+          { label: "Montenegro", value: "montenegro" },
+          { label: "Mozambique", value: "mozambique" },
+
+          { label: "Namibia", value: "namibia" },
+          { label: "Nauru", value: "nauru" },
+          { label: "Nepal", value: "nepal" },
+          { label: "Nicaragua", value: "nicaragua" },
+          { label: "Níger", value: "niger" },
+          { label: "Nigeria", value: "nigeria" },
+          { label: "Noruega", value: "noruega" },
+          { label: "Nueva Zelanda", value: "nueva-zelanda" },
+
+          { label: "Omán", value: "oman" },
+
+          { label: "Países Bajos", value: "paises-bajos" },
+          { label: "Pakistán", value: "pakistan" },
+          { label: "Palaos", value: "palaos" },
+          { label: "Panamá", value: "panama" },
+          { label: "Papúa Nueva Guinea", value: "papua-nueva-guinea" },
+          { label: "Paraguay", value: "paraguay" },
+          { label: "Perú", value: "peru" },
+          { label: "Polonia", value: "polonia" },
+          { label: "Portugal", value: "portugal" },
+
+          { label: "Reino Unido", value: "reino-unido" },
+          { label: "República Centroafricana", value: "republica-centroafricana" },
+          { label: "República Checa", value: "republica-checa" },
+          { label: "República del Congo", value: "republica-del-congo" },
+          { label: "República Democrática del Congo", value: "republica-democratica-del-congo" },
+          { label: "República Dominicana", value: "republica-dominicana" },
+          { label: "Ruanda", value: "ruanda" },
+          { label: "Rumania", value: "rumania" },
+          { label: "Rusia", value: "rusia" },
+
+          { label: "Samoa", value: "samoa" },
+          { label: "San Cristóbal y Nieves", value: "san-cristobal-y-nieves" },
+          { label: "San Marino", value: "san-marino" },
+          { label: "San Vicente y las Granadinas", value: "san-vicente-y-las-granadinas" },
+          { label: "Santa Lucía", value: "santa-lucia" },
+          { label: "Santo Tomé y Príncipe", value: "santo-tome-y-principe" },
+          { label: "Senegal", value: "senegal" },
+          { label: "Serbia", value: "serbia" },
+          { label: "Seychelles", value: "seychelles" },
+          { label: "Sierra Leona", value: "sierra-leona" },
+          { label: "Singapur", value: "singapur" },
+          { label: "Siria", value: "siria" },
+          { label: "Somalia", value: "somalia" },
+          { label: "Sri Lanka", value: "sri-lanka" },
+          { label: "Sudáfrica", value: "sudafrica" },
+          { label: "Sudán", value: "sudan" },
+          { label: "Sudán del Sur", value: "sudan-del-sur" },
+          { label: "Suecia", value: "suecia" },
+          { label: "Suiza", value: "suiza" },
+          { label: "Surinam", value: "surinam" },
+
+          { label: "Tailandia", value: "tailandia" },
+          { label: "Tanzania", value: "tanzania" },
+          { label: "Tayikistán", value: "tayikistan" },
+          { label: "Timor Oriental", value: "timor-oriental" },
+          { label: "Togo", value: "togo" },
+          { label: "Tonga", value: "tonga" },
+          { label: "Trinidad y Tobago", value: "trinidad-y-tobago" },
+          { label: "Túnez", value: "tunez" },
+          { label: "Turkmenistán", value: "turkmenistan" },
+          { label: "Turquía", value: "turquia" },
+          { label: "Tuvalu", value: "tuvalu" },
+
+          { label: "Ucrania", value: "ucrania" },
+          { label: "Uganda", value: "uganda" },
+          { label: "Uruguay", value: "uruguay" },
+          { label: "Uzbekistán", value: "uzbekistan" },
+
+          { label: "Vanuatu", value: "vanuatu" },
+          { label: "Vaticano", value: "vaticano" },
+          { label: "Venezuela", value: "venezuela" },
+          { label: "Vietnam", value: "vietnam" },
+
+          { label: "Yemen", value: "yemen" },
+          { label: "Yibuti", value: "yibuti" },
+
+          { label: "Zambia", value: "zambia" },
+          { label: "Zimbabue", value: "zimbabue" },
         ],
-      },
+      }
     ]}
 
     fieldsBottom={[
@@ -1186,23 +1567,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <article class="formulario-wrapper__images">
     <ImagenResponsive
-      srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-      srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
-      alt="Imagenes de formulario"
-      title="Imagenes de formulario"
-      width="700"
-      height="420"
+      srcDesktop="../public/media/banner10-desktop.webp?width=850"
+      srcMobile="../public/media/banner10-desktop.webp?width=850"
+      alt="Imagen de formulario"
+      title="Imagen de formulario"
+      width="684"
+      height="521"
       loading="lazy"
       decoding="async"
     />
 
     <ImagenResponsive
-      srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-      srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
-      alt="Imagenes de formulario"
-      title="Imagenes de formulario"
-      width="700"
-      height="420"
+      srcDesktop="../public/media/banner11-desktop.webp?width=850"
+      srcMobile="../public/media/banner11-desktop.webp?width=850"
+      alt="Imagen de formulario"
+      title="Imagen de formulario"
+      width="684"
+      height="521"
       loading="lazy"
       decoding="async"
     />
@@ -1211,7 +1592,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <section id="franja-comercial" class="franja-comercial">
   <TextGroupElement
-    p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+    p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales 
+    <span>sólidas,</span>
+    <span>alineadas al mercado,</span>
+    <span>al canal y</span>
+    <span>al consumidor.</span>"
     pId=""
     pClass="franja-comercial__text"
   />
@@ -1227,8 +1612,8 @@ document.addEventListener("DOMContentLoaded", () => {
   contentId=""
   contentClass="newsletter-form__content"
 
-  srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-  srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+  srcDesktop="../public/media/newsletter.webp?width=2500"
+  srcMobile="../public/media/newsletter.webp?width=1500"
   alt="Newsletter"
   title="Newsletter"
   width="1920"

@@ -19,7 +19,7 @@ import { logoFooter, menus, navAriaLabel, derechosReservados } from "../data/foo
                     href={link.href}
                     target={link.target}
                     rel={link.rel}
-                    aria-label={link.label}
+                    title={link.label}
                   >
                     {link.clases && <i class={link.clases}></i>}
                     {!link.clases && (
@@ -40,7 +40,7 @@ import { logoFooter, menus, navAriaLabel, derechosReservados } from "../data/foo
                   href={link.href}
                   target={link.target}
                   rel={link.rel}
-                  aria-label={link.label}
+                  title={link.label}
                 >
                   {link.clases && <i class={link.clases}></i>}
                   {!link.clases && (
@@ -55,14 +55,16 @@ import { logoFooter, menus, navAriaLabel, derechosReservados } from "../data/foo
         )
       ))}
     </nav>
-
-    <img
-      src={`${logoFooter.logo}?width=${logoFooter.resolucion}`}
-      alt={logoFooter.alt}
-      width={logoFooter.ancho}
-      height={logoFooter.alto}
-      decoding="async"
-    />
+    <a href="/" title={logoFooter.title}>
+      <img
+        src={`${logoFooter.logo}?width=${logoFooter.resolucion}`}
+        alt={logoFooter.alt}
+        title={logoFooter.title}
+        width={logoFooter.ancho}
+        height={logoFooter.alto}
+        decoding="async"
+      />
+    </a>
   </article>
 
   <small>

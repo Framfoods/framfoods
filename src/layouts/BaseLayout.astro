@@ -1,62 +1,103 @@
 ---
-import { site, buildTitle, mediaUrl } from "../data/site";
+import { site, getSeo, absoluteUrl, type SeoKey } from "../data/site";
 import "../styles/global.css";
+import Whatsapp from "../snippets/whatsapp.astro";
 
-const title = buildTitle();
-const ogImage = mediaUrl("og-image.jpg");
-const logo = mediaUrl("logo-112x112.png");
+interface Props {
+  page?: SeoKey;
+}
+
+const { page = "home" } = Astro.props;
+
+const currentSeo = getSeo(page);
+
+const ogImage = currentSeo.ogImage;
+const logo = absoluteUrl(site.media.organizationLogo);
+
+const sameAs = [
+  site.socialFacebook,
+  site.socialInstagram,
+  site.socialLinkedIn,
+].filter(Boolean);
 ---
+
 <!DOCTYPE html>
 <html lang={site.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{title}</title>
-    <meta name="description" content={site.metaDescription} />
-    <link rel="canonical" href={site.siteUrl} />
+    <title>{currentSeo.title}</title>
+    <meta name="description" content={currentSeo.description} />
+    <meta name="keywords" content={currentSeo.keywords.join(", ")} />
 
-    <link rel="icon" href="/media/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/media/favicon-48x48.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon-180x180.png" />
+    <link rel="canonical" href={currentSeo.canonical} />
+
+    <link rel="icon" href={site.media.favicon} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href={site.media.faviconPng}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={site.media.appleTouchIcon}
+    />
 
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:locale" content={site.ogLocale} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={site.ogDescription} />
-    <meta property="og:url" content={site.siteUrl} />
+    <meta property="og:title" content={currentSeo.ogTitle} />
+    <meta property="og:description" content={currentSeo.ogDescription} />
+    <meta property="og:url" content={currentSeo.canonical} />
     <meta property="og:site_name" content={site.brandName} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={site.brandName} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:width" content={site.media.ogImageWidth} />
+    <meta property="og:image:height" content={site.media.ogImageHeight} />
+    <meta property="og:image:alt" content={currentSeo.title} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={site.ogDescription} />
+    <meta name="twitter:title" content={currentSeo.ogTitle} />
+    <meta name="twitter:description" content={currentSeo.ogDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={currentSeo.title} />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: site.brandName,
-      url: site.siteUrl,
-    })} />
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: site.brandName,
-      url: site.siteUrl,
-      logo,
-      sameAs: [site.socialFacebook, site.socialInstagram, site.socialLinkedIn],
-    })} />
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: site.brandName,
+        url: site.siteUrl,
+      })}
+    />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: site.brandName,
+        url: site.siteUrl,
+        logo,
+        sameAs,
+      })}
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
+
   <body>
     <slot />
+    
+    <Whatsapp />
   </body>
 </html>

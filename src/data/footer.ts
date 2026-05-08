@@ -1,11 +1,12 @@
 import { site } from "./site";
 
 export const logoFooter = {
-    logo: "../public/media/logo-light.webp",
+    logo: "../public/media/logo-dark.webp?width=600",
     ancho: 252,
     alto: 52,
     resolucion: 500,
-    alt: site.brandName
+    alt: site.brandName,
+    title: site.regresarInicio
 }
 
 export const navAriaLabel = {

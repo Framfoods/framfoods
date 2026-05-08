@@ -39,8 +39,8 @@ import { site } from "../data/site";
         id="contactanos"
         class="imagen-izquierda-texto-derecha imagen-txt-izq-der"
 
-        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        srcDesktop="../public/media/banner39-desktop.webp?width=700"
+        srcMobile="../public/media/banner39-desktop.webp?width=700"
         alt="Contacto"
         width="566"
         height="371"
@@ -59,7 +59,6 @@ import { site } from "../data/site";
             <path d="M9.75 19C9.75 18.8674 9.80268 18.7402 9.89645 18.6464C9.99021 18.5527 10.1174 18.5 10.25 18.5H13.75C13.8826 18.5 14.0098 18.5527 14.1036 18.6464C14.1973 18.7402 14.25 18.8674 14.25 19C14.25 19.1326 14.1973 19.2598 14.1036 19.3536C14.0098 19.4473 13.8826 19.5 13.75 19.5H10.25C10.1174 19.5 9.99021 19.4473 9.89645 19.3536C9.80268 19.2598 9.75 19.1326 9.75 19Z" fill="#EF6A02"/>
             <path d="M10.17 2.25H13.83C14.365 2.25 14.81 2.25 15.175 2.28C15.555 2.31 15.911 2.378 16.248 2.55C16.7656 2.81367 17.1863 3.23445 17.45 3.752C17.622 4.089 17.69 4.445 17.72 4.825C17.75 5.19 17.75 5.635 17.75 6.17V17.83C17.75 18.365 17.75 18.81 17.72 19.175C17.69 19.555 17.622 19.911 17.45 20.248C17.1866 20.7654 16.7662 21.1862 16.249 21.45C15.911 21.622 15.555 21.69 15.175 21.72C14.81 21.75 14.365 21.75 13.831 21.75H10.17C9.635 21.75 9.19 21.75 8.825 21.72C8.445 21.69 8.089 21.622 7.752 21.45C7.23475 21.1869 6.81401 20.7668 6.55 20.25C6.378 19.912 6.31 19.556 6.28 19.176C6.25 18.811 6.25 18.366 6.25 17.831V6.17C6.25 5.635 6.25 5.19 6.28 4.825C6.31 4.445 6.378 4.089 6.55 3.752C6.81367 3.23445 7.23445 2.81367 7.752 2.55C8.089 2.378 8.445 2.31 8.825 2.28C9.19 2.25 9.635 2.25 10.17 2.25ZM8.947 3.775C8.66 3.798 8.523 3.84 8.433 3.886C8.19741 4.00591 8.00591 4.19741 7.886 4.433C7.84 4.523 7.798 4.66 7.775 4.947C7.751 5.243 7.75 5.627 7.75 6.2V17.8C7.75 18.372 7.75 18.757 7.775 19.052C7.798 19.34 7.84 19.477 7.886 19.567C8.006 19.803 8.197 19.994 8.433 20.114C8.523 20.16 8.66 20.202 8.947 20.225C9.243 20.249 9.627 20.25 10.2 20.25H13.8C14.372 20.25 14.757 20.25 15.052 20.225C15.34 20.202 15.477 20.16 15.568 20.114C15.8032 19.9939 15.9944 19.8024 16.114 19.567C16.16 19.477 16.202 19.34 16.225 19.052C16.249 18.757 16.25 18.372 16.25 17.8V6.2C16.25 5.628 16.25 5.243 16.225 4.947C16.202 4.66 16.16 4.523 16.114 4.433C15.9944 4.19757 15.8032 4.00608 15.568 3.886C15.477 3.84 15.34 3.798 15.053 3.775C14.841 3.75981 14.6285 3.75214 14.416 3.752L14.292 4.125C14.187 4.439 14.134 4.597 14.037 4.713C13.9513 4.81552 13.8413 4.89493 13.717 4.944C13.575 5 13.409 5 13.077 5H10.923C10.591 5 10.425 5 10.283 4.944C10.1588 4.89522 10.0488 4.81615 9.963 4.714C9.866 4.597 9.813 4.439 9.708 4.124L9.584 3.752C9.37146 3.75214 9.15899 3.75981 8.947 3.775Z" fill="#EF6A02"/>
             </svg><span>+52 33 9689 2203</span>`
-
     />
 
 
@@ -125,22 +124,227 @@ import { site } from "../data/site";
                 required: true,
                 options: [
                 {
-                    label: "Lorem Ipsum",
+                    label: "Seleccione un país",
                     value: "",
                     disabled: true,
                     selected: true,
                     hidden: true,
                 },
-                {
-                    label: "Lorem Ipsum 1",
-                    value: "lorem-1",
-                },
-                {
-                    label: "Lorem Ipsum 2",
-                    value: "lorem-2",
-                },
+
+                { label: "Afganistán", value: "afganistan" },
+                { label: "Albania", value: "albania" },
+                { label: "Alemania", value: "alemania" },
+                { label: "Andorra", value: "andorra" },
+                { label: "Angola", value: "angola" },
+                { label: "Antigua y Barbuda", value: "antigua-y-barbuda" },
+                { label: "Arabia Saudita", value: "arabia-saudita" },
+                { label: "Argelia", value: "argelia" },
+                { label: "Argentina", value: "argentina" },
+                { label: "Armenia", value: "armenia" },
+                { label: "Australia", value: "australia" },
+                { label: "Austria", value: "austria" },
+                { label: "Azerbaiyán", value: "azerbaiyan" },
+
+                { label: "Bahamas", value: "bahamas" },
+                { label: "Bangladés", value: "bangladesh" },
+                { label: "Barbados", value: "barbados" },
+                { label: "Baréin", value: "barein" },
+                { label: "Bélgica", value: "belgica" },
+                { label: "Belice", value: "belice" },
+                { label: "Benín", value: "benin" },
+                { label: "Bielorrusia", value: "bielorrusia" },
+                { label: "Birmania", value: "birmania" },
+                { label: "Bolivia", value: "bolivia" },
+                { label: "Bosnia y Herzegovina", value: "bosnia-y-herzegovina" },
+                { label: "Botsuana", value: "botsuana" },
+                { label: "Brasil", value: "brasil" },
+                { label: "Brunéi", value: "brunei" },
+                { label: "Bulgaria", value: "bulgaria" },
+                { label: "Burkina Faso", value: "burkina-faso" },
+                { label: "Burundi", value: "burundi" },
+
+                { label: "Bután", value: "butan" },
+                { label: "Cabo Verde", value: "cabo-verde" },
+                { label: "Camboya", value: "camboya" },
+                { label: "Camerún", value: "camerun" },
+                { label: "Canadá", value: "canada" },
+                { label: "Catar", value: "catar" },
+                { label: "Chad", value: "chad" },
+                { label: "Chile", value: "chile" },
+                { label: "China", value: "china" },
+                { label: "Chipre", value: "chipre" },
+                { label: "Colombia", value: "colombia" },
+                { label: "Comoras", value: "comoras" },
+                { label: "Corea del Norte", value: "corea-del-norte" },
+                { label: "Corea del Sur", value: "corea-del-sur" },
+                { label: "Costa de Marfil", value: "costa-de-marfil" },
+                { label: "Costa Rica", value: "costa-rica" },
+                { label: "Croacia", value: "croacia" },
+                { label: "Cuba", value: "cuba" },
+
+                { label: "Dinamarca", value: "dinamarca" },
+                { label: "Dominica", value: "dominica" },
+                { label: "Ecuador", value: "ecuador" },
+                { label: "Egipto", value: "egipto" },
+                { label: "El Salvador", value: "el-salvador" },
+                { label: "Emiratos Árabes Unidos", value: "emiratos-arabes-unidos" },
+                { label: "Eritrea", value: "eritrea" },
+                { label: "Eslovaquia", value: "eslovaquia" },
+                { label: "Eslovenia", value: "eslovenia" },
+                { label: "España", value: "espana" },
+                { label: "Estados Unidos", value: "estados-unidos" },
+                { label: "Estonia", value: "estonia" },
+                { label: "Esuatini", value: "esuatini" },
+                { label: "Etiopía", value: "etiopia" },
+
+                { label: "Filipinas", value: "filipinas" },
+                { label: "Finlandia", value: "finlandia" },
+                { label: "Fiyi", value: "fiyi" },
+                { label: "Francia", value: "francia" },
+
+                { label: "Gabón", value: "gabon" },
+                { label: "Gambia", value: "gambia" },
+                { label: "Georgia", value: "georgia" },
+                { label: "Ghana", value: "ghana" },
+                { label: "Granada", value: "granada" },
+                { label: "Grecia", value: "grecia" },
+                { label: "Guatemala", value: "guatemala" },
+                { label: "Guyana", value: "guyana" },
+                { label: "Guinea", value: "guinea" },
+                { label: "Guinea-Bisáu", value: "guinea-bisau" },
+                { label: "Guinea Ecuatorial", value: "guinea-ecuatorial" },
+
+                { label: "Haití", value: "haiti" },
+                { label: "Honduras", value: "honduras" },
+                { label: "Hungría", value: "hungria" },
+
+                { label: "India", value: "india" },
+                { label: "Indonesia", value: "indonesia" },
+                { label: "Irak", value: "irak" },
+                { label: "Irán", value: "iran" },
+                { label: "Irlanda", value: "irlanda" },
+                { label: "Islandia", value: "islandia" },
+                { label: "Israel", value: "israel" },
+                { label: "Italia", value: "italia" },
+
+                { label: "Jamaica", value: "jamaica" },
+                { label: "Japón", value: "japon" },
+                { label: "Jordania", value: "jordania" },
+
+                { label: "Kazajistán", value: "kazajistan" },
+                { label: "Kenia", value: "kenia" },
+                { label: "Kirguistán", value: "kirguistan" },
+                { label: "Kiribati", value: "kiribati" },
+                { label: "Kuwait", value: "kuwait" },
+
+                { label: "Laos", value: "laos" },
+                { label: "Lesoto", value: "lesoto" },
+                { label: "Letonia", value: "letonia" },
+                { label: "Líbano", value: "libano" },
+                { label: "Liberia", value: "liberia" },
+                { label: "Libia", value: "libia" },
+                { label: "Liechtenstein", value: "liechtenstein" },
+                { label: "Lituania", value: "lituania" },
+                { label: "Luxemburgo", value: "luxemburgo" },
+
+                { label: "Madagascar", value: "madagascar" },
+                { label: "Malasia", value: "malasia" },
+                { label: "Malaui", value: "malaui" },
+                { label: "Maldivas", value: "maldivas" },
+                { label: "Malí", value: "mali" },
+                { label: "Malta", value: "malta" },
+                { label: "Marruecos", value: "marruecos" },
+                { label: "Mauricio", value: "mauricio" },
+                { label: "Mauritania", value: "mauritania" },
+                { label: "México", value: "mexico" },
+                { label: "Micronesia", value: "micronesia" },
+                { label: "Moldavia", value: "moldavia" },
+                { label: "Mónaco", value: "monaco" },
+                { label: "Mongolia", value: "mongolia" },
+                { label: "Montenegro", value: "montenegro" },
+                { label: "Mozambique", value: "mozambique" },
+
+                { label: "Namibia", value: "namibia" },
+                { label: "Nauru", value: "nauru" },
+                { label: "Nepal", value: "nepal" },
+                { label: "Nicaragua", value: "nicaragua" },
+                { label: "Níger", value: "niger" },
+                { label: "Nigeria", value: "nigeria" },
+                { label: "Noruega", value: "noruega" },
+                { label: "Nueva Zelanda", value: "nueva-zelanda" },
+
+                { label: "Omán", value: "oman" },
+
+                { label: "Países Bajos", value: "paises-bajos" },
+                { label: "Pakistán", value: "pakistan" },
+                { label: "Palaos", value: "palaos" },
+                { label: "Panamá", value: "panama" },
+                { label: "Papúa Nueva Guinea", value: "papua-nueva-guinea" },
+                { label: "Paraguay", value: "paraguay" },
+                { label: "Perú", value: "peru" },
+                { label: "Polonia", value: "polonia" },
+                { label: "Portugal", value: "portugal" },
+
+                { label: "Reino Unido", value: "reino-unido" },
+                { label: "República Centroafricana", value: "republica-centroafricana" },
+                { label: "República Checa", value: "republica-checa" },
+                { label: "República del Congo", value: "republica-del-congo" },
+                { label: "República Democrática del Congo", value: "republica-democratica-del-congo" },
+                { label: "República Dominicana", value: "republica-dominicana" },
+                { label: "Ruanda", value: "ruanda" },
+                { label: "Rumania", value: "rumania" },
+                { label: "Rusia", value: "rusia" },
+
+                { label: "Samoa", value: "samoa" },
+                { label: "San Cristóbal y Nieves", value: "san-cristobal-y-nieves" },
+                { label: "San Marino", value: "san-marino" },
+                { label: "San Vicente y las Granadinas", value: "san-vicente-y-las-granadinas" },
+                { label: "Santa Lucía", value: "santa-lucia" },
+                { label: "Santo Tomé y Príncipe", value: "santo-tome-y-principe" },
+                { label: "Senegal", value: "senegal" },
+                { label: "Serbia", value: "serbia" },
+                { label: "Seychelles", value: "seychelles" },
+                { label: "Sierra Leona", value: "sierra-leona" },
+                { label: "Singapur", value: "singapur" },
+                { label: "Siria", value: "siria" },
+                { label: "Somalia", value: "somalia" },
+                { label: "Sri Lanka", value: "sri-lanka" },
+                { label: "Sudáfrica", value: "sudafrica" },
+                { label: "Sudán", value: "sudan" },
+                { label: "Sudán del Sur", value: "sudan-del-sur" },
+                { label: "Suecia", value: "suecia" },
+                { label: "Suiza", value: "suiza" },
+                { label: "Surinam", value: "surinam" },
+
+                { label: "Tailandia", value: "tailandia" },
+                { label: "Tanzania", value: "tanzania" },
+                { label: "Tayikistán", value: "tayikistan" },
+                { label: "Timor Oriental", value: "timor-oriental" },
+                { label: "Togo", value: "togo" },
+                { label: "Tonga", value: "tonga" },
+                { label: "Trinidad y Tobago", value: "trinidad-y-tobago" },
+                { label: "Túnez", value: "tunez" },
+                { label: "Turkmenistán", value: "turkmenistan" },
+                { label: "Turquía", value: "turquia" },
+                { label: "Tuvalu", value: "tuvalu" },
+
+                { label: "Ucrania", value: "ucrania" },
+                { label: "Uganda", value: "uganda" },
+                { label: "Uruguay", value: "uruguay" },
+                { label: "Uzbekistán", value: "uzbekistan" },
+
+                { label: "Vanuatu", value: "vanuatu" },
+                { label: "Vaticano", value: "vaticano" },
+                { label: "Venezuela", value: "venezuela" },
+                { label: "Vietnam", value: "vietnam" },
+
+                { label: "Yemen", value: "yemen" },
+                { label: "Yibuti", value: "yibuti" },
+
+                { label: "Zambia", value: "zambia" },
+                { label: "Zimbabue", value: "zimbabue" },
                 ],
-            },
+            }
             ]}
 
             fieldsBottom={[
@@ -184,7 +388,11 @@ import { site } from "../data/site";
 
     <section id="franja-comercial" class="franja-comercial">
         <TextGroupElement
-            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
+            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales 
+            <span>sólidas,</span>
+            <span>alineadas al mercado,</span>
+            <span>al canal y</span>
+            <span>al consumidor.</span>"
             pId=""
             pClass="franja-comercial__text"
         />
@@ -200,8 +408,8 @@ import { site } from "../data/site";
         contentId=""
         contentClass="newsletter-form__content"
 
-        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        srcDesktop="../public/media/newsletter.webp?width=2500"
+        srcMobile="../public/media/newsletter.webp?width=1500"
         alt="Newsletter"
         title="Newsletter"
         width="1920"

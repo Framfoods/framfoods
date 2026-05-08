@@ -5,7 +5,8 @@ export const logoHeader = {
     ancho: 294,
     alto: 61,
     resolucion: 600,
-    alt: site.brandName
+    alt: site.brandName,
+    title: site.regresarInicio
 }
 
 export const navAriaLabel = {

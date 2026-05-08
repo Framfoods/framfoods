@@ -33,8 +33,8 @@ import { site } from "../data/site";
     id="hero-home"
     class="banner"
 
-    srcDesktop="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
-    srcMobile="https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4"
+    srcDesktop="../public/media/video4-modelo.mp4?width=2500"
+    srcMobile="../public/media/video4-modelo.mp4?width=1500"
 
     width="1920"
     height="489"
@@ -60,8 +60,8 @@ import { site } from "../data/site";
         id="solucion-integral"
         class="banner comparison-banner-section modelo"
 
-        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        srcDesktop="../public/media/banner32-desktop.webp?width=2500"
+        srcMobile="../public/media/banner32-desktop.webp?width=1500"
         alt="Solución integral"
         width="1920"
         height="810"
@@ -213,128 +213,132 @@ import { site } from "../data/site";
         />
     </section>
 
-<ImageCardsOverlay
-  id="cards-modelo"
-  class="cards-modelo"
-  items={[
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Insights",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+    <ImageCardsOverlay
+        id="cards-modelo"
+        class="cards-modelo"
+        items={[
+            {
+            srcDesktop: "../public/media/modelo/Insights.webp?width=560",
+            srcMobile: "../public/media/modelo/Insights.webp?width=560",
+            alt: "Insights",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "INSIGHTS",
-      h2Class: "image-card__title",
+            h2: "INSIGHTS",
+            h2Class: "image-card__title",
 
-      p: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor.",
-      pClass: "image-card__text",
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Desarrollo",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+            p: "Identificamos oportunidades reales a partir de data, tendencias y comportamiento del consumidor.",
+            pClass: "image-card__text",
+            },
+            {
+            srcDesktop: "../public/media/modelo/Desarrollo.webp?width=560",
+            srcMobile: "../public/media/modelo/Desarrollo.webp?width=560",
+            alt: "Desarrollo",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "DESARROLLO",
-      h2Class: "image-card__title",
+            h2: "DESARROLLO",
+            h2Class: "image-card__title",
 
-      p: "Transformamos insights en productos viables, diferenciados y listos para competir.",
-      pClass: "image-card__text",
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Producción",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+            p: "Transformamos insights en productos viables, diferenciados y listos para competir.",
+            pClass: "image-card__text",
+            },
+            {
+            srcDesktop: "../public/media/modelo/Producción.webp?width=560",
+            srcMobile: "../public/media/modelo/Producción.webp?width=560",
+            alt: "Producción",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "PRODUCCIÓN",
-      h2Class: "image-card__title",
+            h2: "PRODUCCIÓN",
+            h2Class: "image-card__title",
 
-      p: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso.",
-      pClass: "image-card__text",
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Distribución",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+            p: "Escalamos con eficiencia, calidad y consistencia en cada etapa del proceso.",
+            pClass: "image-card__text",
+            },
+            {
+            srcDesktop: "../public/media/modelo/Distribución.webp?width=560",
+            srcMobile: "../public/media/modelo/Distribución.webp?width=560",
+            alt: "Distribución",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "DISTRIBUCIÓN",
-      h2Class: "image-card__title",
+            h2: "DISTRIBUCIÓN",
+            h2Class: "image-card__title",
 
-      p: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura.",
-      pClass: "image-card__text",
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Retail",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+            p: "Llevamos el producto a los canales correctos, optimizando tiempos y cobertura.",
+            pClass: "image-card__text",
+            },
+            {
+            srcDesktop: "../public/media/modelo/Retail.webp?width=560",
+            srcMobile: "../public/media/modelo/Retail.webp?width=560",
+            alt: "Retail",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "RETAIL",
-      h2Class: "image-card__title",
+            h2: "RETAIL",
+            h2Class: "image-card__title",
 
-      p: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación.",
-      pClass: "image-card__text",
-    },
-    {
-      srcDesktop: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      srcMobile: "https://wallpapers.com/images/hd/dense-4k-forest-background-cbk48vo6hgmey9zb.jpg",
-      alt: "Consumidor",
-      width: 432,
-      height: 444,
-      loading: "lazy",
-      decoding: "async",
+            p: "Ejecutamos estrategias en punto de venta que maximizan visibilidad y rotación.",
+            pClass: "image-card__text",
+            },
+            {
+            srcDesktop: "../public/media/modelo/Consumidor.webp?width=560",
+            srcMobile: "../public/media/modelo/Consumidor.webp?width=560",
+            alt: "Consumidor",
+            width: 432,
+            height: 444,
+            loading: "lazy",
+            decoding: "async",
 
-      figureClass: "image-card",
-      captionClass: "image-card__caption",
+            figureClass: "image-card",
+            captionClass: "image-card__caption",
 
-      h2: "CONSUMIDOR",
-      h2Class: "image-card__title",
+            h2: "CONSUMIDOR",
+            h2Class: "image-card__title",
 
-      p: "Generamos conexión, adopción y recompra a través de propuestas relevantes.",
-      pClass: "image-card__text",
-    },
-  ]}
-/>
+            p: "Generamos conexión, adopción y recompra a través de propuestas relevantes.",
+            pClass: "image-card__text",
+            },
+        ]}
+    />
 
 
     <section id="franja-comercial" class="franja-comercial">
-        <TextGroupElement
-            p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales <span>sólidas</span>."
-            pId=""
-            pClass="franja-comercial__text"
-        />
+    <TextGroupElement
+        p="Trabajamos de forma integrada para transformar ideas en soluciones comerciales 
+        <span>sólidas,</span>
+        <span>alineadas al mercado,</span>
+        <span>al canal y</span>
+        <span>al consumidor.</span>"
+        pId=""
+        pClass="franja-comercial__text"
+    />
     </section>
 
     <NewsletterForm
@@ -347,8 +351,8 @@ import { site } from "../data/site";
         contentId=""
         contentClass="newsletter-form__content"
 
-        srcDesktop="https://wallpapers.com/images/hd/1920x1080-hd-beach-khfbqt2io95uf0zy.jpg?width=2500"
-        srcMobile="https://w0.peakpx.com/wallpaper/791/747/HD-wallpaper-tropical-beach-beach-tropical.jpg?width=1000"
+        srcDesktop="../public/media/newsletter.webp?width=2500"
+        srcMobile="../public/media/newsletter.webp?width=1500"
         alt="Newsletter"
         title="Newsletter"
         width="1920"

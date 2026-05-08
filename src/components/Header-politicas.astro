@@ -4,13 +4,16 @@ import { site } from "../data/site";
 ---
 
 <header class="site-header">
-  <img
-    src={`${logoHeader.logo}?width=${logoHeader.resolucion}`}
-    alt={logoHeader.alt}
-    width={logoHeader.ancho}
-    height={logoHeader.alto}
-    decoding="async"
-  />
+  <a href="/" title={logoHeader.title}>
+    <img
+      src={`${logoHeader.logo}?width=${logoHeader.resolucion}`}
+      alt={logoHeader.alt}
+      title={logoHeader.title}
+      width={logoHeader.ancho}
+      height={logoHeader.alto}
+      decoding="async"
+    />
+  </a>
 
   <a href="/" class="btn">
     {site.regresarInicio}
