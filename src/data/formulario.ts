@@ -16,5 +16,5 @@ export const preguntas = [
 ];
 
 export const boton = [
-    {paginaGracias: "https://www.google.com/", cta:"Guardar"}
+    {paginaGracias: "/thankyou", cta:"Guardar"}
 ];
