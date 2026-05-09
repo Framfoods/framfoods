@@ -1,1 +1,1 @@
-export const siteUrl = "https://tudominio.com/";
+export const siteUrl = "https://framfoods.netlify.app/";
