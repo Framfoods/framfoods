@@ -202,8 +202,11 @@ footer small {
     padding: 10px;
 }
 @media (max-width: 768px) {
+  .language-selector {
+    order: 3;
+  }
   .site-header img {
-    width: 213px;
+    width: 180px;
     height: auto;
   }
   .site-header a:has(img){
@@ -356,8 +359,8 @@ footer small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: auto;
+  height: auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -424,10 +427,10 @@ footer li, .footer-group__toggle {
 
 @media (max-width: 768px) {
   .top-footer {
-    padding: 41px 24px 35px;
+    padding: 41px 12px 35px;
   }
   .top-footer .nav {
-    max-width: 274px;
+    max-width: 100%;
   }
     .top-footer, .top-footer .nav {
         text-align: center;
@@ -435,8 +438,8 @@ footer li, .footer-group__toggle {
         align-items: center;
         flex-direction: column;
     }
-    .top-footer img, details.footer-group {
-        padding: 0px 10px;
+    .top-footer img, details.footer-group, footer li, .footer-group__toggle {
+        padding: 0px 5px;
     }
 }
 
@@ -1938,7 +1941,7 @@ label {
 .imagen-txt-izq-der figcaption {
     display: flex;
     flex-direction: column;
-    gap: 20px 24px;
+    gap: 0px 24px;
 }
 
 .imagen-txt-izq-der p {
@@ -2376,10 +2379,6 @@ label {
     gap: 20px;
 }
 
-#formulario-contacto h2 {
-    margin-bottom: 14px;
-}
-
 #formulario-contacto .preguntas, #formulario-contacto .grupo-arriba, #formulario-contacto .grupo-abajo {
     gap: 19px 24px;
     flex-wrap: wrap;
@@ -2529,6 +2528,9 @@ label {
 
 
 @media (min-width: 768px) {
+  #formulario-contacto h2 {
+      margin-bottom: 14px;
+  }
   #mensaje-mini-banner.mini-txt-h2.modelo-insights {
     margin-top: 62px;
     margin-bottom: 62px;
@@ -2552,7 +2554,25 @@ label {
     padding-right: 15px;
   }
 }
+@media (max-width: 400px) {
+  #contactanos h3{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 @media (max-width: 768px) {
+  #contactanos figcaption {
+    gap: 15px;
+  }
+  #formularioPaginaContacto .grupo-input {
+    width: 100%;
+  }
+  #formularioPaginaContacto {
+    padding: 0px;
+  }
+  #formulario-contacto h2 {
+    margin-bottom: 5%;
+  }
   #cards-modelo {
     flex-direction: column;
     padding: 0px;
@@ -2702,7 +2722,7 @@ p.video-derecha-texto-izquierdo__text, .stats-banner-section h3, .banner-marca-n
   font-size: 20px;
 }
 .carruselReviews__caption h3, .carruselReviews__caption p, input, select, textarea, label, .newsletter-form p, .newsletter-form button, 
-.top-footer *, #contactanos h2, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu h2 {
+.top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu h2 {
   font-size: 16px;
 }
 
@@ -2775,8 +2795,8 @@ button.enviar:hover, button.newsletter-form__button:hover, section figcaption a:
   .imagen-txt-izq-der h3, .texto-lista li, .texto-lista p, #mensaje-mini-banner-dos h2, #mensaje-mini-banner h2, #desarrollamos-productos-mercado.banner-desarrollamos h2 {
     font-size: 20px!important;
   }
-  .image-cards-overlay .hoverText, p.video-derecha-texto-izquierdo__text, .banner-marca-natural p, .ecosistema-insights p, #mas-que-un-proveedor p, #propuesta-de-valor .imagen-txt-izq-der p, #supply p, #conoces-potencial p{
-    font-size: 16px;
+  .image-cards-overlay .hoverText, p.video-derecha-texto-izquierdo__text, .banner-marca-natural p, .ecosistema-insights p, #mas-que-un-proveedor p, #propuesta-de-valor .imagen-txt-izq-der p, #supply p, #conoces-potencial p,   #contactanos h2, #contactanos h3 span{
+    font-size: 16px!important;
   }
   .ecosistema-insights p, #mas-que-un-proveedor p, #propuesta-de-valor.imagen-txt-izq-der p {
     margin-bottom: 0px;
@@ -2920,3 +2940,112 @@ h1.hero-title, .ecosistema-insights h2.ecosistema-insights__banner-title, .newsl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  img.flag, .language-dropdown button img {
+      width: 16px;
+      object-fit: cover;
+      border-radius: 3px;
+      height: auto;
+      outline: 1px solid #b7b7b7;
+  }
+  #google_translate_element {
+    display: none;
+  }
+
+  .goog-te-banner-frame.skiptranslate,
+  .skiptranslate,
+  .skiptranslate iframe {
+    display: none !important;
+  }
+
+  .language-selector {
+    position: relative;
+  }
+
+  .selected-language {
+    background: white;
+    display: flex;
+    width: 90px;
+    height: 27px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid #acacac;
+    cursor: pointer;
+  }
+
+  .selected-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+
+  .arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .language-dropdown {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 7px;
+    border: 1px solid lightgray;
+    overflow: hidden;
+    display: none;
+    z-index: 9999;
+  }
+
+  .language-dropdown.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .language-dropdown button:hover {
+    background: #f2f2f2;
+  }
+  .language-dropdown button {
+    color: #151515;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    background: white;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }

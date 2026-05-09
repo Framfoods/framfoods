@@ -23,6 +23,7 @@ import { site } from "../data/site";
 ---
 
 <BaseLayout>
+
   <Header />
 
   <main class="container">
@@ -158,38 +159,37 @@ import { site } from "../data/site";
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
 
-    const slider = document.querySelector('.feature-blocks-section article');
+      const slider = document.querySelector('.feature-blocks-section article');
 
-    if (!slider) return;
+      if (!slider) return;
 
-    const nextBtn = document.querySelector('.feature-blocks-section__btn.next');
-    const prevBtn = document.querySelector('.feature-blocks-section__btn.prev');
+      const nextBtn = document.querySelector('.feature-blocks-section__btn.next');
+      const prevBtn = document.querySelector('.feature-blocks-section__btn.prev');
 
-    const getCardWidth = () => {
-        return (
-            slider.querySelector('.feature-blocks-section__item').offsetWidth + 24
-        );
-    };
+      const getCardWidth = () => {
+          return (
+              slider.querySelector('.feature-blocks-section__item').offsetWidth + 24
+          );
+      };
 
-    nextBtn?.addEventListener('click', () => {
-        slider.scrollBy({
-            left: getCardWidth(),
-            behavior: 'smooth',
-        });
-    });
+      nextBtn?.addEventListener('click', () => {
+          slider.scrollBy({
+              left: getCardWidth(),
+              behavior: 'smooth',
+          });
+      });
 
-    prevBtn?.addEventListener('click', () => {
-        slider.scrollBy({
-            left: -getCardWidth(),
-            behavior: 'smooth',
-        });
-    });
+      prevBtn?.addEventListener('click', () => {
+          slider.scrollBy({
+              left: -getCardWidth(),
+              behavior: 'smooth',
+          });
+      });
 
-});
+  });
 </script>
-
 
 <ImageCardsOverlay
   id="desarrollo-marcas"
@@ -862,65 +862,64 @@ document.addEventListener('DOMContentLoaded', () => {
 />
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
-  const PORTO57 = document.querySelector("#PORTO57 img");
-  const LATITUDE45 = document.querySelector("#LATITUDE45 img");
-  const Camanchaca = document.querySelector("#Camanchaca img");
-  const SIWIN = document.querySelector("#SIWIN img");
-  const OsoleMio = document.querySelector("#OsoleMio img");
-  const NaturalOne = document.querySelector("#NaturalOne img");
-  const MARINA = document.querySelector("#MARINA img");
-  const FORNODEMINAS = document.querySelector("#FORNODEMINAS img");
-  const LaMenorquina = document.querySelector("#LaMenorquina img");
-  const alo = document.querySelector("#alo img");
-  const RUSSETHOUSE = document.querySelector("#RUSSETHOUSE img");
+    const PORTO57 = document.querySelector("#PORTO57 img");
+    const LATITUDE45 = document.querySelector("#LATITUDE45 img");
+    const Camanchaca = document.querySelector("#Camanchaca img");
+    const SIWIN = document.querySelector("#SIWIN img");
+    const OsoleMio = document.querySelector("#OsoleMio img");
+    const NaturalOne = document.querySelector("#NaturalOne img");
+    const MARINA = document.querySelector("#MARINA img");
+    const FORNODEMINAS = document.querySelector("#FORNODEMINAS img");
+    const LaMenorquina = document.querySelector("#LaMenorquina img");
+    const alo = document.querySelector("#alo img");
+    const RUSSETHOUSE = document.querySelector("#RUSSETHOUSE img");
 
-  const changeImage = (img, newSrc) => {
-    if (!img) return;
+    const changeImage = (img, newSrc) => {
+      if (!img) return;
 
-    const picture = img.closest("picture");
-    const sources = picture ? picture.querySelectorAll("source") : [];
+      const picture = img.closest("picture");
+      const sources = picture ? picture.querySelectorAll("source") : [];
 
-    const original = img.currentSrc || img.src;
+      const original = img.currentSrc || img.src;
 
-    img.parentElement.parentElement.addEventListener("mouseenter", () => {
-      img.src = newSrc;
-      sources.forEach(s => s.srcset = newSrc);
+      img.parentElement.parentElement.addEventListener("mouseenter", () => {
+        img.src = newSrc;
+        sources.forEach(s => s.srcset = newSrc);
+      });
+
+      img.parentElement.parentElement.addEventListener("mouseleave", () => {
+        img.src = original;
+        sources.forEach((s, i) => s.srcset = original);
+      });
+    };
+
+    changeImage(PORTO57, "../public/media/partners-hover/hover-porto57.webp?width=1500");
+    changeImage(LATITUDE45, "../public/media/partners-hover/hover-latitude45.webp?width=1500");
+    changeImage(Camanchaca, "../public/media/partners-hover/hover-camanchaca.webp?width=1500");
+    changeImage(SIWIN, "../public/media/partners-hover/hover-siwin.webp?width=1500");
+    changeImage(OsoleMio, "../public/media/partners-hover/hover-osolemio.webp?width=1500");
+    changeImage(NaturalOne, "../public/media/partners-hover/hover-naturalone.webp?width=1500");
+    changeImage(MARINA, "../public/media/partners-hover/hover-marina.webp?width=1500");
+    changeImage(FORNODEMINAS, "../public/media/partners-hover/hover-fornodeminas.webp?width=1500");
+    changeImage(LaMenorquina, "../public/media/partners-hover/hover-lamenorquina.webp?width=1500");
+    changeImage(alo, "../public/media/partners-hover/hover-alo.webp?width=1500");
+    changeImage(RUSSETHOUSE, "../public/media/partners-hover/hover-russethouse.webp?width=1500");
+
+    const cards = document.querySelectorAll(".brand-cards-section__card");
+
+    cards.forEach((card) => {
+      const image = card.querySelector("img");
+
+      if (!image) return;
+
+      image.addEventListener("click", () => {
+        card.classList.toggle("is-active");
+      });
     });
 
-    img.parentElement.parentElement.addEventListener("mouseleave", () => {
-      img.src = original;
-      sources.forEach((s, i) => s.srcset = original);
-    });
-  };
-
-  changeImage(PORTO57, "../public/media/partners-hover/hover-porto57.webp?width=1500");
-  changeImage(LATITUDE45, "../public/media/partners-hover/hover-latitude45.webp?width=1500");
-  changeImage(Camanchaca, "../public/media/partners-hover/hover-camanchaca.webp?width=1500");
-  changeImage(SIWIN, "../public/media/partners-hover/hover-siwin.webp?width=1500");
-  changeImage(OsoleMio, "../public/media/partners-hover/hover-osolemio.webp?width=1500");
-  changeImage(NaturalOne, "../public/media/partners-hover/hover-naturalone.webp?width=1500");
-  changeImage(MARINA, "../public/media/partners-hover/hover-marina.webp?width=1500");
-  changeImage(FORNODEMINAS, "../public/media/partners-hover/hover-fornodeminas.webp?width=1500");
-  changeImage(LaMenorquina, "../public/media/partners-hover/hover-lamenorquina.webp?width=1500");
-  changeImage(alo, "../public/media/partners-hover/hover-alo.webp?width=1500");
-  changeImage(RUSSETHOUSE, "../public/media/partners-hover/hover-russethouse.webp?width=1500");
-
-  const cards = document.querySelectorAll(".brand-cards-section__card");
-
-  cards.forEach((card) => {
-    const image = card.querySelector("img");
-
-    if (!image) return;
-
-    image.addEventListener("click", () => {
-      card.classList.toggle("is-active");
-    });
   });
-
-});
-
 </script>
 
 <section id="banner-marca-natural" class="banner-marca-natural">
@@ -1241,7 +1240,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ]}
 />
 
-
 <section id="formulario-wrapper" class="formulario-wrapper">
   <FormularioLead
     id="formularioHome"
@@ -1310,7 +1308,6 @@ document.addEventListener("DOMContentLoaded", () => {
             selected: true,
             hidden: true,
           },
-
           { label: "Afganistán", value: "afganistan" },
           { label: "Albania", value: "albania" },
           { label: "Alemania", value: "alemania" },
@@ -1324,7 +1321,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Australia", value: "australia" },
           { label: "Austria", value: "austria" },
           { label: "Azerbaiyán", value: "azerbaiyan" },
-
           { label: "Bahamas", value: "bahamas" },
           { label: "Bangladés", value: "bangladesh" },
           { label: "Barbados", value: "barbados" },
@@ -1342,7 +1338,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Bulgaria", value: "bulgaria" },
           { label: "Burkina Faso", value: "burkina-faso" },
           { label: "Burundi", value: "burundi" },
-
           { label: "Bután", value: "butan" },
           { label: "Cabo Verde", value: "cabo-verde" },
           { label: "Camboya", value: "camboya" },
@@ -1361,7 +1356,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Costa Rica", value: "costa-rica" },
           { label: "Croacia", value: "croacia" },
           { label: "Cuba", value: "cuba" },
-
           { label: "Dinamarca", value: "dinamarca" },
           { label: "Dominica", value: "dominica" },
           { label: "Ecuador", value: "ecuador" },
@@ -1376,12 +1370,10 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Estonia", value: "estonia" },
           { label: "Esuatini", value: "esuatini" },
           { label: "Etiopía", value: "etiopia" },
-
           { label: "Filipinas", value: "filipinas" },
           { label: "Finlandia", value: "finlandia" },
           { label: "Fiyi", value: "fiyi" },
           { label: "Francia", value: "francia" },
-
           { label: "Gabón", value: "gabon" },
           { label: "Gambia", value: "gambia" },
           { label: "Georgia", value: "georgia" },
@@ -1393,11 +1385,9 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Guinea", value: "guinea" },
           { label: "Guinea-Bisáu", value: "guinea-bisau" },
           { label: "Guinea Ecuatorial", value: "guinea-ecuatorial" },
-
           { label: "Haití", value: "haiti" },
           { label: "Honduras", value: "honduras" },
           { label: "Hungría", value: "hungria" },
-
           { label: "India", value: "india" },
           { label: "Indonesia", value: "indonesia" },
           { label: "Irak", value: "irak" },
@@ -1406,17 +1396,14 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Islandia", value: "islandia" },
           { label: "Israel", value: "israel" },
           { label: "Italia", value: "italia" },
-
           { label: "Jamaica", value: "jamaica" },
           { label: "Japón", value: "japon" },
           { label: "Jordania", value: "jordania" },
-
           { label: "Kazajistán", value: "kazajistan" },
           { label: "Kenia", value: "kenia" },
           { label: "Kirguistán", value: "kirguistan" },
           { label: "Kiribati", value: "kiribati" },
           { label: "Kuwait", value: "kuwait" },
-
           { label: "Laos", value: "laos" },
           { label: "Lesoto", value: "lesoto" },
           { label: "Letonia", value: "letonia" },
@@ -1426,7 +1413,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Liechtenstein", value: "liechtenstein" },
           { label: "Lituania", value: "lituania" },
           { label: "Luxemburgo", value: "luxemburgo" },
-
           { label: "Madagascar", value: "madagascar" },
           { label: "Malasia", value: "malasia" },
           { label: "Malaui", value: "malaui" },
@@ -1443,7 +1429,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Mongolia", value: "mongolia" },
           { label: "Montenegro", value: "montenegro" },
           { label: "Mozambique", value: "mozambique" },
-
           { label: "Namibia", value: "namibia" },
           { label: "Nauru", value: "nauru" },
           { label: "Nepal", value: "nepal" },
@@ -1452,9 +1437,7 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Nigeria", value: "nigeria" },
           { label: "Noruega", value: "noruega" },
           { label: "Nueva Zelanda", value: "nueva-zelanda" },
-
           { label: "Omán", value: "oman" },
-
           { label: "Países Bajos", value: "paises-bajos" },
           { label: "Pakistán", value: "pakistan" },
           { label: "Palaos", value: "palaos" },
@@ -1464,7 +1447,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Perú", value: "peru" },
           { label: "Polonia", value: "polonia" },
           { label: "Portugal", value: "portugal" },
-
           { label: "Reino Unido", value: "reino-unido" },
           { label: "República Centroafricana", value: "republica-centroafricana" },
           { label: "República Checa", value: "republica-checa" },
@@ -1474,7 +1456,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Ruanda", value: "ruanda" },
           { label: "Rumania", value: "rumania" },
           { label: "Rusia", value: "rusia" },
-
           { label: "Samoa", value: "samoa" },
           { label: "San Cristóbal y Nieves", value: "san-cristobal-y-nieves" },
           { label: "San Marino", value: "san-marino" },
@@ -1495,7 +1476,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Suecia", value: "suecia" },
           { label: "Suiza", value: "suiza" },
           { label: "Surinam", value: "surinam" },
-
           { label: "Tailandia", value: "tailandia" },
           { label: "Tanzania", value: "tanzania" },
           { label: "Tayikistán", value: "tayikistan" },
@@ -1507,20 +1487,16 @@ document.addEventListener("DOMContentLoaded", () => {
           { label: "Turkmenistán", value: "turkmenistan" },
           { label: "Turquía", value: "turquia" },
           { label: "Tuvalu", value: "tuvalu" },
-
           { label: "Ucrania", value: "ucrania" },
           { label: "Uganda", value: "uganda" },
           { label: "Uruguay", value: "uruguay" },
           { label: "Uzbekistán", value: "uzbekistan" },
-
           { label: "Vanuatu", value: "vanuatu" },
           { label: "Vaticano", value: "vaticano" },
           { label: "Venezuela", value: "venezuela" },
           { label: "Vietnam", value: "vietnam" },
-
           { label: "Yemen", value: "yemen" },
           { label: "Yibuti", value: "yibuti" },
-
           { label: "Zambia", value: "zambia" },
           { label: "Zimbabue", value: "zimbabue" },
         ],
@@ -1556,7 +1532,6 @@ document.addEventListener("DOMContentLoaded", () => {
         rows: "6",
       }
     ]}
-
     modalId="modal-terminos"
     modalClass="modal-terminos"
     modalContentClass="modal-contenido-terminos"
@@ -1576,7 +1551,6 @@ document.addEventListener("DOMContentLoaded", () => {
       loading="lazy"
       decoding="async"
     />
-
     <ImagenResponsive
       srcDesktop="../public/media/banner11-desktop.webp?width=850"
       srcMobile="../public/media/banner11-desktop.webp?width=850"

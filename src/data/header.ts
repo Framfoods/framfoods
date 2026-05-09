@@ -22,6 +22,9 @@ export const componentes = [
   { href: site.modeloframfoods, label: "Modelo FramFoods" },
   { href: site.nosotros, label: "Nosotros" },
   { href: site.testimonios, label: "Testimonios" },
-  { href: site.contacto, label: "Contacto" },
-  { href: "#", label: "Idioma", primary: true },
+  { href: site.contacto, label: "Contacto" }
 ];
+
+
+
+

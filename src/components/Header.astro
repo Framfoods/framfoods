@@ -72,4 +72,173 @@ import { logoHeader, componentes, navAriaLabel } from "../data/header";
       </a>
     )
   ))}
+  <div class="language-selector"> <button class="selected-language" id="selectedLanguage"> <div class="selected-left"> <img class="flag" src="https://flagcdn.com/mx.svg" alt="Idioma"/> <span class="lang-text">ES</span> </div> <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.29513C0.683417 -0.0983765 1.31658 -0.0983765 1.70711 0.29513L5 3.61317L8.29289 0.29513C8.68342 -0.0983766 9.31658 -0.0983766 9.70711 0.29513C10.0976 0.688636 10.0976 1.32664 9.70711 1.72014L5.70711 5.75068C5.31658 6.14419 4.68342 6.14419 4.29289 5.75068L0.292893 1.72014C-0.0976311 1.32664 -0.0976311 0.688636 0.292893 0.29513Z" fill="#151515"/>
+</svg> </svg> </button> <div class="language-dropdown" id="languageDropdown"> <button onclick="traducir('es', 'mx', 'ES')"> <img src="https://flagcdn.com/mx.svg" alt="México"> ES </button> <button onclick="traducir('en', 'us', 'EN')"> <img src="https://flagcdn.com/us.svg" alt="USA"> EN </button> <button onclick="traducir('pt', 'pt', 'PT')"> <img src="https://flagcdn.com/pt.svg" alt="Portugal"> PT </button> <button onclick="traducir('fr', 'fr', 'FR')"> <img src="https://flagcdn.com/fr.svg" alt="Francia"> FR </button> <button onclick="traducir('de', 'de', 'DE')"> <img src="https://flagcdn.com/de.svg" alt="Alemania"> DE </button> <button onclick="traducir('it', 'it', 'IT')"> <img src="https://flagcdn.com/it.svg" alt="Italia"> IT </button> <button onclick="traducir('zh-CN', 'cn', 'ZH')"> <img src="https://flagcdn.com/cn.svg" alt="China"> ZH </button> <button onclick="traducir('ja', 'jp', 'JA')"> <img src="https://flagcdn.com/jp.svg" alt="Japón"> JA </button> <button onclick="traducir('ko', 'kr', 'KO')"> <img src="https://flagcdn.com/kr.svg" alt="Corea"> KO </button> <button onclick="traducir('ru', 'ru', 'RU')"> <img src="https://flagcdn.com/ru.svg" alt="Rusia"> RU </button> </div> </div> <div id="google_translate_element"></div>
+
+
+<script is:inline>
+const idiomas = {
+  es: {
+    flag: "mx",
+    text: "ES"
+  },
+  en: {
+    flag: "us",
+    text: "EN"
+  },
+  pt: {
+    flag: "pt",
+    text: "PT"
+  },
+  fr: {
+    flag: "fr",
+    text: "FR"
+  },
+  de: {
+    flag: "de",
+    text: "DE"
+  },
+  it: {
+    flag: "it",
+    text: "IT"
+  },
+  "zh-CN": {
+    flag: "cn",
+    text: "ZH"
+  },
+  ja: {
+    flag: "jp",
+    text: "JA"
+  },
+  ko: {
+    flag: "kr",
+    text: "KO"
+  },
+  ru: {
+    flag: "ru",
+    text: "RU"
+  }
+};
+
+window.addEventListener("load", () => {
+
+  const match =
+    document.cookie.match(/googtrans=\/es\/([^;]+)/);
+
+  if (!match) return;
+
+  const lang = match[1];
+
+  const idioma = idiomas[lang];
+
+  if (!idioma) return;
+
+  document.querySelector(".flag").src =
+    `https://flagcdn.com/${idioma.flag}.svg`;
+
+  document.querySelector(".lang-text").innerHTML =
+    idioma.text;
+
+});
+
+
+  const selectedLanguage =
+    document.querySelector("#selectedLanguage");
+
+  const languageDropdown =
+    document.querySelector("#languageDropdown");
+
+  selectedLanguage.addEventListener("click", () => {
+
+    languageDropdown.classList.toggle("active");
+
+  });
+
+  window.googleTranslateElementInit = () => {
+
+    const ocultarGoogleTranslate = () => {
+
+      const elementos = document.querySelectorAll(
+        ".skiptranslate, .goog-te-banner-frame"
+      );
+
+      elementos.forEach((el) => {
+
+        el.style.display = "none";
+        el.style.visibility = "hidden";
+        el.style.opacity = "0";
+        el.style.height = "0";
+        el.style.width = "0";
+
+      });
+
+      document.body.style.top = "0px";
+
+    };
+
+    setInterval(ocultarGoogleTranslate, 500);
+
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "es",
+        includedLanguages:
+          "en,pt,fr,de,it,ru,zh-CN,ja,ko",
+        autoDisplay: false
+      },
+      "google_translate_element"
+    );
+  };
+
+  const script = document.createElement("script");
+
+  script.src =
+    "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+
+  script.async = true;
+
+  document.body.appendChild(script);
+
+  window.traducir = (lang, flag, text) => {
+
+    document.querySelector(".flag").src =
+      `https://flagcdn.com/${flag}.svg`;
+
+    document.querySelector(".lang-text").innerHTML =
+      text;
+
+    languageDropdown.classList.remove("active");
+
+    if (lang === "es") {
+
+      document.cookie =
+        "googtrans=/es/es; path=/";
+
+      location.reload();
+
+      return;
+    }
+
+    const intervalo = setInterval(() => {
+
+      const combo =
+        document.querySelector(".goog-te-combo");
+
+      if (combo) {
+
+        combo.value = lang;
+
+        combo.dispatchEvent(
+          new Event("change")
+        );
+
+        clearInterval(intervalo);
+
+      }
+
+    }, 500);
+
+  };
+
+</script>
 </header>

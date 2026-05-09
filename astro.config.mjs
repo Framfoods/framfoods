@@ -1,7 +1,5 @@
-import { siteUrl } from "./src/config/site.mjs";
+import { defineConfig } from "astro/config";
 
-export default {
-  site: "https://rodyuzz1993.github.io",
-  base: "/framfoodstest1",
+export default defineConfig({
   output: "static"
-};
+});
