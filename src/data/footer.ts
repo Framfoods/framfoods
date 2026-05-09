@@ -1,7 +1,7 @@
 import { site } from "./site";
 
 export const logoFooter = {
-    logo: "../public/media/logo-dark.webp?width=600",
+    logo: "/media/logo-dark.webp?width=600",
     ancho: 252,
     alto: 52,
     resolucion: 500,

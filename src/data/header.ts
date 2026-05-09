@@ -1,7 +1,7 @@
 import { site } from "./site";
 
 export const logoHeader = {
-    logo: "../public/media/logo-dark.webp",
+    logo: "/media/logo-dark.webp",
     ancho: 294,
     alto: 61,
     resolucion: 600,

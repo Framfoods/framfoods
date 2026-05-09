@@ -16,10 +16,10 @@ export const site = {
     "Somos líderes en importación, distribución y desarrollo de productos alimenticios.",
 
   media: {
-    favicon: "../public/media/favicon-48x48.ico",
-    faviconPng: "../public/media/favicon-48x48.png",
-    appleTouchIcon: "../public/media/apple-touch-icon-180x180.png",
-    ogImage: "../public/media/apple-touch-icon-180x180.png",
+    favicon: "/media/favicon-48x48.ico",
+    faviconPng: "/media/favicon-48x48.png",
+    appleTouchIcon: "/media/apple-touch-icon-180x180.png",
+    ogImage: "/media/apple-touch-icon-180x180.png",
     ogImageWidth: "1200",
     ogImageHeight: "630",
   },
