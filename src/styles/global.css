@@ -2630,8 +2630,9 @@ label {
   }
 }
 
-.mobile-nav__menu h2 {
+.mobile-nav__menu p.h2 {
   padding: 10px;
+  font-weight: 700;
 }
 
 details.mobile-nav[open] nav.mobile-nav__menu {
@@ -2722,7 +2723,7 @@ p.video-derecha-texto-izquierdo__text, .stats-banner-section h3, .banner-marca-n
   font-size: 20px;
 }
 .carruselReviews__caption h3, .carruselReviews__caption p, input, select, textarea, label, .newsletter-form p, .newsletter-form button, 
-.top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu h2 {
+.top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu p.h2 {
   font-size: 16px;
 }
 
