@@ -1245,10 +1245,11 @@ import { site } from "../data/site";
     id="formularioHome"
     class=""
 
-    action="/api/contacto"
+    name="contacto"
+    action="/gracias"
     method="POST"
     thankYouUrl="/gracias"
-    submitMode="fetch"
+    submitMode="native"
 
     h2="Construyamos el crecimiento de tu marca"
     h2Class="formulario__title"
@@ -1576,6 +1577,7 @@ import { site } from "../data/site";
   />
 </section>
 
+
 <NewsletterForm
   id="newsletter-principal"
   class="newsletter-form banner"
@@ -1605,8 +1607,10 @@ import { site } from "../data/site";
   pId=""
   pClass="newsletter-form__text"
 
-  action="/api/newsletter"
+  name="newsletter"
+  action="/thankyou"
   method="POST"
+  submitMode="native"
 
   successParam="newsletter"
   successValue="ok"
@@ -1624,6 +1628,7 @@ import { site } from "../data/site";
   buttonClass="newsletter-form__button"
   buttonHtml="Suscribirme al newsletter"
 />
+
 
 
 

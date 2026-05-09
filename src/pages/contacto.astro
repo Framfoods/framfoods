@@ -67,10 +67,11 @@ import { site } from "../data/site";
             id="formularioPaginaContacto"
             class=""
 
-            action="/api/contacto"
+            name="contacto"
+            action="/gracias"
             method="POST"
             thankYouUrl="/gracias"
-            submitMode="fetch"
+            submitMode="native"
 
             h2="Construyamos el crecimiento de tu marca"
             h2Class="formulario__title"
@@ -398,54 +399,60 @@ import { site } from "../data/site";
         />
     </section>
 
-    <NewsletterForm
-        id="newsletter-principal"
-        class="newsletter-form banner"
 
-        figureClass="newsletter-form__figure"
-        captionClass="newsletter-form__caption"
 
-        contentId=""
-        contentClass="newsletter-form__content"
+<NewsletterForm
+  id="newsletter-principal"
+  class="newsletter-form banner"
 
-        srcDesktop="/media/newsletter.webp?width=2500"
-        srcMobile="/media/newsletter.webp?width=1500"
-        alt="Newsletter"
-        title="Newsletter"
-        width="1920"
-        height="250"
-        loading="lazy"
-        decoding="async"
+  figureClass="newsletter-form__figure"
+  captionClass="newsletter-form__caption"
 
-        h2="Suscríbete a nuestro newsletter"
-        h2Id=""
-        h2Class="newsletter-form__title"
+  contentId=""
+  contentClass="newsletter-form__content"
 
-        p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
-        <br>
-        Forma parte de nuestra comunidad y entérate primero de lo que viene."
-        pId=""
-        pClass="newsletter-form__text"
+  srcDesktop="/media/newsletter.webp?width=2500"
+  srcMobile="/media/newsletter.webp?width=1500"
+  alt="Newsletter"
+  title="Newsletter"
+  width="1920"
+  height="250"
+  loading="lazy"
+  decoding="async"
 
-        action="/api/newsletter"
-        method="POST"
+  h2="Suscríbete a nuestro newsletter"
+  h2Id=""
+  h2Class="newsletter-form__title"
 
-        successParam="newsletter"
-        successValue="ok"
-        successMessage="Gracias por suscribirte al newsletter."
+  p="Recibe actualizaciones, novedades y contenido relevante directamente en tu correo.
+  <br>
+  Forma parte de nuestra comunidad y entérate primero de lo que viene."
+  pId=""
+  pClass="newsletter-form__text"
 
-        inputWrapperClass="newsletter-form__field"
-        inputId="newsletter-email"
-        inputClass="newsletter-form__input"
-        inputName="email"
-        inputDataColumn="Correo electrónico"
-        inputPlaceholder="tu correo"
-        inputLabel=""
-        inputRequired={true}
+  name="newsletter"
+  action="/thankyou"
+  method="POST"
+  submitMode="native"
 
-        buttonClass="newsletter-form__button"
-        buttonHtml="Suscribirme al newsletter"
-    />
+  successParam="newsletter"
+  successValue="ok"
+  successMessage="Gracias por suscribirte al newsletter."
+
+  inputWrapperClass="newsletter-form__field"
+  inputId="newsletter-email"
+  inputClass="newsletter-form__input"
+  inputName="email"
+  inputDataColumn="Correo electrónico"
+  inputPlaceholder="tu correo"
+  inputLabel=""
+  inputRequired={true}
+
+  buttonClass="newsletter-form__button"
+  buttonHtml="Suscribirme al newsletter"
+/>
+
+
 
     </main>
 
