@@ -39,10 +39,10 @@ export const menus = [
   {
     titulo: "Oficinas Comerciales",
     links: [
-      { label: `<span class="direccion">CAMPUS CORPORATIVO COYOACÁN<br>Av. Coyoacán 1622, Torre 4 Ofna. 101, <br>Col. Del Valle, C.P. 03100, CDMX, México<br>Tel. +52 33 9689 2203</span>` },
+      { label: `<span class="direccion">CAMPUS CORPORATIVO COYOACÁN<br>Av. Coyoacán 1622, Torre 4 Ofna. 101, <br>Col. Del Valle, C.P. 03100, CDMX, México<br>Tel. +52 55 127 20763</span>` },
       { label: "Contacto"},
-      { label: `<span>karla.cayetano@framfoods.com.mx</span> <span>mariana.garcia@framfoods.com.mx</span>` },
-      { label: `<span class="whatsapp">WhatsApp: +52 33 9689 2203</span>`},
+      { label: `<span>atencion@framfoods.com.mx</span>` },
+      { label: `<span class="whatsapp">WhatsApp: +52 55 127 20763</span>`},
     ],
   },
   {

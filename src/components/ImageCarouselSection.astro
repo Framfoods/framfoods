@@ -33,17 +33,16 @@ const {
 
   articleGap = "42px",
 
-  // Tiempo en milisegundos.
-  // Ejemplo: autoplayDelay="3000" = cambia cada 3 segundos.
-  // Si lo dejas vacío o en "0", no corre automático.
-  autoplayDelay = "0",
+  // velocidad
+  speedDesktop = "0.4",
+  speedMobile = "0.8",
 
   items = [],
 } = Astro.props;
 
 const tieneTexto = h1 || h2 || h3 || p || linkHtml;
 const sectionSelector = id ? `#${id}` : "";
-const articleStyle = articleGap ? `gap: ${articleGap};` : "";
+const articleStyle = articleGap ? `gap:${articleGap};` : "";
 ---
 
 <section
@@ -51,6 +50,7 @@ const articleStyle = articleGap ? `gap: ${articleGap};` : "";
   {...(clase ? { class: clase } : {})}
   data-image-carousel
 >
+
   {tieneTexto && (
     <TextGroupElement
       h1={h1}
@@ -80,7 +80,10 @@ const articleStyle = articleGap ? `gap: ${articleGap};` : "";
     />
   )}
 
-  <article data-carousel-track style={articleStyle}>
+  <article
+    data-carousel-track
+    style={articleStyle}
+  >
     {items.map((item) => (
       <ImagenResponsive
         srcDesktop={item.srcDesktop}
@@ -96,265 +99,126 @@ const articleStyle = articleGap ? `gap: ${articleGap};` : "";
     ))}
   </article>
 
-  <div data-carousel-dots aria-label="Controles del carrusel"></div>
 </section>
-
-<script define:vars={{ sectionSelector, autoplayDelay }}>
+<script define:vars={{
+  sectionSelector,
+  speedDesktop,
+  speedMobile
+}}>
   document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.querySelector(sectionSelector);
 
-    if (!carousel || carousel.dataset.initialized === "true") return;
+    const carousel =
+      document.querySelector(sectionSelector);
+
+    if (!carousel) return;
+
+    if (carousel.dataset.initialized === "true") return;
 
     carousel.dataset.initialized = "true";
 
-    const track = carousel.querySelector("[data-carousel-track]");
-    const dotsWrapper = carousel.querySelector("[data-carousel-dots]");
+    const track =
+      carousel.querySelector("[data-carousel-track]");
 
-    if (!track || !dotsWrapper) return;
+    if (!track) return;
 
-    let scrollPositions = [];
-    let currentIndex = 0;
-    let autoplayTimer = null;
+    const isDesktop =
+      window.innerWidth > 1024;
 
-    const delay = Number(autoplayDelay);
+    const speed =
+      isDesktop
+        ? Number(speedDesktop)
+        : Number(speedMobile);
 
-    const getMaxScroll = () => {
-      return Math.max(0, track.scrollWidth - track.clientWidth);
-    };
+    // estilos forzados
+    track.style.display = "flex";
+    track.style.flexWrap = "nowrap";
+    track.style.overflowX = "hidden";
+    track.style.scrollBehavior = "auto";
 
-    const getSlides = () => {
-      return Array.from(track.children);
-    };
+    // duplicar logos
+    const originals =
+      Array.from(track.children);
 
-    const getVisibleSlidesCount = (slides) => {
-      const trackWidth = track.clientWidth;
-      let usedWidth = 0;
-      let visibleCount = 0;
+    originals.forEach((item) => {
 
-      slides.forEach((slide) => {
-        const slideWidth = slide.getBoundingClientRect().width;
-        const styles = window.getComputedStyle(track);
-        const gap = parseFloat(styles.columnGap || styles.gap || "0");
+      const clone = item.cloneNode(true);
 
-        const widthWithGap = visibleCount === 0 ? slideWidth : slideWidth + gap;
+      clone.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
-        if (usedWidth + widthWithGap <= trackWidth + 1) {
-          usedWidth += widthWithGap;
-          visibleCount++;
-        }
-      });
+      track.appendChild(clone);
 
-      return Math.max(1, visibleCount);
-    };
+    });
 
-    const buildScrollPositions = () => {
-      const maxScroll = getMaxScroll();
-      const slides = getSlides();
+    let paused = false;
 
-      if (maxScroll <= 1 || !slides.length) {
-        scrollPositions = [];
-        dotsWrapper.hidden = true;
-        dotsWrapper.innerHTML = "";
-        return;
-      }
+    // AQUÍ la diferencia importante
+    let currentScroll = 0;
 
-      const visibleSlidesCount = getVisibleSlidesCount(slides);
+    const animate = () => {
 
-      /*
-        Avanza por grupos reales de imágenes.
-        Ejemplo:
-        - Si caben 6 logos, avanza 6.
-        - Si el último grupo queda muy pequeño, lo fuerza al maxScroll.
-      */
-      const positions = [];
+      if (!paused) {
 
-      for (let i = 0; i < slides.length; i += visibleSlidesCount) {
-        const slide = slides[i];
-        const position = Math.min(slide.offsetLeft, maxScroll);
+        currentScroll += speed;
 
-        if (!positions.includes(Math.round(position))) {
-          positions.push(Math.round(position));
-        }
-      }
+        const resetPoint =
+          track.scrollWidth / 2;
 
-      const lastPosition = Math.round(maxScroll);
-
-      if (positions[positions.length - 1] !== lastPosition) {
-        positions.push(lastPosition);
-      }
-
-      /*
-        Limpia posiciones casi pegadas al final.
-        Evita casos como:
-        dot 2 = 99%
-        dot 3 = 100%
-      */
-      const minDistance = track.clientWidth * 0.35;
-
-      scrollPositions = positions.filter((position, index) => {
-        const nextPosition = positions[index + 1];
-
-        if (nextPosition === undefined) return true;
-
-        const isAlmostLast = nextPosition === lastPosition;
-        const distance = nextPosition - position;
-
-        if (isAlmostLast && distance < minDistance) {
-          return false;
+        if (currentScroll >= resetPoint) {
+          currentScroll = 0;
         }
 
-        return true;
-      });
+        track.scrollLeft = currentScroll;
 
-      if (scrollPositions[scrollPositions.length - 1] !== lastPosition) {
-        scrollPositions.push(lastPosition);
       }
+
+      requestAnimationFrame(animate);
+
     };
 
-    const setActiveDot = (activeIndex) => {
-      currentIndex = activeIndex;
+    // desktop hover
+    carousel.addEventListener(
+      "mouseenter",
+      () => {
 
-      const dots = Array.from(dotsWrapper.querySelectorAll("[data-carousel-dot]"));
-
-      dots.forEach((dot, index) => {
-        dot.setAttribute(
-          "aria-current",
-          index === activeIndex ? "true" : "false"
-        );
-      });
-    };
-
-    const getClosestIndex = () => {
-      if (!scrollPositions.length) return 0;
-
-      const currentScroll = track.scrollLeft;
-
-      let closestIndex = 0;
-      let closestDistance = Infinity;
-
-      scrollPositions.forEach((position, index) => {
-        const distance = Math.abs(currentScroll - position);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
+        if (isDesktop) {
+          paused = true;
         }
-      });
 
-      return closestIndex;
-    };
-
-    const moveToGroup = (index) => {
-      if (!scrollPositions.length) return;
-
-      const nextIndex = index >= scrollPositions.length ? 0 : index;
-      const position = scrollPositions[nextIndex];
-
-      track.scrollTo({
-        left: position,
-        behavior: "smooth",
-      });
-
-      setActiveDot(nextIndex);
-    };
-
-    const renderDots = () => {
-      dotsWrapper.innerHTML = "";
-
-      if (!scrollPositions.length || scrollPositions.length <= 1) {
-        dotsWrapper.hidden = true;
-        return;
       }
+    );
 
-      dotsWrapper.hidden = false;
+    carousel.addEventListener(
+      "mouseleave",
+      () => {
 
-      scrollPositions.forEach((_, index) => {
-        const dot = document.createElement("button");
+        if (isDesktop) {
+          paused = false;
+        }
 
-        dot.type = "button";
-        dot.setAttribute("data-carousel-dot", String(index));
-        dot.setAttribute("aria-label", `Ir al grupo ${index + 1}`);
-        dot.setAttribute("aria-current", index === 0 ? "true" : "false");
-
-        dot.addEventListener("click", () => {
-          stopAutoplay();
-          moveToGroup(index);
-          startAutoplay();
-        });
-
-        dotsWrapper.appendChild(dot);
-      });
-    };
-
-    const stopAutoplay = () => {
-      if (autoplayTimer) {
-        window.clearInterval(autoplayTimer);
-        autoplayTimer = null;
       }
-    };
+    );
 
-    const startAutoplay = () => {
-      if (!delay || delay <= 0 || scrollPositions.length <= 1) return;
+    // mobile touch
+    carousel.addEventListener(
+      "touchstart",
+      () => {
+        paused = true;
+      },
+      { passive: true }
+    );
 
-      stopAutoplay();
+    carousel.addEventListener(
+      "touchend",
+      () => {
+        paused = false;
+      },
+      { passive: true }
+    );
 
-      autoplayTimer = window.setInterval(() => {
-        moveToGroup(currentIndex + 1);
-      }, delay);
-    };
+    requestAnimationFrame(animate);
 
-    const refreshCarousel = () => {
-      buildScrollPositions();
-      renderDots();
-
-      const closestIndex = getClosestIndex();
-      setActiveDot(closestIndex);
-
-      stopAutoplay();
-      startAutoplay();
-    };
-
-    let scrollTimer;
-
-    track.addEventListener("scroll", () => {
-      window.clearTimeout(scrollTimer);
-
-      scrollTimer = window.setTimeout(() => {
-        const activeIndex = getClosestIndex();
-        setActiveDot(activeIndex);
-      }, 80);
-    });
-
-    carousel.addEventListener("mouseenter", () => {
-      stopAutoplay();
-    });
-
-    carousel.addEventListener("mouseleave", () => {
-      startAutoplay();
-    });
-
-    carousel.addEventListener("focusin", () => {
-      stopAutoplay();
-    });
-
-    carousel.addEventListener("focusout", () => {
-      startAutoplay();
-    });
-
-    window.addEventListener("resize", () => {
-      refreshCarousel();
-    });
-
-    const images = Array.from(track.querySelectorAll("img"));
-
-    images.forEach((image) => {
-      if (!image.complete) {
-        image.addEventListener("load", refreshCarousel, { once: true });
-      }
-    });
-
-    requestAnimationFrame(() => {
-      refreshCarousel();
-    });
   });
 </script>

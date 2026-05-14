@@ -1,7 +1,9 @@
 ---
 import { logoHeader, componentes, navAriaLabel } from "../data/header";
 ---
+
 <header class="site-header">
+
   <a href="/" title={logoHeader.title}>
     <img
       src={`${logoHeader.logo}?width=${logoHeader.resolucion}`}
@@ -12,29 +14,58 @@ import { logoHeader, componentes, navAriaLabel } from "../data/header";
       decoding="async"
     />
   </a>
+
   <details class="mobile-nav">
+
     <summary class="mobile-nav__toggle">
-      <a role="button" class="icon-menu" aria-hidden="true" title={navAriaLabel.abrir}>
+
+      <a
+        role="button"
+        class="icon-menu"
+        aria-hidden="true"
+        title={navAriaLabel.abrir}
+      >
+
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.00763C0 0.451133 0.447715 0 1 0H13C13.5523 0 14 0.451133 14 1.00763C14 1.56413 13.5523 2.01527 13 2.01527H1C0.447715 2.01527 0 1.56413 0 1.00763Z" fill="#0A0A0A"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.0458C0 5.4893 0.447715 5.03817 1 5.03817H13C13.5523 5.03817 14 5.4893 14 6.0458C14 6.60231 13.5523 7.05344 13 7.05344H1C0.447715 7.05344 0 6.60231 0 6.0458Z" fill="#0A0A0A"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 11.084C0 10.5275 0.447715 10.0763 1 10.0763H13C13.5523 10.0763 14 10.5275 14 11.084C14 11.6405 13.5523 12.0916 13 12.0916H1C0.447715 12.0916 0 11.6405 0 11.084Z" fill="#0A0A0A"/>
         </svg>
+
       </a>
-      <a role="button" class="icon-close" aria-hidden="true" title={navAriaLabel.cerrar}>
+
+      <a
+        role="button"
+        class="icon-close"
+        aria-hidden="true"
+        title={navAriaLabel.cerrar}
+      >
+
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L10 8.58579L14.2929 4.29289C14.6834 3.90237 15.3166 3.90237 15.7071 4.29289C16.0976 4.68342 16.0976 5.31658 15.7071 5.70711L11.4142 10L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L10 11.4142L5.70711 15.7071C5.31658 16.0976 4.68342 16.0976 4.29289 15.7071C3.90237 15.3166 3.90237 14.6834 4.29289 14.2929L8.58579 10L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" fill="#0A0A0A"/>
         </svg>
+
       </a>
+
     </summary>
-    <nav class="mobile-nav__menu" aria-label={navAriaLabel.titulo}>
+
+    <nav
+      class="mobile-nav__menu"
+      aria-label={navAriaLabel.titulo}
+    >
+
       <p class="h2">
         MENU
       </p>
+
       <ul>
+
         {componentes.map((link) => (
+
           !link.primary && (
+
             <li>
+
               <a
                 href={link.href}
                 class="nav-link"
@@ -42,203 +73,270 @@ import { logoHeader, componentes, navAriaLabel } from "../data/header";
               >
                 {link.label}
               </a>
+
             </li>
+
           )
+
         ))}
+
       </ul>
+
     </nav>
+
   </details>
 
-  <nav class="desktop-nav" aria-label={navAriaLabel.titulo}>
+  <nav
+    class="desktop-nav"
+    aria-label={navAriaLabel.titulo}
+  >
+
     <ul>
+
       {componentes.map((link) => (
+
         !link.primary && (
+
           <li>
+
             <a
               href={link.href}
               class="nav-link"
             >
               {link.label}
             </a>
+
           </li>
+
         )
+
       ))}
+
     </ul>
+
   </nav>
+
   {componentes.map((link) => (
+
     link.primary && (
-      <a href={link.href} class={link.primary ? "btn" : "nav-link"}>
+
+      <a
+        href={link.href}
+        class={link.primary ? "btn" : "nav-link"}
+      >
         {link.label}
       </a>
+
     )
+
   ))}
-  <div class="language-selector"> <button class="selected-language" id="selectedLanguage"> <div class="selected-left"> <img class="flag" src="https://flagcdn.com/mx.svg" alt="Idioma"/> <span class="lang-text">ES</span> </div> <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.29513C0.683417 -0.0983765 1.31658 -0.0983765 1.70711 0.29513L5 3.61317L8.29289 0.29513C8.68342 -0.0983766 9.31658 -0.0983766 9.70711 0.29513C10.0976 0.688636 10.0976 1.32664 9.70711 1.72014L5.70711 5.75068C5.31658 6.14419 4.68342 6.14419 4.29289 5.75068L0.292893 1.72014C-0.0976311 1.32664 -0.0976311 0.688636 0.292893 0.29513Z" fill="#151515"/>
-</svg> </svg> </button> <div class="language-dropdown" id="languageDropdown"> <button onclick="traducir('es', 'mx', 'ES')"> <img src="https://flagcdn.com/mx.svg" alt="México"> ES </button> <button onclick="traducir('en', 'us', 'EN')"> <img src="https://flagcdn.com/us.svg" alt="USA"> EN </button> <button onclick="traducir('pt', 'pt', 'PT')"> <img src="https://flagcdn.com/pt.svg" alt="Portugal"> PT </button> <button onclick="traducir('fr', 'fr', 'FR')"> <img src="https://flagcdn.com/fr.svg" alt="Francia"> FR </button> <button onclick="traducir('de', 'de', 'DE')"> <img src="https://flagcdn.com/de.svg" alt="Alemania"> DE </button> <button onclick="traducir('it', 'it', 'IT')"> <img src="https://flagcdn.com/it.svg" alt="Italia"> IT </button> <button onclick="traducir('zh-CN', 'cn', 'ZH')"> <img src="https://flagcdn.com/cn.svg" alt="China"> ZH </button> <button onclick="traducir('ja', 'jp', 'JA')"> <img src="https://flagcdn.com/jp.svg" alt="Japón"> JA </button> <button onclick="traducir('ko', 'kr', 'KO')"> <img src="https://flagcdn.com/kr.svg" alt="Corea"> KO </button> <button onclick="traducir('ru', 'ru', 'RU')"> <img src="https://flagcdn.com/ru.svg" alt="Rusia"> RU </button> </div> </div> <div id="google_translate_element"></div>
 
+  <div class="language-selector">
 
-<script is:inline>
-const idiomas = {
-  es: {
-    flag: "mx",
-    text: "ES"
-  },
-  en: {
-    flag: "us",
-    text: "EN"
-  },
-  pt: {
-    flag: "pt",
-    text: "PT"
-  },
-  fr: {
-    flag: "fr",
-    text: "FR"
-  },
-  de: {
-    flag: "de",
-    text: "DE"
-  },
-  it: {
-    flag: "it",
-    text: "IT"
-  },
-  "zh-CN": {
-    flag: "cn",
-    text: "ZH"
-  },
-  ja: {
-    flag: "jp",
-    text: "JA"
-  },
-  ko: {
-    flag: "kr",
-    text: "KO"
-  },
-  ru: {
-    flag: "ru",
-    text: "RU"
-  }
-};
+    <button
+      class="selected-language"
+      id="selectedLanguage"
+    >
 
-window.addEventListener("load", () => {
+      <div class="selected-left">
 
-  const match =
-    document.cookie.match(/googtrans=\/es\/([^;]+)/);
+        <img
+          class="flag"
+          src="https://flagcdn.com/mx.svg"
+          alt="Idioma"
+        />
 
-  if (!match) return;
+        <span class="lang-text">
+          ES
+        </span>
 
-  const lang = match[1];
+      </div>
 
-  const idioma = idiomas[lang];
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.29513C0.683417 -0.0983765 1.31658 -0.0983765 1.70711 0.29513L5 3.61317L8.29289 0.29513C8.68342 -0.0983766 9.31658 -0.0983766 9.70711 0.29513C10.0976 0.688636 10.0976 1.32664 9.70711 1.72014L5.70711 5.75068C5.31658 6.14419 4.68342 6.14419 4.29289 5.75068L0.292893 1.72014C-0.0976311 1.32664 -0.0976311 0.688636 0.292893 0.29513Z" fill="#151515"/>
+      </svg>
 
-  if (!idioma) return;
+    </button>
 
-  document.querySelector(".flag").src =
-    `https://flagcdn.com/${idioma.flag}.svg`;
+    <div
+      class="language-dropdown"
+      id="languageDropdown"
+    >
 
-  document.querySelector(".lang-text").innerHTML =
-    idioma.text;
+      <button onclick="traducir('es', 'mx', 'ES')">
+        <img src="https://flagcdn.com/mx.svg" alt="México">
+        ES
+      </button>
 
-});
+      <button onclick="traducir('en', 'us', 'EN')">
+        <img src="https://flagcdn.com/us.svg" alt="USA">
+        EN
+      </button>
 
+      <button onclick="traducir('fr', 'fr', 'FR')">
+        <img src="https://flagcdn.com/fr.svg" alt="Francia">
+        FR
+      </button>
 
-  const selectedLanguage =
-    document.querySelector("#selectedLanguage");
+      <button onclick="traducir('pt', 'pt', 'PT')">
+        <img src="https://flagcdn.com/pt.svg" alt="Portugal">
+        PT
+      </button>
 
-  const languageDropdown =
-    document.querySelector("#languageDropdown");
+    </div>
 
-  selectedLanguage.addEventListener("click", () => {
+  </div>
 
-    languageDropdown.classList.toggle("active");
+  <div id="google_translate_element"></div>
 
-  });
+  <script is:inline>
 
-  window.googleTranslateElementInit = () => {
+    const idiomas = {
 
-    const ocultarGoogleTranslate = () => {
+      es: {
+        flag: "mx",
+        text: "ES"
+      },
 
-      const elementos = document.querySelectorAll(
-        ".skiptranslate, .goog-te-banner-frame"
-      );
+      en: {
+        flag: "us",
+        text: "EN"
+      },
 
-      elementos.forEach((el) => {
+      fr: {
+        flag: "fr",
+        text: "FR"
+      },
 
-        el.style.display = "none";
-        el.style.visibility = "hidden";
-        el.style.opacity = "0";
-        el.style.height = "0";
-        el.style.width = "0";
-
-      });
-
-      document.body.style.top = "0px";
+      pt: {
+        flag: "pt",
+        text: "PT"
+      },
 
     };
 
-    setInterval(ocultarGoogleTranslate, 500);
+    window.addEventListener("load", () => {
 
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: "es",
-        includedLanguages:
-          "en,pt,fr,de,it,ru,zh-CN,ja,ko",
-        autoDisplay: false
-      },
-      "google_translate_element"
-    );
-  };
+      const match =
+        document.cookie.match(/googtrans=\/es\/([^;]+)/);
 
-  const script = document.createElement("script");
+      if (!match) return;
 
-  script.src =
-    "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      const lang = match[1];
 
-  script.async = true;
+      const idioma = idiomas[lang];
 
-  document.body.appendChild(script);
+      if (!idioma) return;
 
-  window.traducir = (lang, flag, text) => {
+      document.querySelector(".flag").src =
+        `https://flagcdn.com/${idioma.flag}.svg`;
 
-    document.querySelector(".flag").src =
-      `https://flagcdn.com/${flag}.svg`;
+      document.querySelector(".lang-text").innerHTML =
+        idioma.text;
 
-    document.querySelector(".lang-text").innerHTML =
-      text;
+    });
 
-    languageDropdown.classList.remove("active");
+    const selectedLanguage =
+      document.querySelector("#selectedLanguage");
 
-    if (lang === "es") {
+    const languageDropdown =
+      document.querySelector("#languageDropdown");
 
-      document.cookie =
-        "googtrans=/es/es; path=/";
+    selectedLanguage.addEventListener("click", () => {
 
-      location.reload();
+      languageDropdown.classList.toggle("active");
 
-      return;
-    }
+    });
 
-    const intervalo = setInterval(() => {
+    window.googleTranslateElementInit = () => {
 
-      const combo =
-        document.querySelector(".goog-te-combo");
+      const ocultarGoogleTranslate = () => {
 
-      if (combo) {
-
-        combo.value = lang;
-
-        combo.dispatchEvent(
-          new Event("change")
+        const elementos = document.querySelectorAll(
+          ".skiptranslate, .goog-te-banner-frame"
         );
 
-        clearInterval(intervalo);
+        elementos.forEach((el) => {
+
+          el.style.display = "none";
+          el.style.visibility = "hidden";
+          el.style.opacity = "0";
+          el.style.height = "0";
+          el.style.width = "0";
+
+        });
+
+        document.body.style.top = "0px";
+
+      };
+
+      setInterval(ocultarGoogleTranslate, 500);
+
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "es",
+
+          // SOLO ESTOS
+          includedLanguages: "en,fr,pt",
+
+          autoDisplay: false
+        },
+        "google_translate_element"
+      );
+
+    };
+
+    const script = document.createElement("script");
+
+    script.src =
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    window.traducir = (lang, flag, text) => {
+
+      document.querySelector(".flag").src =
+        `https://flagcdn.com/${flag}.svg`;
+
+      document.querySelector(".lang-text").innerHTML =
+        text;
+
+      languageDropdown.classList.remove("active");
+
+      if (lang === "es") {
+
+        document.cookie =
+          "googtrans=/es/es; path=/";
+
+        location.reload();
+
+        return;
 
       }
 
-    }, 500);
+      const intervalo = setInterval(() => {
 
-  };
+        const combo =
+          document.querySelector(".goog-te-combo");
 
-</script>
+        if (combo) {
+
+          combo.value = lang;
+
+          combo.dispatchEvent(
+            new Event("change")
+          );
+
+          clearInterval(intervalo);
+
+        }
+
+      }, 500);
+
+    };
+
+  </script>
+
 </header>

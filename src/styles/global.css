@@ -206,7 +206,7 @@ footer small {
     order: 3;
   }
   .site-header img {
-    width: 180px;
+    width: 150px;
     height: auto;
   }
   .site-header a:has(img){
@@ -268,7 +268,7 @@ footer small {
     border-style: solid;
     border-width: 1px;
     padding: 1rem;
-    z-index: 2;
+    z-index: 3;
     background-color: white;
     width: 100%;
     border: 0;
@@ -728,6 +728,10 @@ button.enviar:hover i.fa-solid.fa-paper-plane {
   .newsletter-form__button {
     max-width: 269px;
   }
+  .image-carousel-section img {
+      height: 50px !important;
+      width: auto;
+  }
 }
 @media (max-width: 768px) {
   .newsletter-form__figure img {
@@ -746,8 +750,8 @@ button.enviar:hover i.fa-solid.fa-paper-plane {
     align-items: center;
   }
   .image-carousel-section img {
-      width: 150px !important;
-      height: 80px !important;
+      height: 50px !important;
+      width: auto;
   }
   .image-carousel-section article {
      max-width: 100%;
@@ -756,7 +760,16 @@ button.enviar:hover i.fa-solid.fa-paper-plane {
     display: none;
   }
 }
+.image-carousel-section article {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  align-items: center;
+}
 
+.image-carousel-section article > * {
+  flex-shrink: 0;
+}
 
 
 .image-carousel-section [data-carousel-dot] {
@@ -897,7 +910,7 @@ button.enviar:hover i.fa-solid.fa-paper-plane {
   }
   .carruselReviews__item .carruselReviews__author {
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -1200,19 +1213,6 @@ video {
     }
 
 
-
-.image-cards-overlay .banner.image-cards-overlay__card:has(.image-cards-overlay__caption:hover) img {
-      filter: brightness(0.4);
-}
-
-.image-cards-overlay .hoverText {
-  display: none;
-}
-
-.image-cards-overlay .banner.image-cards-overlay__card:has(.image-cards-overlay__caption:hover) .image-cards-overlay__title {
-  display: none;
-}
-
 .image-cards-overlay .banner.image-cards-overlay__card:has(.image-cards-overlay__caption:hover) .hoverText {
   display: block;
 }
@@ -1226,7 +1226,23 @@ video {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .image-cards-overlay .banner.image-cards-overlay__card img {
+      filter: brightness(0.4);
+  }
+}
+
 @media (min-width: 768px) {
+  .image-cards-overlay .banner.image-cards-overlay__card:has(.image-cards-overlay__caption:hover) img {
+      filter: brightness(0.4);
+  }
+  .image-cards-overlay .hoverText {
+    display: none;
+  }
+
+  .image-cards-overlay .banner.image-cards-overlay__card:has(.image-cards-overlay__caption:hover) .image-cards-overlay__title {
+    display: none;
+  }
   .image-cards-overlay .banner.image-cards-overlay__card img {
     height: auto;
   }
@@ -1272,8 +1288,8 @@ video {
   .franja-comercial__text{
     display: flex;
     flex-wrap: wrap;
-    text-align: start;
-    align-items: start;
+    text-align: center;
+    align-items: center;
   }
   .franja-comercial__text span{
     padding-left: 0px!important;
@@ -1932,7 +1948,7 @@ label {
     padding: 0;
 }
 #banner-impulsamos h1 {
-  max-width: 740px;
+  max-width: 765px;
 }
 #banner-impulsamos figcaption {
     padding: 0;
@@ -2068,6 +2084,8 @@ label {
   align-items: end;
 }
 
+
+
 @media (min-width: 768px) {
   #conoces-potencial figcaption {
     gap: 44px;
@@ -2096,7 +2114,6 @@ label {
   }
   #banner-impulsamos h1 {
     padding: 80px 47px 0;
-    text-align: start;
   }
   .texto-lista figure {
     left: 108px;
@@ -2527,7 +2544,31 @@ label {
 }
 
 
+.comparison-banner-section li, .ecosistema-insights p, h1, #supply h3, #retail h2, #retail h3, .imagen-derecha-texto-izquierda figure h2, .imagen-derecha-texto-izquierda figure h3, .imagen-txt-izq-der h3, .imagen-txt-izq-der h2 {
+  text-align: justify;
+}
+
+.brand-cards-section__card.is-active figcaption, #mensaje-mini-banner-dos h2, #titulos-modeloff h1, .titulos-modelos-ff p {
+  text-align: justify;
+  text-align-last: center;
+}
+
 @media (min-width: 768px) {
+  p, h1, #video-oportunidades h2, #banner-estandar-alimentos h2 {
+    text-align: justify;
+  }
+  .image-cards-overlay .hoverText {
+    text-align-last: center;
+  }
+  #contactanos h2 {
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+  #contactanos h3 {
+    margin-bottom: 10px;
+    align-items: center;
+  }
   #formulario-contacto h2 {
       margin-bottom: 14px;
   }
@@ -2560,7 +2601,53 @@ label {
     justify-content: center;
   }
 }
+
+header.site-header {
+  position: fixed;
+  z-index: 99;
+  background: white;
+  width: 100%;
+  filter: drop-shadow(0px -1px 3px lightgray);
+}
+
+@media (min-width: 1250px) {
+  main.container {
+    padding-top: 65px;
+  }
+}
+
+@media (min-width: 888px) and (max-width: 1250px) {
+  main.container {
+    padding-top: 118px;
+  }
+}
+
+@media (min-width: 888px) and (max-width: 1250px) {
+  main.container {
+    padding-top: 157px;
+  }
+}
+
+@media (max-width: 888px) {
+  main.container {
+    padding-top: 66px;
+  }
+}
+
 @media (max-width: 768px) {
+  label, input, textarea, select, option {
+        text-align: start!important;
+    }
+  #banner-estandar-alimentos figcaption {
+    align-items: center;
+  }
+  .banner-marca-natural > picture:nth-child(1) {
+    width: 100%;
+  }
+  .banner-marca-natural > picture:nth-child(1) img {
+    max-width: 768px;
+    width: 100%;
+  }
   #contactanos figcaption {
     gap: 15px;
   }
@@ -2578,8 +2665,12 @@ label {
     padding: 0px;
   }
   .cards-modelo .image-card img {
-    height: 400px;
+    height: 250px;
+  }  
+  .cards-modelo .image-card:nth-child(2) img, .cards-modelo .image-card:nth-child(4) img, .cards-modelo .image-card:nth-child(5) img, .cards-modelo .image-card:nth-child(6) img{
+    object-position: bottom; 
   }
+
   .cards-modelo .image-card {
     width: 100%;
     align-items: center;
@@ -2630,6 +2721,25 @@ label {
   }
 }
 
+
+@media (min-width: 768px) {
+  h2, h3 {
+    margin-bottom: 10px!important;
+  }
+}
+@media (max-width: 768px) {
+  h2, h3 {
+    margin-bottom: 10px!important;
+  }
+  p, h1, h2, h3 {
+    text-align: justify!important;
+    text-align-last: center;
+  }
+  h3.feature-blocks-section__subtitle {
+    text-align: center!important;
+  }
+}
+
 .mobile-nav__menu p.h2 {
   padding: 10px;
   font-weight: 700;
@@ -2641,7 +2751,7 @@ details.mobile-nav[open] nav.mobile-nav__menu {
 
 details.mobile-nav[open] summary.mobile-nav__toggle {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     top: 13.5px;
 }
 
@@ -2714,19 +2824,6 @@ h2 {
   font-size: 30px;
 }
 
-form h2, #franja-comercial .franja-comercial__text, .newsletter-form h2, .mini-txt-h2 h2, .texto-lista li, .texto-lista p, .top-footer .footer-group:nth-child(4) i, .image-cards-overlay {
-  font-size: 24px;
-}
-
-p.video-derecha-texto-izquierdo__text, .stats-banner-section h3, .banner-marca-natural p, .ecosistema-insights p, .carruselReviews__review,
-.imagen-txt-izq-der p, .titulos-modelos-ff p {
-  font-size: 20px;
-}
-.carruselReviews__caption h3, .carruselReviews__caption p, input, select, textarea, label, .newsletter-form p, .newsletter-form button, 
-.top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu p.h2 {
-  font-size: 16px;
-}
-
 button.enviar:hover, button.newsletter-form__button:hover, section figcaption a:hover {
   font-size: 15px;
 }
@@ -2785,19 +2882,85 @@ button.enviar:hover, button.newsletter-form__button:hover, section figcaption a:
   }
 }
 
-@media (max-width: 768px) {
-  h1, .h1, h2, #mas-que-un-proveedor h2.h3, .texto-lista h2, .texto-lista h3, #preparacion-para-mercado h3, #validacion h3, #desarrollo h3, #conceptualizacion h3, #insights-oportunidad h3{
-    font-size: 24px!important;
+@media (max-width: 950px) {
+  #solucion-integral img {
+    height: 1000px;
   }
-  h2.stats-banner-section__number{
-    font-size: 32px!important;
+}
+
+@media (min-width: 768px) {
+  .carruselReviews__caption h3, .carruselReviews__caption p, input, select, textarea, label, .newsletter-form p, .newsletter-form button, 
+  .top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu p.h2 {
+    font-size: 16px;
+  }
+  form h2, #franja-comercial .franja-comercial__text, .newsletter-form h2, .mini-txt-h2 h2, .texto-lista li, .texto-lista p, .top-footer .footer-group:nth-child(4) i, .image-cards-overlay {
+    font-size: 24px;
+  }
+  p.video-derecha-texto-izquierdo__text, .stats-banner-section h3, .banner-marca-natural p, .ecosistema-insights p, .carruselReviews__review, 
+  .imagen-txt-izq-der p, .titulos-modelos-ff p {
+    font-size: 20px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  #contactanos p {
+    justify-content: center;
+  }
+  #propuesta-de-valor.imagen-txt-izq-der p, #vision p {
+    margin-top: 12px;
+  }
+  .imagen-izquierda-texto-derecha.desarrollo figcaption, .imagen-derecha-texto-izquierda.desarrollo figcaption {
+        align-items: center;
+  }
+  section a {
+    font-size: 0.8rem;
+  }
+  #como-te-ayudamos-1 li span, #como-te-ayudamos-4 li span, li.mi-item span {
+    text-align: start;
+  }
+  h1, h3, h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .carruselReviews__caption h3, .carruselReviews__caption p, input, select, textarea, label, .newsletter-form p, .newsletter-form button, 
+  .top-footer *, #contactanos h3, #contactanos p, button.enviar, .brand-cards-section__card::after, .mobile-nav__menu p.h2 {
+    font-size: 13px;
+  }
+  form h2, #franja-comercial .franja-comercial__text, .newsletter-form h2, .mini-txt-h2 h2, .texto-lista li, .texto-lista p, .top-footer .footer-group:nth-child(4) i, .image-cards-overlay {
+    font-size: 18px;
+  }
+  .ecosistema-insights h2.ecosistema-insights__banner-title, h2 {
+    margin: 0 auto;
+  }
+  p.video-derecha-texto-izquierdo__text, .stats-banner-section h3, .banner-marca-natural p, .ecosistema-insights p, .carruselReviews__review, 
+  .imagen-txt-izq-der p, .titulos-modelos-ff p {
+    font-size: 18px;
+  }
+  section a {
+    font-size: 15px;
+  }
+  body * {
+    text-align: center;
+  }
+  h1, .h1, h2, #mas-que-un-proveedor h2.h3, .texto-lista h2, .texto-lista h3, #preparacion-para-mercado h3, #validacion h3, #desarrollo h3, #conceptualizacion h3, #insights-oportunidad h3{
+    font-size: 19px!important;
+  }
+  h2.stats-banner-section__number {
+    font-size: 22px!important;
+  }
+
+  .imagen-derecha-texto-izquierda p {
+    margin-top: 20px;
+    font-size: 16px!important;
   }
 
   .imagen-txt-izq-der h3, .texto-lista li, .texto-lista p, #mensaje-mini-banner-dos h2, #mensaje-mini-banner h2, #desarrollamos-productos-mercado.banner-desarrollamos h2 {
-    font-size: 20px!important;
+    font-size: 18px!important;
   }
   .image-cards-overlay .hoverText, p.video-derecha-texto-izquierdo__text, .banner-marca-natural p, .ecosistema-insights p, #mas-que-un-proveedor p, #propuesta-de-valor .imagen-txt-izq-der p, #supply p, #conoces-potencial p,   #contactanos h2, #contactanos h3 span{
-    font-size: 16px!important;
+    font-size: 14px!important;
   }
   .ecosistema-insights p, #mas-que-un-proveedor p, #propuesta-de-valor.imagen-txt-izq-der p {
     margin-bottom: 0px;
@@ -2811,48 +2974,52 @@ button.enviar:hover, button.newsletter-form__button:hover, section figcaption a:
 }
 
   @media (max-width: 1315px) {
+    #como-te-ayudamos-2 li span {
+      text-align: start;
+    }
     #como-te-ayudamos-2 h2, #como-te-ayudamos-3 h2, #como-te-ayudamos-1 h2 {
-      font-size: 20px!important;
+      font-size: 18px!important;
     }
     #como-te-ayudamos-2 li span, #como-te-ayudamos-3 li span, #como-te-ayudamos-1 li span,  #como-te-ayudamos-4 li span {
-      font-size: 20px;
+      font-size: 16px;
     }
     #como-te-ayudamos-4 h2 {
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 
-
-@media (max-width: 950px) {
-  #solucion-integral img {
-    height: 1422px;
-  }
-}
 @media (max-width: 915px) {
   #comparativa-modelos {
     margin: 20px 0px;
   }
+  #solucion-integral .comparison-banner-section__item {
+    height: 50px;
+  }
+  #solucion-integral ul.comparison-banner-section__list {
+    padding: 10px;
+    gap: 0;
+  }
   #solucion-integral figcaption {
-    gap: 24px;
-    padding: 20px;
+    gap: 12px;
+    padding: 12px;
   }
   #solucion-integral figcaption .comparison-banner-section .comparison-banner-section__content div, #solucion-integral figcaption .comparison-banner-section .comparison-banner-section__content div li {
     gap: 10px;
   }
   #solucion-integral h2 {
-    font-size: 24px!important;
+    font-size: 20px!important;
   }
   h2.comparison-banner-section__title {
-    font-size: 34px!important;
+    font-size: 26px!important;
   }
   h3.comparison-banner-section__card-title {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 400px) and (max-width: 915px) {
   .comparison-banner-section__item{
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -2861,7 +3028,7 @@ button.enviar:hover, button.newsletter-form__button:hover, section figcaption a:
     font-size: 11px;
   }
   .comparison-banner-section__item{
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -3024,7 +3191,7 @@ h1.hero-title, .ecosistema-insights h2.ecosistema-insights__banner-title, .newsl
     border: 1px solid lightgray;
     overflow: hidden;
     display: none;
-    z-index: 9999;
+    z-index: 2;
   }
 
   .language-dropdown.active {

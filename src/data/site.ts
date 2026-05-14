@@ -39,15 +39,14 @@ export const site = {
   testimonios: "/#reseñas-clientes",
   contacto: "/contacto",
 
-  numeroTelefonico: "+52 33 9689 2203",
+  numeroTelefonico: "+52 55 127 20763",
 
-  numeroWhatsapp: "+52 33 9689 2203",
+  numeroWhatsapp: "+52 55 127 20763",
 
   mensajeWhatsapp: "Buen día, escrito desde el sitio web, me gustaría recibir más información sobre sus servicios.",
 
   correoElectronico: [
-    "karla.cayetano@framfoods.com.mx",
-    "mariana.garcia@framfoods.com.mx",
+    "atencion@framfoods.com.mx",
   ],
 };
 

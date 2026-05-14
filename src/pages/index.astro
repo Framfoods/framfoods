@@ -159,36 +159,110 @@ import { site } from "../data/site";
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-      const slider = document.querySelector('.feature-blocks-section article');
+    const slider = document.querySelector('.feature-blocks-section article');
 
-      if (!slider) return;
+    if (!slider) return;
 
-      const nextBtn = document.querySelector('.feature-blocks-section__btn.next');
-      const prevBtn = document.querySelector('.feature-blocks-section__btn.prev');
+    const nextBtn = document.querySelector('.feature-blocks-section__btn.next');
+    const prevBtn = document.querySelector('.feature-blocks-section__btn.prev');
 
-      const getCardWidth = () => {
-          return (
-              slider.querySelector('.feature-blocks-section__item').offsetWidth + 24
-          );
-      };
+    const items = slider.querySelectorAll('.feature-blocks-section__item');
 
-      nextBtn?.addEventListener('click', () => {
-          slider.scrollBy({
-              left: getCardWidth(),
-              behavior: 'smooth',
-          });
-      });
+    if (!items.length) return;
 
-      prevBtn?.addEventListener('click', () => {
-          slider.scrollBy({
-              left: -getCardWidth(),
-              behavior: 'smooth',
-          });
-      });
+    const getGap = () => {
 
-  });
+        const styles = window.getComputedStyle(slider);
+
+        return parseInt(
+            styles.columnGap || styles.gap || 0
+        );
+
+    };
+
+    const getItemWidth = () => {
+
+        return items[0].offsetWidth + getGap();
+
+    };
+
+    const getMaxScroll = () => {
+
+        return slider.scrollWidth - slider.clientWidth;
+
+    };
+
+    nextBtn?.addEventListener('click', () => {
+
+        const itemWidth = getItemWidth();
+
+        const maxScroll = getMaxScroll();
+
+        const currentScroll = Math.ceil(slider.scrollLeft);
+
+        const nextScroll = currentScroll + itemWidth;
+
+        /*
+        SOLO hace loop
+        cuando YA estás realmente
+        en el final visible
+        */
+
+        if (currentScroll >= maxScroll - 5) {
+
+            slider.scrollTo({
+                left: 0,
+                behavior: 'smooth',
+            });
+
+            return;
+
+        }
+
+        slider.scrollTo({
+            left: Math.min(nextScroll, maxScroll),
+            behavior: 'smooth',
+        });
+
+    });
+
+    prevBtn?.addEventListener('click', () => {
+
+        const itemWidth = getItemWidth();
+
+        const maxScroll = getMaxScroll();
+
+        const currentScroll = Math.ceil(slider.scrollLeft);
+
+        const prevScroll = currentScroll - itemWidth;
+
+        /*
+        SOLO hace loop
+        cuando YA estás
+        completamente al inicio
+        */
+
+        if (currentScroll <= 5) {
+
+            slider.scrollTo({
+                left: maxScroll,
+                behavior: 'smooth',
+            });
+
+            return;
+
+        }
+
+        slider.scrollTo({
+            left: Math.max(prevScroll, 0),
+            behavior: 'smooth',
+        });
+
+    });
+
+});
 </script>
 
 <ImageCardsOverlay
@@ -290,150 +364,150 @@ import { site } from "../data/site";
   h2Class="image-carousel-section__title"
 
   articleGap="42px"
-  autoplayDelay="3000"
-
-  items={[
-    {
-      srcDesktop: "/media/aliados/3blogo.webp?width=600",
-      srcMobile: "/media/aliados/3blogo.webp?width=600",
-      alt: "Aliado FramFoods | 3B",
-      title: "Aliado FramFoods | 3B",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/alsuper.webp?width=600",
-      srcMobile: "/media/aliados/alsuper.webp?width=600",
-      alt: "Aliado FramFoods | Al Super",
-      title: "Aliado FramFoods | Al Super",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/bara.webp?width=600",
-      srcMobile: "/media/aliados/bara.webp?width=600",
-      alt: "Aliado FramFoods | Bara",
-      title: "Aliado FramFoods | Bara",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/calimax.webp?width=600",
-      srcMobile: "/media/aliados/calimax.webp?width=600",
-      alt: "Aliado FramFoods | Calimax",
-      title: "Aliado FramFoods | Calimax",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/chedraui.webp?width=600",
-      srcMobile: "/media/aliados/chedraui.webp?width=600",
-      alt: "Aliado FramFoods | Chedraui",
-      title: "Aliado FramFoods | Chedraui",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/cityclub.webp?width=600",
-      srcMobile: "/media/aliados/cityclub.webp?width=600",
-      alt: "Aliado FramFoods | City Club",
-      title: "Aliado FramFoods | City Club",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/heb.webp?width=600",
-      srcMobile: "/media/aliados/heb.webp?width=600",
-      alt: "Aliado FramFoods | HEB",
-      title: "Aliado FramFoods | HEB",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/lacomer.webp?width=600",
-      srcMobile: "/media/aliados/lacomer.webp?width=600",
-      alt: "Aliado FramFoods | LA COMER",
-      title: "Aliado FramFoods | LA COMER",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/ley.webp?width=600",
-      srcMobile: "/media/aliados/ley.webp?width=600",
-      alt: "Aliado FramFoods | Ley",
-      title: "Aliado FramFoods | Ley",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/neto.webp?width=600",
-      srcMobile: "/media/aliados/neto.webp?width=600",
-      alt: "Aliado FramFoods | neto",
-      title: "Aliado FramFoods | neto",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/petco.webp?width=600",
-      srcMobile: "/media/aliados/petco.webp?width=600",
-      alt: "Aliado FramFoods | petco",
-      title: "Aliado FramFoods | petco",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/sams.webp?width=600",
-      srcMobile: "/media/aliados/sams.webp?width=600",
-      alt: "Aliado FramFoods | sams",
-      title: "Aliado FramFoods | sams",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/soriana.webp?width=600",
-      srcMobile: "/media/aliados/soriana.webp?width=600",
-      alt: "Aliado FramFoods | Soriana",
-      title: "Aliado FramFoods | Soriana",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    },
-    {
-      srcDesktop: "/media/aliados/walmart.webp?width=600",
-      srcMobile: "/media/aliados/walmart.webp?width=600",
-      alt: "Aliado FramFoods | Walmart",
-      title: "Aliado FramFoods | Walmart",
-      width: "257",
-      height: "100",
-      loading: "lazy",
-      decoding: "async",
-    }
-  ]}
+  speedDesktop="0.4"
+  speedMobile="0.8"
+    items={[
+      {
+        srcDesktop: "/media/aliados/sams.webp?width=600",
+        srcMobile: "/media/aliados/sams.webp?width=600",
+        alt: "Aliado FramFoods | sams",
+        title: "Aliado FramFoods | sams",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/walmart.webp?width=600",
+        srcMobile: "/media/aliados/walmart.webp?width=600",
+        alt: "Aliado FramFoods | Walmart",
+        title: "Aliado FramFoods | Walmart",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/3blogo.webp?width=600",
+        srcMobile: "/media/aliados/3blogo.webp?width=600",
+        alt: "Aliado FramFoods | 3B",
+        title: "Aliado FramFoods | 3B",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/bara.webp?width=600",
+        srcMobile: "/media/aliados/bara.webp?width=600",
+        alt: "Aliado FramFoods | Bara",
+        title: "Aliado FramFoods | Bara",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/chedraui.webp?width=600",
+        srcMobile: "/media/aliados/chedraui.webp?width=600",
+        alt: "Aliado FramFoods | Chedraui",
+        title: "Aliado FramFoods | Chedraui",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/lacomer.webp?width=600",
+        srcMobile: "/media/aliados/lacomer.webp?width=600",
+        alt: "Aliado FramFoods | LA COMER",
+        title: "Aliado FramFoods | LA COMER",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/heb.webp?width=600",
+        srcMobile: "/media/aliados/heb.webp?width=600",
+        alt: "Aliado FramFoods | HEB",
+        title: "Aliado FramFoods | HEB",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/cityclub.webp?width=600",
+        srcMobile: "/media/aliados/cityclub.webp?width=600",
+        alt: "Aliado FramFoods | City Club",
+        title: "Aliado FramFoods | City Club",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/soriana.webp?width=600",
+        srcMobile: "/media/aliados/soriana.webp?width=600",
+        alt: "Aliado FramFoods | Soriana",
+        title: "Aliado FramFoods | Soriana",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/calimax.webp?width=600",
+        srcMobile: "/media/aliados/calimax.webp?width=600",
+        alt: "Aliado FramFoods | Calimax",
+        title: "Aliado FramFoods | Calimax",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/alsuper.webp?width=600",
+        srcMobile: "/media/aliados/alsuper.webp?width=600",
+        alt: "Aliado FramFoods | Al Super",
+        title: "Aliado FramFoods | Al Super",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/petco.webp?width=600",
+        srcMobile: "/media/aliados/petco.webp?width=600",
+        alt: "Aliado FramFoods | petco",
+        title: "Aliado FramFoods | petco",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/neto.webp?width=600",
+        srcMobile: "/media/aliados/neto.webp?width=600",
+        alt: "Aliado FramFoods | neto",
+        title: "Aliado FramFoods | neto",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+      {
+        srcDesktop: "/media/aliados/ley.webp?width=600",
+        srcMobile: "/media/aliados/ley.webp?width=600",
+        alt: "Aliado FramFoods | Ley",
+        title: "Aliado FramFoods | Ley",
+        width: "257",
+        height: "100",
+        loading: "lazy",
+        decoding: "async",
+      },
+    ]}
 />
 
 <VideoHero
@@ -444,7 +518,6 @@ import { site } from "../data/site";
   srcMobile="/media/vid2-desktop.mp4?width=1500"
   width="888"
   height="470"
-  autoplay={true}
   muted={true}
   loop={true}
   playsinline={true}
@@ -876,7 +949,14 @@ import { site } from "../data/site";
     const alo = document.querySelector("#alo img");
     const RUSSETHOUSE = document.querySelector("#RUSSETHOUSE img");
 
+    // Solo desktop arriba de 1024px
+    const isDesktop = window.innerWidth > 1024;
+
     const changeImage = (img, newSrc) => {
+
+      // En mobile/tablet no aplica hover
+      if (!isDesktop) return;
+
       if (!img) return;
 
       const picture = img.closest("picture");
@@ -891,8 +971,9 @@ import { site } from "../data/site";
 
       img.parentElement.parentElement.addEventListener("mouseleave", () => {
         img.src = original;
-        sources.forEach((s, i) => s.srcset = original);
+        sources.forEach(s => s.srcset = original);
       });
+
     };
 
     changeImage(PORTO57, "/media/partners-hover/hover-porto57.webp?width=1500");
@@ -910,6 +991,7 @@ import { site } from "../data/site";
     const cards = document.querySelectorAll(".brand-cards-section__card");
 
     cards.forEach((card) => {
+
       const image = card.querySelector("img");
 
       if (!image) return;
@@ -917,6 +999,7 @@ import { site } from "../data/site";
       image.addEventListener("click", () => {
         card.classList.toggle("is-active");
       });
+
     });
 
   });
@@ -926,7 +1009,7 @@ import { site } from "../data/site";
   <ImagenResponsive
     class="izq"
     srcDesktop="/media/banner7-desktop.webp?width=1500"
-    srcMobile="/media/banner7-desktop.webp?width=1000"
+    srcMobile="/media/banner7-mobile.webp?width=1000"
     alt="FramFoods contigo"
     title="FramFoods contigo"
     width="960"
@@ -1128,6 +1211,7 @@ import { site } from "../data/site";
   linkRel=""
 />
 
+<!--
 <ReviewsCarouselSection
   id="reseñas-clientes"
   class="carruselReviews"
@@ -1239,6 +1323,8 @@ import { site } from "../data/site";
     },
   ]}
 />
+---
+-->
 
 <section id="formulario-wrapper" class="formulario-wrapper">
   <FormularioLead

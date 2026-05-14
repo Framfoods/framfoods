@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://framfoods.netlify.app/sitemap.xml
