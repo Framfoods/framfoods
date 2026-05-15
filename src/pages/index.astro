@@ -936,62 +936,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const partners = [
+      { id: "PORTO57", hover: "/media/partners-hover/hover-porto57.webp?width=1500" },
+      { id: "LATITUDE45", hover: "/media/partners-hover/hover-latitude45.webp?width=1500" },
+      { id: "Camanchaca", hover: "/media/partners-hover/hover-camanchaca.webp?width=1500" },
+      { id: "SIWIN", hover: "/media/partners-hover/hover-siwin.webp?width=1500" },
+      { id: "OsoleMio", hover: "/media/partners-hover/hover-osolemio.webp?width=1500" },
+      { id: "NaturalOne", hover: "/media/partners-hover/hover-naturalone.webp?width=1500" },
+      { id: "MARINA", hover: "/media/partners-hover/hover-marina.webp?width=1500" },
+      { id: "FORNODEMINAS", hover: "/media/partners-hover/hover-fornodeminas.webp?width=1500" },
+      { id: "LaMenorquina", hover: "/media/partners-hover/hover-lamenorquina.webp?width=1500" },
+      { id: "alo", hover: "/media/partners-hover/hover-alo.webp?width=1500" },
+      { id: "RUSSETHOUSE", hover: "/media/partners-hover/hover-russethouse.webp?width=1500" }
+    ];
 
-    const PORTO57 = document.querySelector("#PORTO57 img");
-    const LATITUDE45 = document.querySelector("#LATITUDE45 img");
-    const Camanchaca = document.querySelector("#Camanchaca img");
-    const SIWIN = document.querySelector("#SIWIN img");
-    const OsoleMio = document.querySelector("#OsoleMio img");
-    const NaturalOne = document.querySelector("#NaturalOne img");
-    const MARINA = document.querySelector("#MARINA img");
-    const FORNODEMINAS = document.querySelector("#FORNODEMINAS img");
-    const LaMenorquina = document.querySelector("#LaMenorquina img");
-    const alo = document.querySelector("#alo img");
-    const RUSSETHOUSE = document.querySelector("#RUSSETHOUSE img");
-
-    // Solo desktop arriba de 1024px
     const isDesktop = window.innerWidth > 1024;
 
-    const changeImage = (img, newSrc) => {
+    const CHANGE_TIME = 5000;
+    const STAGGER_TIME = 2500;
+    const FADE_TIME = 900;
 
-      // En mobile/tablet no aplica hover
-      if (!isDesktop) return;
+    const preloadImage = (src) => {
+      const image = new Image();
+      image.src = src;
+    };
+
+    partners.forEach((partner) => preloadImage(partner.hover));
+
+    const createFadeWrapper = (img, hoverSrc) => {
+      const picture = img.closest("picture");
+      const elementToWrap = picture || img;
+
+      if (!elementToWrap || !elementToWrap.parentNode) return null;
+
+      const wrapper = document.createElement("div");
+
+      wrapper.style.position = "relative";
+      wrapper.style.display = "block";
+      wrapper.style.width = "100%";
+      wrapper.style.overflow = "hidden";
+      wrapper.style.lineHeight = "0";
+
+      elementToWrap.parentNode.insertBefore(wrapper, elementToWrap);
+      wrapper.appendChild(elementToWrap);
+
+      elementToWrap.style.display = "block";
+      elementToWrap.style.width = "100%";
+
+      img.style.display = "block";
+      img.style.width = "100%";
+      img.style.height = "auto";
+
+      const hoverImg = document.createElement("img");
+
+      hoverImg.src = hoverSrc;
+      hoverImg.alt = img.alt || "";
+      hoverImg.loading = "eager";
+      hoverImg.decoding = "async";
+
+      hoverImg.style.position = "absolute";
+      hoverImg.style.top = "0";
+      hoverImg.style.left = "0";
+      hoverImg.style.width = "100%";
+      hoverImg.style.height = "100%";
+      hoverImg.style.objectFit = window.getComputedStyle(img).objectFit || "contain";
+      hoverImg.style.objectPosition = window.getComputedStyle(img).objectPosition || "center";
+      hoverImg.style.opacity = "0";
+      hoverImg.style.transition = `opacity ${FADE_TIME}ms ease-in-out`;
+      hoverImg.style.pointerEvents = "none";
+      hoverImg.style.zIndex = "2";
+
+      wrapper.appendChild(hoverImg);
+
+      return hoverImg;
+    };
+
+    partners.forEach((partner, index) => {
+      const img = document.querySelector(`#${partner.id} img`);
 
       if (!img) return;
 
-      const picture = img.closest("picture");
-      const sources = picture ? picture.querySelectorAll("source") : [];
+      const card = img.closest(".brand-cards-section__card");
 
-      const original = img.currentSrc || img.src;
+      if (!card) return;
 
-      img.parentElement.parentElement.addEventListener("mouseenter", () => {
-        img.src = newSrc;
-        sources.forEach(s => s.srcset = newSrc);
-      });
+      const hoverImg = createFadeWrapper(img, partner.hover);
 
-      img.parentElement.parentElement.addEventListener("mouseleave", () => {
-        img.src = original;
-        sources.forEach(s => s.srcset = original);
-      });
+      if (!hoverImg) return;
 
-    };
+      const showHover = () => {
+        hoverImg.style.opacity = "1";
+      };
 
-    changeImage(PORTO57, "/media/partners-hover/hover-porto57.webp?width=1500");
-    changeImage(LATITUDE45, "/media/partners-hover/hover-latitude45.webp?width=1500");
-    changeImage(Camanchaca, "/media/partners-hover/hover-camanchaca.webp?width=1500");
-    changeImage(SIWIN, "/media/partners-hover/hover-siwin.webp?width=1500");
-    changeImage(OsoleMio, "/media/partners-hover/hover-osolemio.webp?width=1500");
-    changeImage(NaturalOne, "/media/partners-hover/hover-naturalone.webp?width=1500");
-    changeImage(MARINA, "/media/partners-hover/hover-marina.webp?width=1500");
-    changeImage(FORNODEMINAS, "/media/partners-hover/hover-fornodeminas.webp?width=1500");
-    changeImage(LaMenorquina, "/media/partners-hover/hover-lamenorquina.webp?width=1500");
-    changeImage(alo, "/media/partners-hover/hover-alo.webp?width=1500");
-    changeImage(RUSSETHOUSE, "/media/partners-hover/hover-russethouse.webp?width=1500");
+      const showOriginal = () => {
+        hoverImg.style.opacity = "0";
+      };
+
+      if (isDesktop) {
+        card.addEventListener("mouseenter", showHover);
+        card.addEventListener("mouseleave", showOriginal);
+        return;
+      }
+
+      const delay = index % 2 === 0 ? 0 : STAGGER_TIME;
+      let isHoverVisible = false;
+
+      setTimeout(() => {
+        const toggleMobileImage = () => {
+          isHoverVisible = !isHoverVisible;
+
+          if (isHoverVisible) {
+            showHover();
+          } else {
+            showOriginal();
+          }
+        };
+
+        toggleMobileImage();
+
+        setInterval(toggleMobileImage, CHANGE_TIME);
+      }, delay);
+    });
 
     const cards = document.querySelectorAll(".brand-cards-section__card");
 
     cards.forEach((card) => {
-
       const image = card.querySelector("img");
 
       if (!image) return;
@@ -999,9 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image.addEventListener("click", () => {
         card.classList.toggle("is-active");
       });
-
     });
-
   });
 </script>
 
